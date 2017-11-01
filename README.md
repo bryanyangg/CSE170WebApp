@@ -73,9 +73,9 @@ Part of our source code are inherited from the following open-source templates:
 
     Calendar:
     
-           * FullCalendar v3.6.2 Stylesheet
-           * Docs & License: https://fullcalendar.io/
-           * (c) 2017 Adam Shaw
+          * FullCalendar v3.6.2 Stylesheet
+          * Docs & License: https://fullcalendar.io/
+          * (c) 2017 Adam Shaw
            
           Copyright (c) 2015 Adam Shaw
 
