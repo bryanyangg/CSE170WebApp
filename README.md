@@ -72,7 +72,11 @@ Part of our source code are inherited from the following open-source templates:
           Copyright 2013-2017 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/gh-pages/LICENSE) license.
 
     Calendar:
-
+    
+           * FullCalendar v3.6.2 Stylesheet
+           * Docs & License: https://fullcalendar.io/
+           * (c) 2017 Adam Shaw
+           
           Copyright (c) 2015 Adam Shaw
 
           Permission is hereby granted, free of charge, to any person obtaining
