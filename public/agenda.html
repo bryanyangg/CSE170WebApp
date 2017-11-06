@@ -8,31 +8,26 @@
     <title>Notes Widget</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- JQuery UI -->
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/agenda.css" rel="stylesheet">
 </head>
 
 <style>
 .card-padding-top {
   padding-top: 20px;
 }
-
-.sma {
-    font-size:14px;
-}
-.med {
-    font-size:18px;
-}
-.lar {
-    font-size:24px;
-}
 </style>
 
+
 <body>
+
 
     <!-- Start your project here-->
     <div class="row justify-content-md-center">
@@ -44,39 +39,14 @@
             <div class="card">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
                     <div class="container">
-                        <a class="navbar-brand" href="notes.html">Notes</a>
+                        <a class="navbar-brand" href="agenda.html">Today's Agenda</a>
                     </div>
                 </nav>
                 <!--Card content-->
                 <div class="card-body">
-                    <!-- <p class="h1">Notes</p> -->
-                    <!-- todo: place this row in correct position later.-->
                     <div class="row">
-                        <div class="col-4 col-md-4">
-                            <div class="row">
-                                <div class="col">                                
-                                    <i class="fa fa-lg fa-trash-o" aria-hidden="true" onclick="deleteNote()"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="fa fa-lg fa-plus-circle" aria-hidden="true" onclick="addNote()"></i>
-                                </div>
-                            </div>
-                            <!-- <i class="fa fa-lg fa-save" aria-hidden="true" onclick="saveCurrentNote()"></i> -->
-                        </div>
                         <div class="col">
-                            <div class="text-right">
-                                <span class="sma" onclick="changeFontSize(10)">T</span>
-                                <span class="med" onclick="changeFontSize(16)">T</span>
-                                <span class="lar" onclick="changeFontSize(24)">T</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 col-md-4">
-                            <select id="notes_identifier" size="25" style="width:100%; height:100%; border-width:0"></select> <!-- todo placeholder size for now -->
-                        </div>
-                        <div class="col">
-                            <textarea id="notes_content" style="width:100%; height:100%"></textarea>
+                            <div class="container" id="agenda"></div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +61,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -98,7 +69,25 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Notes "backend" -->
-    <script type="text/javascript" src="js/notes.js"></script>
+    <script type="text/javascript" src="js/agenda.js"></script>
 </body>
-
+<div id="dialog" style="display:none">
+        <form>
+            <div class="md-form text-center">
+                <h3 id="dialog-title"></h3>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <i class="fa fa-calendar-o prefix grey-text"></i>
+                    <label for="dialog-date" >Date</label>
+                    <input type="text" class="text-center" id="dialog-date" style="width: auto;border-bottom:0px;" readonly>
+                </div>
+                <div class="col text-center">
+                    <span><i class="fa fa-clock-o prefix grey-text"></i></span>
+                    <span><label for="dialog-time" >Time</label>
+                    <input type="text" class="text-center" id="dialog-time" style="width: auto; border-bottom:0px;" readonly></span>
+                </div>
+            </div>
+        </form>
+    </div>
 </html>

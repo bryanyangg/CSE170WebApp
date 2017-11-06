@@ -1,5 +1,5 @@
 function initNotes() {
-    if (retrieveNotes() == undefined) {
+    if (getNotes() == undefined) {
         localStorage.setItem("notes", JSON.stringify({}));
     }
 }
@@ -12,7 +12,7 @@ function addNote(){
 }
 
 function saveNote(note, content) {
-    var notes = retrieveNotes();
+    var notes = getNotes();
     if (!(note in notes)){
         notes[note] = {};
         notes[note]["identifier"] = "New Note";
@@ -32,26 +32,23 @@ function changeFontSize(size) {
     $("#notes_content").css("font-size", size);
 }
 
-function retrieveNotes() {
+function getNotes() {
     var notes = localStorage.getItem("notes");
     // check for undefined notes
-    if (notes == undefined) {
-        initNotes();
-    }
-    return JSON.parse(notes);
+    if (notes != undefined) 
+        return JSON.parse(notes);
 }
 
 // todo
 function populateNotesSummary() {
-    var notes = retrieveNotes();
+    var notes = getNotes();
     document.getElementById("notes_identifier").innerHTML = "";
 
     for(const note in notes) {
-        var note_summary = document.createElement("option");
-        note_summary.style="border-width:1";
-        note_summary.value = note;
-        note_summary.innerHTML = notes[note]["identifier"];
-        document.getElementById("notes_identifier").appendChild(note_summary);
+        var note_option = document.createElement("option");
+        note_option.value = note;
+        note_option.innerHTML = notes[note]["identifier"];
+        document.getElementById("notes_identifier").appendChild(note_option);
     }
 
     document.getElementById("notes_identifier").onclick = function(){
@@ -60,12 +57,12 @@ function populateNotesSummary() {
 }
 
 function populateNoteContent(note) {
-    var notes = retrieveNotes();
+    var notes = getNotes();
     document.getElementById("notes_content").value = notes[note]["content"];
 }
 
 function deleteNote() {
-    var notes = retrieveNotes();
+    var notes = getNotes();
     var note = document.getElementById("notes_identifier").value;
     if ((note != undefined) && (note != "") && (note in notes)) {
         if(confirm("Are you sure you want to delete the current note?")) {
