@@ -18,6 +18,9 @@
 
 <style>
 
+  body {
+    background-color: #EEEEEE;
+  }
 
   .card-padding-top {
     padding-top: 20px;
@@ -25,6 +28,10 @@
 
   .btn-default a {
     color: white;
+  }
+
+  .signup-text {
+    padding-top: 5px;
   }
 
 </style>
@@ -51,7 +58,7 @@
               <form>
                   <div class="md-form">
                       <i class="fa fa-envelope prefix grey-text"></i>
-                      <input type="text" id="defaultForm-email" class="form-control">
+                      <input type="email" id="defaultForm-email" class="form-control">
                       <label for="defaultForm-email">Email</label>
                   </div>
 
@@ -65,8 +72,9 @@
                       <button class="btn btn-default">
                         <a href="index.html">Log in</a>
                       </button>
-                      <br />
-                      <a href="#">Don't have an account?</a>
+                      <div class="signup-text">
+                        <a href="#">Don't have an account?</a>
+                      </div>
                   </div>
               </form>
             </div>
