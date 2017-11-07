@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+
+<!-- Include html in the page -->
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,6 +94,13 @@
     </nav>
     <!--/.Navbar-->
 
+    <!-- Puts the agenda and notes widgets on the homepage -->
+    <div class="row">
+        <div class="col" w3-include-html="agenda.html"></div>
+        <div class="col" w3-include-html="notes.html"></div>
+    </div>
+
+    <script> w3.includeHTML();</script>
     <!-- commented the footer for now -->
     <!-- Footer
     <footer class="py-5 bg-dark">
@@ -101,6 +112,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   </body>
 </html>
