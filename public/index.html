@@ -65,7 +65,7 @@
     <!-- Navigation -->
 
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light red" style="position:fixed; top:0px; width:100%">
+    <nav class="navbar navbar-expand-lg navbar-light red" style="position:fixed; top:0px; width:100%; z-index:9000">
 
         <!-- Navbar brand -->
         <a class="navbar-brand" href="#">Welcome Back, [User]</a>
@@ -157,9 +157,10 @@
     <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />    -->
     <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
     <script>
+        var state;
         function toggleViewMode() {
             console.log("toggle");
-            if(screen && screen.width < 480) {
+            if(screen && screen.width < 480 && state!="mobile") {
                 $("#widget-container").removeClass("row");
                 $("#widget1").removeClass("col");
                 $("#widget2").removeClass("col");
@@ -187,14 +188,16 @@
                     $('#widget1').animate({width: "100%"});
                     $('#pg1').select();
                 });
+                state="mobile";
                 // $("#widget-navigator").removeClass("hide");
-            } else {
+            } else if(screen && screen.width >= 480 && state!="desktop"){
                 $("#widget-container").addClass("row");
                 $("#widget1").addClass("col");
                 $("#widget2").addClass("col");
                 $(".widget").css("height", "100%");
                 $('input[type=radio][name=widget-pg]').change(function() {});
                 $("#widget-navigator").css("display", "none");
+                state="desktop";
             }
         }
 

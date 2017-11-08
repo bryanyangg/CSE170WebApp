@@ -18,6 +18,7 @@ function saveNote(note, content) {
         notes[note]["identifier"] = "New Note";
     }
     notes[note]["content"] = content;
+    notes[note]["identifier"] = $("option[value=\'" + note + "\']").html();
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
@@ -44,7 +45,7 @@ function populateNotesSummary() {
     var notes = getNotes();
     document.getElementById("notes_identifier").innerHTML = "";
 
-    for(const note in notes) {
+    for( note in notes) {
         var note_option = document.createElement("option");
         note_option.value = note;
         note_option.innerHTML = notes[note]["identifier"];
@@ -65,12 +66,35 @@ function deleteNote() {
     var notes = getNotes();
     var note = document.getElementById("notes_identifier").value;
     if ((note != undefined) && (note != "") && (note in notes)) {
-        if(confirm("Are you sure you want to delete the current note?")) {
-            delete notes[note];
-            localStorage.setItem("notes", JSON.stringify(notes));
-            populateNotesSummary();
-            document.getElementById("notes_content").value = "";
-        }
+        var dialog = $( "#notesdialog" ).dialog({
+            dialogClass: "notesPopup",
+            autoOpen: false,
+            height: 400,
+            width: 350,
+            modal: true,
+            buttons: {
+                Ok:{
+                    text: "Ok",
+                    class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                    click: function() {
+                        delete notes[note];
+                        localStorage.setItem("notes", JSON.stringify(notes));
+                        populateNotesSummary();
+                        document.getElementById("notes_content").value = "";
+                        dialog.dialog( "close" );
+                    }
+                },
+                Cancel:{
+                    text: "Cancel",
+                    class: "btn btn-outline-primary btn-rounded waves-effect waves-light text-center",
+                    click: function() {
+                        dialog.dialog( "close" );
+                    }
+                }
+            }
+        });
+
+        dialog.dialog( "open" );
     }
 }
 
@@ -80,5 +104,16 @@ $(document).ready(function(){
     populateNotesSummary();
 
     // todo: think of better way to handle this
-    document.getElementById("notes_content").onchange = saveCurrentNote;
+    document.getElementById("notes_content").onchange = function(){
+        console.log(document.getElementById("notes_content").value);
+        saveCurrentNote();
+    }
+
+    document.getElementById("notes_content").onkeyup = function() {
+        if(document.getElementById("notes_content").value.length > 1) {
+            $("option[value=\'" + document.getElementById("notes_identifier").value + "\']")
+                .html( document.getElementById("notes_content").value.substr(0, Math.min(10, document.getElementById("notes_content").value.length)));
+        }
+        saveCurrentNote();
+    }
 });

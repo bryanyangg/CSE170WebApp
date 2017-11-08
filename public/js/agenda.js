@@ -68,7 +68,8 @@ function populateAgenda() {
     var agenda = getAgenda();
     document.getElementById("agenda").innerHTML = "";
 
-    for(const event in agenda) {
+    
+    for( event in agenda) {
         // only add events with titles to today's agenda. 
         // todo: find a better way to handle
         if (agenda[event]["title"] != undefined) {
