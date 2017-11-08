@@ -41,6 +41,8 @@
         <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
         <link href='css/fullcalendar.min.css' rel='stylesheet' />
         <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src='lib/moment.min.js'></script>
         <script src='lib/jquery.min.js'></script>
         <script src='js/fullcalendar.min.js'></script>
@@ -54,7 +56,7 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay,listMonth'
                     },
-                    defaultDate: '2017-11-01',
+                    defaultDate: '2017-11-08',
                     navLinks: true, // can click day/week names to navigate views
                     businessHours: true, // display business hours
                     selectable: true,
@@ -141,9 +143,35 @@
         
             #calendar {
                 max-width: 900px;
-                margin: 10% 10% 10% 5%;
+                margin: 6% auto;
                 display: block;
                 float: left;
+            }
+
+            #addBtn{
+                display: block;
+                margin: 5% auto;
+                
+            }
+
+            #wkView {
+                max-width: 900px;
+                display: block;
+                margin: auto;
+                background-color:antiquewhite;
+            }
+            
+
+            .calcontainer {
+                width: 100%;
+                padding-right: 6%;
+                padding-left: 6%;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .cal-my-4 {
+                margin-top: 3.5rem !important;
             }
         
         </style>
@@ -173,10 +201,72 @@
             </div>
         </nav>
 
-        <div id='calendar'></div>
-        
+        <!-- Page Content -->
+        <div class="calcontainer">
+
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div id='calendar'>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">            
+
+                    <div class="card cal-my-4">
+                        <h5 class="card-header" style="text-align:center">Week View</h5>
+                        <div class="row" style="width: 100%; margin-top:50px; padding:15px 0px;">
+                            <div class="col">
+                                <div class="container" id="agenda"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id='wkView'>
+                    
+                        <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Some text in the modal.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
         <!-- Bootstrap core JavaScript -->
         <!--<script src="vendor/jquery/jquery.min.js"></script>-->
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Notes "backend" -->
+        <script type="text/javascript" src="js/agenda.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
     </body>
 </html>
