@@ -18,7 +18,8 @@ function saveNote(note, content) {
         notes[note]["identifier"] = "New Note";
     }
     notes[note]["content"] = content;
-    notes[note]["identifier"] = $("option[value=\'" + note + "\']").html();
+    if($("option[value=\'" + note + "\']").html() != undefined)
+        notes[note]["identifier"] = $("option[value=\'" + note + "\']").html();
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
@@ -110,7 +111,7 @@ $(document).ready(function(){
     }
 
     document.getElementById("notes_content").onkeyup = function() {
-        if(document.getElementById("notes_content").value.length > 1) {
+        if(document.getElementById("notes_content").value.length > 0) {
             $("option[value=\'" + document.getElementById("notes_identifier").value + "\']")
                 .html( document.getElementById("notes_content").value.substr(0, Math.min(10, document.getElementById("notes_content").value.length)));
         }
