@@ -49,6 +49,7 @@
         <script src='js/fullcalendar.min.js'></script>
         <script src="lib/picker.js"></script>
         <script src="lib/picker.date.js"></script>
+        <script src="lib/legacy.js"></script>
 
         <script>
         
@@ -161,11 +162,17 @@
                 
             }
 
+            #btnAdd{
+                margin: auto;
+            }
+            #btnClose{
+                margin: auto;
+            }
+
             #wkView {
                 max-width: 900px;
                 display: block;
                 margin: auto;
-                background-color:antiquewhite;
             }
             
 
@@ -229,11 +236,9 @@
                     </div>
                     
                     <div id='wkView'>
-                    
                         <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                         </button>
-                        
                     </div>
 
                     <!-- Modal -->
@@ -273,20 +278,21 @@
 
                                         <div class="md-form">
                                             <i class="fa fa-calendar prefix grey-text"></i>
-                                            <input placeholder="Select date" type="text" id="datepicker" class="form-control datepicker">
+                                            <input placeholder="Select date" type="text" id="datepicker" class="form-control">
                                             <label for="datepicker">Date</label>
                                         </div>
 
                                         <div class="md-form">
-                                            <i class="fa fa-phone prefix grey-text"></i>
-                                            <input type="number" id="defaultForm-number" class="form-control">
-                                            <label for="defaultForm-number">Phone Number</label>
+                                            <i class="fa fa-clock-o prefix grey-text"></i>
+                                            <input placeholder="Select time" type="text" id="timepicker" class="form-control">
+                                            <label for="timepicker">Time</label>
                                         </div>
 
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button id= "btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                                    <button id= "btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                             
@@ -299,17 +305,16 @@
         </div>
 
         <!-- Scripts -->
-        <script>
+        <script type="text/javascript">
             // Data Picker Initialization
-            $('.datepicker').pickadate({
+            var $input = $('.datepicker').pickadate({
 
                     // Strings and translations
-                    monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                     weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
                     weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                     showMonthsShort: true,
-                    showWeekdaysFull: undefined,
+                    showWeekdaysShort: true,
 
                     // Buttons
                     today: 'Today',
@@ -350,7 +355,7 @@
                     container: undefined,
 
                     // Hidden input container
-                    containerHidden: true,
+                    containerHidden: false,
 
                     // Close on a user action
                     closeOnSelect: true,
@@ -436,7 +441,9 @@
                         buttonToday: 'picker__button--today'
                     }
 
-                });
+            })
+
+            var picker = $input.pickadate('picker')
         </script>
         <!-- Bootstrap core JavaScript -->
         <!--<script src="vendor/jquery/jquery.min.js"></script>-->
