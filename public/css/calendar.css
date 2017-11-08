@@ -4,3 +4,7 @@
     padding: 5px;
     margin: 5px;
 }
+
+#myModal {
+    z-index: 9001;
+}
