@@ -44,7 +44,7 @@ function populateNotesSummary() {
     var notes = getNotes();
     document.getElementById("notes_identifier").innerHTML = "";
 
-    for(const note in notes) {
+    for( note in notes) {
         var note_option = document.createElement("option");
         note_option.value = note;
         note_option.innerHTML = notes[note]["identifier"];
