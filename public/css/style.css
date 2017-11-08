@@ -1,1 +1,5 @@
 /* Your custom styles */
+
+.nav-link.active {
+    font-weight: 600;
+}

@@ -1,0 +1,21 @@
+.sma {
+    font-size:14px;
+}
+.med {
+    font-size:18px;
+}
+.lar {
+    font-size:24px;
+}
+
+select {
+    outline: none;
+}
+
+textarea {
+    outline: none;
+}
+
+.notesPopup .ui-dialog-titlebar {
+    display:none
+}
