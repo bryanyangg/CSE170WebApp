@@ -27,6 +27,7 @@
         <link href="css/mdb.min.css" rel="stylesheet">
         <!--  custom styles -->
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/calendar.css" rel="stylesheet">
 
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
@@ -41,6 +42,8 @@
         <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
         <link href='css/fullcalendar.min.css' rel='stylesheet' />
         <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src='lib/moment.min.js'></script>
         <script src='lib/jquery.min.js'></script>
         <script src='js/fullcalendar.min.js'></script>
@@ -54,7 +57,7 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay,listMonth'
                     },
-                    defaultDate: '2017-11-01',
+                    defaultDate: '2017-11-08',
                     navLinks: true, // can click day/week names to navigate views
                     businessHours: true, // display business hours
                     selectable: true,
@@ -126,8 +129,157 @@
                         }
                     ]
                 });
+            
+                // Data Picker Initialization
+                $('.datepicker').pickadate({
+                    
+                    onStart: function() {
+                        console.log('Hello there :)')
+                    },
+                    onRender: function() {
+                        console.log('Whoa.. rendered anew')
+                    },
+                    onOpen: function() {
+                        console.log('Opened up')
+                    },
+                    onClose: function() {
+                        console.log('Closed now')
+                    },
+                    onStop: function() {
+                        console.log('See ya.')
+                    },
+                    onSet: function(context) {
+                        console.log('Just set stuff:', context)
+                    },
+
+                    // Strings and translations
+                    monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    showMonthsShort: true,
+                    showWeekdaysFull: undefined,
+
+                    // Buttons
+                    today: 'Today',
+                    clear: 'Clear',
+                    close: 'Close',
+
+                    // Accessibility labels
+                    labelMonthNext: 'Next month',
+                    labelMonthPrev: 'Previous month',
+                    labelMonthSelect: 'Select a month',
+                    labelYearSelect: 'Select a year',
+
+                    // Formats
+                    format: 'd mmmm, yyyy',
+                    formatSubmit: 'yyyy/mm/dd',
+                    hiddenPrefix: 'prefix__',
+                    hiddenSuffix: '_submit',
+                    hiddenName: '__suffix',
+
+                    // Editable input
+                    editable: true,
+
+                    // Dropdown selectors
+                    selectYears: true,
+                    selectMonths: true,
+
+                    // First day of the week
+                    firstDay: undefined,
+
+                    // Date limits
+                    min: new Date(2000,3,20),
+                    max: new Date(2999,7,25),
+
+                    // Disable dates
+                    disable: undefined,
+
+                    // Root picker container
+                    container: undefined,
+
+                    // Hidden input container
+                    containerHidden: undefined,
+
+                    // Close on a user action
+                    closeOnSelect: true,
+                    closeOnClear: true,
+
+                    // Events
+                    onStart: undefined,
+                    onRender: undefined,
+                    onOpen: undefined,
+                    onClose: undefined,
+                    onSet: undefined,
+                    onStop: undefined,
+
+                    // Classes
+                    klass: {
+
+                        // The element states
+                        input: 'picker__input',
+                        active: 'picker__input--active',
+
+                        // The root picker and states *
+                        picker: 'picker',
+                        opened: 'picker--opened',
+                        focused: 'picker--focused',
+
+                        // The picker holder
+                        holder: 'picker__holder',
+
+                        // The picker frame, wrapper, and box
+                        frame: 'picker__frame',
+                        wrap: 'picker__wrap',
+                        box: 'picker__box',
+
+                        // The picker header
+                        header: 'picker__header',
+
+                        // Month navigation
+                        navPrev: 'picker__nav--prev',
+                        navNext: 'picker__nav--next',
+                        navDisabled: 'picker__nav--disabled',
+
+                        // Month & year labels
+                        month: 'picker__month',
+                        year: 'picker__year',
+
+                        // Month & year dropdowns
+                        selectMonth: 'picker__select--month',
+                        selectYear: 'picker__select--year',
+
+                        // Table of dates
+                        table: 'picker__table',
+
+                        // Weekday labels
+                        weekdays: 'picker__weekday',
+
+                        // Day states
+                        day: 'picker__day',
+                        disabled: 'picker__day--disabled',
+                        selected: 'picker__day--selected',
+                        highlighted: 'picker__day--highlighted',
+                        now: 'picker__day--today',
+                        infocus: 'picker__day--infocus',
+                        outfocus: 'picker__day--outfocus',
+
+                        // The picker footer
+                        footer: 'picker__footer',
+
+                        // Today, clear, & close buttons
+                        buttonClear: 'picker__button--clear',
+                        buttonClose: 'picker__button--close',
+                        buttonToday: 'picker__button--today'
+                    }
+
+                });
                 
             });
+        
+        </script>
+        <script>
+            
         
         </script>
         <style>
@@ -141,10 +293,36 @@
         
             #calendar {
                 max-width: 900px;
-                margin: 10% 10% 10% 5%;
+                margin: 6% auto;
                 display: block;
                 float: left;
                 font-size: 14px;
+            }
+
+            #addBtn{
+                display: block;
+                margin: 5% auto;
+                
+            }
+
+            #wkView {
+                max-width: 900px;
+                display: block;
+                margin: auto;
+                background-color:antiquewhite;
+            }
+            
+
+            .calcontainer {
+                width: 100%;
+                padding-right: 6%;
+                padding-left: 6%;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .cal-my-4 {
+                margin-top: 3.5rem !important;
             }
         
         </style>
@@ -206,10 +384,109 @@
             </nav>
             <!--/.Navbar-->
 
-        <div id='calendar'></div>
-        
+        <!-- Page Content -->
+        <div class="calcontainer">
+
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div id='calendar'></div>
+                </div>
+
+                <div class="col-md-4">            
+
+                    <div class="card cal-my-4">
+                        <h5 class="card-header" style="text-align:center">Week View</h5>
+                        <div class="row">
+                            <div class="col" style="margin:2% 2%">
+                                <div class="container" id="agenda"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id='wkView'>
+                    
+                        <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" style="margin:auto;">Modal Header</h4>
+                                    <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="md-form">
+                                            <i class="fa fa-user-o prefix grey-text"></i>
+                                            <input type="text" id="defaultForm-firstName" class="form-control">
+                                            <label for="defaultForm-firstName">First Name</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
+                                            <input type="text" id="defaultForm-lastName" class="form-control">
+                                            <label for="defaultForm-lastName">Last Name</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <i class="fa fa-envelope prefix grey-text"></i>
+                                            <input type="email" id="defaultForm-email" class="form-control">
+                                            <label for="defaultForm-email">Email</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <i class="fa fa-phone prefix grey-text"></i>
+                                            <input type="number" id="defaultForm-number" class="form-control">
+                                            <label for="defaultForm-number">Phone Number</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <i class="fa fa-calendar prefix grey-text"></i>
+                                            <input placeholder="Selected date" type="text" id="datepicker" class="form-control datepicker">
+                                            <label for="datepicker">Date</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <i class="fa fa-phone prefix grey-text"></i>
+                                            <input type="number" id="defaultForm-number" class="form-control">
+                                            <label for="defaultForm-number">Phone Number</label>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
         <!-- Bootstrap core JavaScript -->
         <!--<script src="vendor/jquery/jquery.min.js"></script>-->
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Notes "backend" -->
+        <script type="text/javascript" src="js/agenda.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <!-- Calendar Date picket -->
+        <script type="text/javascript" src="js/caldatepicker.js"></script>
+
     </body>
 </html>

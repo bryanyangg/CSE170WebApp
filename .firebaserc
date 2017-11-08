@@ -1,1 +1,6 @@
-{}
+{
+  "projects": {
+    "staging": "cse170webapp-staging",
+    "default": "cse170proj"
+  }
+}
