@@ -7,7 +7,7 @@ $(document).ready(function(){
         modal: true,
         buttons: {
             Ok:{
-                text: "Ok",
+                text: "Close",
                 class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                 click: function() {
                     qrdialog.dialog( "close" );
