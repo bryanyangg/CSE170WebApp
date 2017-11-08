@@ -203,7 +203,12 @@
             toggleViewMode();
         });
 
-        $(window).resize(toggleViewMode);
+        window.onresize = function() {
+            clearTimeout(window.resizedFinished);
+            window.resizedFinished = setTimeout(function(){
+                toggleViewMode();
+            }, 250);
+        };
     </script>
   </body>
 </html>
