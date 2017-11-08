@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
-
-<!-- Include html in the page -->
-<script src="https://www.w3schools.com/lib/w3.js"></script>
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+    <!-- <script defer src="/__/firebase/4.6.0/firebase-app.js"></script> -->
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+    <!-- <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script> -->
+    <!-- <script defer src="/__/firebase/4.6.0/firebase-database.js"></script> -->
+    <!-- <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script> -->
+    <!-- <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script> -->
     <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <!-- <script defer src="/__/firebase/init.js"></script> -->
 
     <title>MyWebApp</title>
 
@@ -24,26 +20,52 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!--  custom styles -->
     <link href="css/style.css" rel="stylesheet">
-
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+    
   </head>
 
   <style>
-
+      html {
+          height: 100%;
+      }
+      body{
+          height:100%;
+          overflow:hidden;
+      }
+      row {
+          height: 100%;
+      }
     .d-flex {
       display: flex;
     }
 
+    input[type="radio"] {
+        outline: none;
+        display: none;
+    }
+
+    input[type=radio]:checked + label{
+        background: #555555;
+    }
+
+    input[type=radio] ~ label {
+        border-radius: 100%;
+        background: #e5e5e5;
+        height: 15px;
+        width: 15px;
+    }
   </style>
 
-  <body>
+  <body style="padding:0px 0px 30px 0px;">
     <!-- Navigation -->
 
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light red">
+    <nav class="navbar navbar-expand-lg navbar-light red" style="position:fixed; top:0px; width:100%">
 
         <!-- Navbar brand -->
         <a class="navbar-brand" href="#">Welcome Back, [User]</a>
@@ -73,7 +95,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View as</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">User</a>
-                        <a class="dropdown-item" href="guest.html">Guest</a>
+                        <a class="dropdown-item" href="#">Guest</a>
                     </div>
                 </li>
 
@@ -93,15 +115,31 @@
 
     </nav>
     <!--/.Navbar-->
+    <div class="container" style="height:100%; padding: 50px 0px 0px 0px;">
+        <div id="widget-container" class="text-center row" style="padding:20px; height:100%; width:100%;">
+            <div id="widget1" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">
+                <object type="text/html" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;" data="agenda.html" ></object>
+            </div>
+            <div id="widget2" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">                    
+                <object type="text/html" data="notes.html" style="border-radius:6px; width:100%; height:100%; overflow:hidden; margin: 0 auto;"></object>
+            </div>
+        </div> 
 
-    <!-- Puts the agenda and notes widgets on the homepage -->
-    <div class="row">
-        <div class="col" w3-include-html="agenda.html"></div>
-        <div class="col" w3-include-html="notes.html"></div>
     </div>
+    <nav id="widget-navigator" class="navbar navbar-fixed-bottom" style="position: fixed; bottom:0; width:100%; height:50px; border:none; box-shadow:none; z-index:100">
+        <div class="container text-center " style="display: inline-block">
+            <input type="radio" name="widget-pg" id="pg1" value="widget1"/>
+            <label for="pg1"></label>
+            <input type="radio" name="widget-pg" id="pg2" value="widget2"/>
+            <label for="pg2"></label>
+        </div>
+    </nav>
 
-    <script> w3.includeHTML();</script>
+
+    <!-- <div class="text-center row" style="padding:20px; width:100%; height:100%"> -->
+        <!-- <div w3-include-html="agenda.html" style="border-radius:6px; height:100%; width:100%; overflow:hidden; margin: 0 auto;" class="col text-center"></div> -->
     <!-- commented the footer for now -->
+
     <!-- Footer
     <footer class="py-5 bg-dark">
       <div class="container">
@@ -110,9 +148,67 @@
     </footer> -->
 
     <!-- Bootstrap core JavaScript -->
+    <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    
     <script src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />    -->
+    <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script>
+        function toggleViewMode() {
+            console.log("toggle");
+            if(screen && screen.width < 480) {
+                $("#widget-container").removeClass("row");
+                $("#widget1").removeClass("col");
+                $("#widget2").removeClass("col");
+                $("#widget-navigator").css("display", "block");
+                // default is widget1
+                $("#widget2").css("height", "0");
+                $('#pg1').click();
 
+                // toggle between widgets... super hacky rn :( )
+                $('input[type=radio][name=widget-pg]').change(function() {
+                    // $(".widget").animate({"display":"none"});
+                    $(".widget").css("height", "0");
+                    $('#' + this.value).css("height", "100%");
+                });
 
+                // toggle between widgets... super hacky rn :( )
+                $(document).on("swipeleft", function(){
+                    $("#widget1").animate({width: 0});
+                    $('#widget2').animate({width: "100%"});
+                    $('#pg2').select();
+                });
+                // toggle between widgets... super hacky rn :( )
+                $(document).on("swiperight", function(){
+                    $("#widget2").animate({width: 0});
+                    $('#widget1').animate({width: "100%"});
+                    $('#pg1').select();
+                });
+                // $("#widget-navigator").removeClass("hide");
+            } else {
+                $("#widget-container").addClass("row");
+                $("#widget1").addClass("col");
+                $("#widget2").addClass("col");
+                $(".widget").css("height", "100%");
+                $('input[type=radio][name=widget-pg]').change(function() {});
+                $("#widget-navigator").css("display", "none");
+            }
+        }
+
+        $(document).ready(function(){
+            $("#widget-container").css("height","100%");
+            toggleViewMode();
+        });
+
+        window.onresize = function() {
+            clearTimeout(window.resizedFinished);
+            window.resizedFinished = setTimeout(function(){
+                toggleViewMode();
+            }, 250);
+        };
+    </script>
   </body>
 </html>
