@@ -494,20 +494,32 @@
 
     </body>
     <div id="qr-dialog" style="display:none; z-index:9002">
-        <form>
-            <div class="md-form text-center">
-                <h3 id="dialog-title"></h3>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="200px">
+            <form>
+                <div class="md-form text-center">
+                    <h3 id="dialog-title"></h3>
                 </div>
-                <div class="col text-center">
-                    <input type="text" class="text-center" id="qr-username" style="width: auto; border-bottom:0px;" value="UserName" readonly></span>
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="150px">
+                    </div>
+                    <div class="col text-center">
+                        <span><i class="fa fa-user-circle"></i></span>
+                        <span>
+                        <input type="text" class="text-center" id="qr-username" style="width: auto; border-bottom:0px;" value="UserName" readonly></span>
+                    </div>
+                    <div class="col text-center">
+                        <span><i class="fa fa-phone"></i></span>
+                        <span>
+                        <input type="text" class="text-center" id="qr-phone" style="width: auto; border-bottom:0px;" value="123-456-7890" readonly></span>
+                    </div>
+                    <div class="col text-center">
+                        <span><i class="fa fa-location-arrow"></i></span>
+                        <span>
+                        <input type="text" class="text-center" id="qr-loc" style="width: auto; border-bottom:0px;" value="San Diego, CA" readonly></span>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     <style>
         .qrPopup .ui-dialog-titlebar {
             display:none

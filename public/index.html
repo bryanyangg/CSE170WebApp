@@ -21,7 +21,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jquery-ui.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!--  custom styles -->
@@ -153,6 +153,7 @@
     <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
     
     <script src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
@@ -224,10 +225,22 @@
             </div>
             <div class="row">
                 <div class="col text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="200px">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="150px">
                 </div>
                 <div class="col text-center">
+                    <span><i class="fa fa-user-circle"></i></span>
+                    <span>
                     <input type="text" class="text-center" id="qr-username" style="width: auto; border-bottom:0px;" value="UserName" readonly></span>
+                </div>
+                <div class="col text-center">
+                    <span><i class="fa fa-phone"></i></span>
+                    <span>
+                    <input type="text" class="text-center" id="qr-phone" style="width: auto; border-bottom:0px;" value="123-456-7890" readonly></span>
+                </div>
+                <div class="col text-center">
+                    <span><i class="fa fa-location-arrow"></i></span>
+                    <span>
+                    <input type="text" class="text-center" id="qr-loc" style="width: auto; border-bottom:0px;" value="San Diego, CA" readonly></span>
                 </div>
             </div>
         </form>
