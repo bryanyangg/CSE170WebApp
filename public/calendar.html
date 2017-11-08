@@ -25,6 +25,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="css/mdb.min.css" rel="stylesheet">
+        <link href="css/jquery-ui.min.css" rel="stylesheet">
         <!--  custom styles -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/calendar.css" rel="stylesheet">
@@ -32,6 +33,7 @@
         <link rel="stylesheet" href="css/date_time_default.css">
         <link rel="stylesheet" href="css/date_default.css">
         <link rel="stylesheet" href="css/time_default.css">
+        <link rel="stylesheet" href="css/agenda.css">
         
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
@@ -50,7 +52,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src='lib/moment.min.js'></script>
         <script src='lib/jquery.min.js'></script>
-        <script src="js/jquery-ui.min.js"></script>
+        <script src="lib/jquery-ui.min.js"></script>
         <script src='js/fullcalendar.min.js'></script>
         
         <!-- Calendar Time/Date Picker Lib-->
@@ -359,7 +361,6 @@
         
 
         <!-- Bootstrap core JavaScript -->
-        <!--<script src="vendor/jquery/jquery.min.js"></script>-->
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
@@ -367,11 +368,30 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <!-- Notes "backend" -->
         <script type="text/javascript" src="js/agenda.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </body>
-    <div id="qr-dialog" style="display:none; z-index:9002">
+
+    <div id="dialog" style="display:none">
             <form>
                 <div class="md-form text-center">
+                    <h3 id="dialog-title"></h3>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <i class="fa fa-calendar-o prefix grey-text"></i>
+                        <label for="dialog-date" >Date</label>
+                        <input type="text" class="text-center" id="dialog-date" style="width: auto;border-bottom:0px;" readonly>
+                    </div>
+                    <div class="col text-center">
+                        <span><i class="fa fa-clock-o prefix grey-text"></i></span>
+                        <span><label for="dialog-time" >Time</label>
+                        <input type="text" class="text-center" id="dialog-time" style="width: auto; border-bottom:0px;" readonly></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    <div id="qr-dialog" style="display:none; z-index:9002; background-color:white; " class="modal" role="dialog">
+            <form>
+                <div class="text-center">
                     <h3 id="dialog-title"></h3>
                 </div>
                 <div class="row">
@@ -398,7 +418,7 @@
         </div>
     <style>
         .qrPopup .ui-dialog-titlebar {
-            display:none
+            display:none;
         }
     </style>
     <script src="js/qr.js"></script>
