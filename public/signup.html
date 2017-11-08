@@ -17,7 +17,7 @@
     <script defer src="/__/firebase/init.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
         <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <title>Login</title>
+    <title>Sign Up</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -99,7 +99,7 @@
 
       <div class="col-md-4 card-padding-top">
         <!--Card-->
-        <p class="h1 text-center mb-4">Sign in</p>
+        <p class="h1 text-center mb-4">Sign Up</p>
         <div class="card">
 
             <!--Card image-->
@@ -119,14 +119,18 @@
                       <input type="password" id="defaultForm-pass" class="form-control">
                       <label for="defaultForm-pass">Password</label>
                   </div>
-
+                  <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" id="defaultForm-pass2" class="form-control">
+                        <label for="defaultForm-pass2">Verify Password</label>
+                    </div>
                   <div class="text-center">
                       <button id="btnLogin" class="btn btn-action" >
-                        <a href="index.html">Log in</a>
+                        <a href="index.html">Sign Up</a>
                         <!--<text style="color:rgb(51, 116, 236)"> Log in </text>-->
                       </button>
                       <div class="signup-text">
-                        <a href="signup.html">Don't have an account?</a>
+                        <a href="login.html">Already have an account?</a>
                       </div>
                   </div>
               </form>
