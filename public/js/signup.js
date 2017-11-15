@@ -4,9 +4,10 @@ function initUsers() {
             default: {
                 pass: "",
                 name: "Default User",
+                email: "123@a.com",
                 profilepic: 'https://aiaa.nmsu.edu/files/2016/09/noprofile.gif',
-                loc = "La Jolla, CA",
-                phone = "123-456-7890"
+                loc: "La Jolla, CA",
+                phone: "123-456-7890"
             }
         }));
     }
