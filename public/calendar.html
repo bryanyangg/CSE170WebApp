@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="css/date_default.css">
         <link rel="stylesheet" href="css/time_default.css">
         <link rel="stylesheet" href="css/agenda.css">
-        
+
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
         <!-- include only the Firebase features as you need -->
@@ -49,13 +49,13 @@
         <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
         <link href='css/fullcalendar.min.css' rel='stylesheet' />
         <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src='lib/moment.min.js'></script>
         <script src='lib/jquery.min.js'></script>
         <script src="lib/jquery-ui.min.js"></script>
         <script src='js/fullcalendar.min.js'></script>
-        
+
         <!-- Calendar Time/Date Picker Lib-->
         <script src="lib/picker.js"></script>
         <script src="lib/picker.date.js"></script>
@@ -63,9 +63,9 @@
         <script src="lib/legacy.js"></script>
 
         <script>
-        
+
             $(document).ready(function() {
-        
+
                 $('#calendar').fullCalendar({
                     header: {
                         left: 'prev,next today',
@@ -112,7 +112,7 @@
                             title: 'Party',
                             start: '2017-11-29T20:00:00'
                         },
-        
+
                         // areas where "Meeting" must be dropped
                         {
                             id: 'availableForMeeting',
@@ -126,7 +126,7 @@
                             end: '2017-11-13T16:00:00',
                             rendering: 'background'
                         },
-        
+
                         // red areas where no events can be dropped
                         {
                             start: '2017-11-24',
@@ -145,21 +145,21 @@
                     ]
                 });
             });
-        
+
         </script>
         <script>
-            
-        
+
+
         </script>
         <style>
-        
+
             body {
                 margin: 40px 10px;
                 padding: 0;
                 /*font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;*/
-                
+
             }
-        
+
             #calendar {
                 max-width: 900px;
                 margin: 6% auto;
@@ -171,7 +171,7 @@
             #addBtn{
                 display: block;
                 margin: 5% auto;
-                
+
             }
 
             #btnAdd{
@@ -186,7 +186,7 @@
                 display: block;
                 margin: auto;
             }
-            
+
             .calcontainer {
                 width: 100%;
                 padding-right: 6%;
@@ -197,22 +197,22 @@
             .cal-my-4 {
                 margin-top: 3.5rem !important;
             }
-        
+
         </style>
     </head>
 
     <body>
-        
+
         <!-- Navigation -->
 
         <nav class="navbar navbar-expand-lg navbar-light red fixed-top" style="position:fixed; top:0px; width:100%; z-index:9000">
             <!-- Navbar brand -->
             <a class="navbar-brand mr-auto" href="index.html">AppName</a>
-    
+
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    
+
             <!-- Collapsible content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <!-- Links -->
@@ -220,7 +220,7 @@
                   <li class="nav-item">
                       <a class="nav-link " href="index.html">Home </a>
                   </li>
-  
+
                   <!-- Dropdown -->
                   <li class="nav-item dropdown ">
                       <a class="nav-link dropdown-toggle active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View Schedule</a>
@@ -229,19 +229,19 @@
                           <a class="dropdown-item" href="guest.html">Guest</a>
                       </div>
                   </li>
-  
+
                   <li class="nav-item">
                       <a class="nav-link qr" href="#">QR</a>
                   </li>
                 </ul>
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <form class="form-inline">
+                  <!-- <form class="form-inline">
                       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                  </form>
+                  </form> -->
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u>UserName</u></a>
+                    <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u>User name</u></a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="UserDropDownLink">
                         <a class="dropdown-item" href="login.html">Log Out</a>
                     </div>
@@ -250,7 +250,7 @@
             </li>
           </div>
           <!-- Collapsible content -->
-    
+
         </nav>
 
             <!--/.Navbar-->
@@ -264,7 +264,7 @@
                     <div id='calendar'></div>
                 </div>
 
-                <div class="col-md-4">            
+                <div class="col-md-4">
 
                     <div class="card cal-my-4">
                         <h5 class="card-header" style="text-align:center">Week View</h5>
@@ -274,7 +274,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div id='wkView'>
                         <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -284,7 +284,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog">
-                        
+
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -327,7 +327,7 @@
                                             <input placeholder="Select time" type="text" id="timepicker" class="form-control timepicker">
                                             <label for="timepicker">Time</label>
                                         </div>
-                                        
+
                                         <div class="md-form">
                                             <i class="fa fa-commenting-o prefix grey-text"></i>
                                             <textarea type="text" id="comment" class="md-textarea"></textarea>
@@ -335,7 +335,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                
+
                                 <div class="modal-footer">
                                     <button id= "btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
                                     <button id= "btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
