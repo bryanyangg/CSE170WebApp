@@ -109,15 +109,34 @@ function populateAgenda() {
                         text: "Delete",
                         class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                         click: function() {
+                            // TODO: Does not properly reset dialog options
                             // var confirmDialog = $( "#dialog" ).dialog({
                             //     dialogClass: "agendaPopup",
                             //     autoOpen: false,
                             //     height: 400,
                             //     width: 350,
                             //     modal: true,
+                            //     buttons: {
+                            //         Delete:{
+                            //             text: "Delete",
+                            //             class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                            //             click: function() {
+                            //                 confirmDialog.dialog("close");
+                            //                 //dialog.dialog( "close" );
+                            //             }
+                            //         },
+                            //         Cancel:{
+                            //             text: "Cancel",
+                            //             class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                            //             click: function() {
+                            //                 confirmDialog.dialog("close");
+                            //                 //dialog.dialog( "close" );
+                            //             }
+                            //         }
+                            //     }
                             // });
-                            // confirmDialog.dialog("open");
                             dialog.dialog( "close" );
+                            // confirmDialog.dialog("open");
                         }
                     },
                     Ok:{
