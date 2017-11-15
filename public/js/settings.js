@@ -61,7 +61,6 @@ $(document).ready(function(){
     document.getElementById('settings-phone').value = curruser['phone'];
     document.getElementById('settings-loc').value = curruser['loc'];
     document.getElementById('settings-email').value = curruser['email'];
-    document.getElementById('settings-email').value = localStorage.getItem("user");
     document.getElementById('settings-profilepic').value = curruser["profilepic"]
     $('#settings-profilepic').css("background-image", "url('" + curruser["profilepic"] + "')");
 
