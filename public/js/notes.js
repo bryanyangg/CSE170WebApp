@@ -1,14 +1,23 @@
 function initNotes() {
-    if (getNotes() == undefined) {
+    if (getNotes() == undefined || getVersion() == undefined) {
         localStorage.setItem("notes", JSON.stringify({}));
+        localStorage.setItem("version", "1234");
     }
 }
 
 function addNote(){
     var timestamp = Math.round((new Date()).getTime() / 1000);
+    document.getElementById("notes_content").disabled = false;
     saveNote(timestamp, "");
     populateNotesSummary();
     populateNoteContent(timestamp);
+    document.getElementById("notes_identifier").value = timestamp;
+    document.getElementById("notes_content").focus();
+
+}
+
+function getVersion() {
+    return localStorage.getItem("version");
 }
 
 function saveNote(note, content) {
@@ -61,6 +70,7 @@ function populateNotesSummary() {
 function populateNoteContent(note) {
     var notes = getNotes();
     document.getElementById("notes_content").value = notes[note]["content"];
+    document.getElementById("notes_content").focus();
 }
 
 function deleteNote() {
@@ -107,6 +117,7 @@ $(document).ready(function(){
     // todo: think of better way to handle this
     document.getElementById("notes_content").onchange = function(){
         console.log(document.getElementById("notes_content").value);
+        document.getElementById("notes_content").disabled = false;
         saveCurrentNote();
     }
 
