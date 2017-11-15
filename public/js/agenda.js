@@ -60,7 +60,7 @@ function initAgenda() {
 function getAgenda() {
     var agenda = localStorage.getItem("agenda");
     // check for undefined notes
-    if (agenda != undefined) 
+    if (agenda != undefined)
         return JSON.parse(agenda);
 }
 
@@ -68,9 +68,9 @@ function populateAgenda() {
     var agenda = getAgenda();
     document.getElementById("agenda").innerHTML = "";
 
-    
+
     for( event in agenda) {
-        // only add events with titles to today's agenda. 
+        // only add events with titles to today's agenda.
         // todo: find a better way to handle
         if (agenda[event]["title"] != undefined) {
             var div = document.createElement("div");
@@ -105,6 +105,40 @@ function populateAgenda() {
                 width: 350,
                 modal: true,
                 buttons: {
+                    Delete:{
+                        text: "Delete",
+                        class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                        click: function() {
+                            // TODO: Does not properly reset dialog options
+                            // var confirmDialog = $( "#dialog" ).dialog({
+                            //     dialogClass: "agendaPopup",
+                            //     autoOpen: false,
+                            //     height: 400,
+                            //     width: 350,
+                            //     modal: true,
+                            //     buttons: {
+                            //         Delete:{
+                            //             text: "Delete",
+                            //             class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                            //             click: function() {
+                            //                 confirmDialog.dialog("close");
+                            //                 //dialog.dialog( "close" );
+                            //             }
+                            //         },
+                            //         Cancel:{
+                            //             text: "Cancel",
+                            //             class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                            //             click: function() {
+                            //                 confirmDialog.dialog("close");
+                            //                 //dialog.dialog( "close" );
+                            //             }
+                            //         }
+                            //     }
+                            // });
+                            dialog.dialog( "close" );
+                            // confirmDialog.dialog("open");
+                        }
+                    },
                     Ok:{
                         text: "Ok",
                         class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
