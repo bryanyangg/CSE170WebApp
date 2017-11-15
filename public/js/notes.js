@@ -85,7 +85,7 @@ function deleteNote() {
             modal: true,
             buttons: {
                 Ok:{
-                    text: "Ok",
+                    text: "Delete",
                     class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                     click: function() {
                         delete notes[note];
@@ -96,7 +96,7 @@ function deleteNote() {
                     }
                 },
                 Cancel:{
-                    text: "Cancel",
+                    text: "Not Now",
                     class: "btn btn-outline-primary btn-rounded waves-effect waves-light text-center",
                     click: function() {
                         dialog.dialog( "close" );

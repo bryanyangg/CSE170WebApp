@@ -1,11 +1,28 @@
 .sma {
     font-size:14px;
 }
+
+.sma:hover{
+    color:rgb(255, 0, 0);
+    cursor: pointer;
+}
+
 .med {
     font-size:18px;
 }
+
+.med:hover{
+    color:rgb(255, 0, 0);
+    cursor: pointer;
+}
+
 .lar {
     font-size:24px;
+}
+
+.lar:hover{
+    color:rgb(255, 0, 0);
+    cursor: pointer;
 }
 
 select {
@@ -18,4 +35,9 @@ textarea {
 
 .notesPopup .ui-dialog-titlebar {
     display:none
+}
+
+.col > i:hover{
+    color:rgb(255, 0, 0);
+    cursor: pointer;
 }
