@@ -87,7 +87,7 @@
                         <label for="defaultForm-pass2">Verify Password</label>
                     </div>
                   <div class="text-center">
-                      <a href="index.html" class="btn btn-default id="btnLogin"">Sign Up</a>
+                      <a href="login.html" class="btn btn-default id="btnLogin"" onclick="alertSuccess()">Sign Up</a>
                       <!--<text style="color:rgb(51, 116, 236)"> Log in </text>-->
                       <div class="signup-text">
                         <a href="login.html">Already have an account?</a>
@@ -108,6 +108,11 @@
     <!-- /Start your project here-->
 
     <!-- SCRIPTS -->
+    <script>
+      function alertSuccess() {
+          alert("Sign-up Successful! Please Sign-in!");
+      }
+    </script>
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
