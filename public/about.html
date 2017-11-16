@@ -63,59 +63,8 @@
   </style>
 
   <body style="padding:0px 0px 30px 0px;">
-    <!-- Navigation -->
-
-    <nav class="navbar navbar-expand-lg navbar-light red fixed-top" style="position:fixed; top:0px; width:100%; z-index:9000">
-            <!-- Navbar brand -->
-            <a class="navbar-brand mr-auto" href="index.html">AppName</a>
-
-            <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-            <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- Links -->
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                      <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
-
-                  <!-- Dropdown -->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View Schedule</a>
-                      <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="calendar.html">User</a>
-                          <a class="dropdown-item" href="guest.html">Guest</a>
-                      </div>
-                  </li>
-
-                  <li class="nav-item">
-                      <a class="nav-link qr" href="#">QR</a>
-                  </li>
-                </ul>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <!-- <form class="form-inline">
-                      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                  </form> -->
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u id="nav-username">User name</u></a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="UserDropDownLink">
-                        <a class="dropdown-item settings" href="#">Settings</a>
-                        <a class="dropdown-item" href="login.html">Log Out</a>
-                    </div>
-                </li>
-              </ul>
-            </li>
-          </div>
-          <!-- Collapsible content -->
-
-        </nav>
-        <!--/.Navbar-->
-    <!--/.Navbar-->
-    <div class="container" style="height:100%; padding: 50px 0px 0px 0px;">
+    <div id="nav"></div>
+    <!-- <div class="container" style="height:100%; padding: 50px 0px 0px 0px;">
         <div id="widget-container" class="text-center row" style="padding:20px; height:100%; width:100%;">
             <div id="widget1" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">
                 <object type="text/html" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;" data="agenda.html" ></object>
@@ -133,22 +82,9 @@
             <input type="radio" name="widget-pg" id="pg2" value="widget2"/>
             <label for="pg2"></label>
         </div>
-    </nav>
+    </nav> -->
 
 
-    <!-- <div class="text-center row" style="padding:20px; width:100%; height:100%"> -->
-        <!-- <div w3-include-html="agenda.html" style="border-radius:6px; height:100%; width:100%; overflow:hidden; margin: 0 auto;" class="col text-center"></div> -->
-    <!-- commented the footer for now -->
-
-    <!-- Footer
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; MyWebApp 2017</p>
-      </div>
-    </footer> -->
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
     <script src="vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
@@ -157,170 +93,14 @@
     <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
     <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />    -->
     <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-    <script>
-        var state;
-        function toggleViewMode() {
-            console.log("toggle");
-            if(screen && screen.width < 480 && state!="mobile") {
-                $("#widget-container").removeClass("row");
-                $("#widget1").removeClass("col");
-                $("#widget2").removeClass("col");
-                $("#widget-navigator").css("display", "block");
-                // default is widget1
-                $("#widget2").css("height", "0");
-                $('#pg1').click();
 
-                // toggle between widgets... super hacky rn :( )
-                $('input[type=radio][name=widget-pg]').change(function() {
-                    // $(".widget").animate({"display":"none"});
-                    $(".widget").css("height", "0");
-                    $('#' + this.value).css("height", "100%");
-                });
+    </body>
+    <!-- <div id="qr"></div> -->
+    <!-- <div id="settings"></div> -->
 
-                // toggle between widgets... super hacky rn :( )
-                $(document).on("swipeleft", function(){
-                    $("#widget1").animate({width: 0});
-                    $('#widget2').animate({width: "100%"});
-                    $('#pg2').select();
-                });
-                // toggle between widgets... super hacky rn :( )
-                $(document).on("swiperight", function(){
-                    $("#widget2").animate({width: 0});
-                    $('#widget1').animate({width: "100%"});
-                    $('#pg1').select();
-                });
-                state="mobile";
-                // $("#widget-navigator").removeClass("hide");
-            } else if(screen && screen.width >= 480 && state!="desktop"){
-                $("#widget-container").addClass("row");
-                $("#widget1").addClass("col");
-                $("#widget2").addClass("col");
-                $(".widget").css("height", "100%");
-                $('input[type=radio][name=widget-pg]').change(function() {});
-                $("#widget-navigator").css("display", "none");
-                state="desktop";
-            }
-        }
-
-        $(document).ready(function(){
-            $("#widget-container").css("height","100%");
-            toggleViewMode();
-        });
-
-        window.onresize = function() {
-            clearTimeout(window.resizedFinished);
-            window.resizedFinished = setTimeout(function(){
-                toggleViewMode();
-            }, 250);
-        };
-    </script>
-
-  </body>
-  <div id="qr-dialog" style="display:none; z-index:9002">
-        <form>
-            <div class="md-form text-center">
-                <h3 id="dialog-title"></h3>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="150px">
-                </div>
-                <div class="col text-center">
-                    <span><i class="fa fa-user-circle"></i></span>
-                    <span>
-                    <input type="text" class="text-center" id="qr-username" style="width: auto; border-bottom:0px;" value="UserName" readonly></span>
-                </div>
-                <div class="col text-center">
-                    <span><i class="fa fa-phone"></i></span>
-                    <span>
-                    <input type="text" class="text-center" id="qr-phone" style="width: auto; border-bottom:0px;" value="123-456-7890" readonly></span>
-                </div>
-                <div class="col text-center">
-                    <span><i class="fa fa-location-arrow"></i></span>
-                    <span>
-                    <input type="text" class="text-center" id="qr-loc" style="width: auto; border-bottom:0px;" value="San Diego, CA" readonly></span>
-                </div>
-            </div>
-        </form>
-    </div>
-    <!-- settings -->
-    <div id="settings-dialog" style="display:none; z-index:9002; background-color:white; " class="modal" role="dialog">
-        <div class="text-center">
-            <h3 id="settings-title">Settings</h3>
-        </div>
-        <!-- profile image -->
-        <div class="row">
-            <div class="col text-center">
-                <a href="#" class="profile-pic text-center">
-                    <div class="profile-pic" id="settings-profilepic" style="background-image: url('https://aiaa.nmsu.edu/files/2016/09/noprofile.gif');" >
-                        <span><i class="fa fa-camera"></i></span>
-                        <span>Change Image</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <!-- contact -->
-        <div class="row">
-            <div class="col">
-                <form>
-                    <div>
-                        <h5 >Change Personal Information</h5>
-                    </div>
-                    <div>
-                        <i class="fa fa-user-circle prefix grey-text"></i>
-                        <label for="settings-name">Name</label>
-                        <input type="text" id="settings-name">
-                    </div>
-                    <div>
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <label for="settings-email">Email</label>
-                        <input type="email" id="settings-email">
-                    </div>
-                    <div>
-                        <i class="fa fa-phone prefix grey-text"></i>
-                        <label for="settings-phone">Phone Number</label>
-                        <input type="tel" id="settings-phone">
-                    </div>
-                    <div>
-                        <i class="fa fa-location-arrow prefix grey-text"></i>
-                        <label for="settings-loc">Set Location</label>
-                        <input type="text" id="settings-loc">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- password -->
-        <div class="row">
-            <div class="col">
-                <form>
-                    <div>
-                        <h5>Change Password</h5>
-                    </div>
-                    <div >
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <label for="currPass">Current Password</label>
-                        <input type="password" id="currPass">
-                    </div>
-                    <div>
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <label for="newPass">New Password</label>
-                        <input type="password" id="newPass">
-                    </div>
-                    <div>
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <label for="newPass2">Confirm Password</label>
-                        <input type="password" id="newPass2">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <style>
-        .qrPopup .ui-dialog-titlebar {
-            display:none
-        }
-    </style>
-    <script src="js/qr.js"></script>
-    <script src="js/settings.js"></script>
     <script src="js/nav.js"></script>
+    <!-- <script src="js/qr.js"></script> -->
+    <!-- <script src="js/settings.js"></script> -->
+    
+
 </html>
