@@ -14,5 +14,17 @@ function getUsers() {
 }
 
 $(document).ready(function(){
-    document.getElementById("nav-username").innerHTML = getCurrentUser()["name"];
+    console.log('document ready in nav');
+    $('#nav').load('nav.html', function(){
+        console.log("loaded the nav");
+        document.getElementById("nav-username").innerHTML = getCurrentUser()["name"];
+        document.getElementById("nav-logout").click = function(){
+            delete localStorage.user;
+            window.location.href = "login.html";
+        }
+        
+        // switch(window.location.href.split("/")[-1]) {
+        //     case "index"
+        // }
+    });
 })
