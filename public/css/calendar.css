@@ -8,3 +8,66 @@
 #myModal {
     z-index: 9001;
 }
+
+body {
+    margin: 40px 10px;
+    padding: 0;
+    /*font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;*/
+
+}
+
+#calendar {
+    max-width: 900px;
+    margin: 6% auto;
+    display: block;
+    float: left;
+    font-size: 14px;
+}
+
+#weekCalendar{
+    width: 90%;
+    margin: 2% auto;
+    padding: 0.25vw;
+}
+
+#weekCalendar .fc-axis{
+   display:none !important;
+}
+
+#weekCalendar #eventContentModal .close{
+    color: rgb(0, 0, 0); 
+    opacity: 0;
+}
+#addBtn{
+    display: block;
+    margin: 5% auto;
+
+}
+
+#btnAdd{
+    margin: auto;
+}
+#btnClose{
+    margin: auto;
+}
+
+#wkView {
+    max-width: 900px;
+    display: block;
+    margin: auto;
+}
+
+.calcontainer {
+    width: 100%;
+    padding-right: 6%;
+    padding-left: 6%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.cal-my-4 {
+    margin-top: 3.5rem !important;
+}
+
+.col-md-4{
+    height: auto;
+}

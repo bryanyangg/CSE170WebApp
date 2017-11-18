@@ -13,13 +13,15 @@
     <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+
     <script>
         if(localStorage.getItem('user') == undefined) {
             window.location.href = "about.html"
         }
     </script>
-    <title>MyWebApp</title>
 
+    <title>MyWebApp</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css" />  
     <!-- Font Awesome -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <!-- Bootstrap core CSS -->
@@ -98,25 +100,25 @@
     </footer>  -->
 
     <!-- Bootstrap core JavaScript -->
-    <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
     <script src="vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />    -->
-    <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+ 
+    <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    
     <!-- mobile thing not working yet -->
-    <!-- <script>
+    <script>
         var state;
         function toggleViewMode() {
-            console.log("toggle");
             if(screen && screen.width < 480 && state!="mobile") {
                 $("#widget-container").removeClass("row");
                 $("#widget1").removeClass("col");
                 $("#widget2").removeClass("col");
                 $("#widget-navigator").css("display", "block");
                 // default is widget1
+                $("#widget2").css("width", "0");
                 $("#widget2").css("height", "0");
                 $('#pg1').click();
 
@@ -124,20 +126,23 @@
                 $('input[type=radio][name=widget-pg]').change(function() {
                     // $(".widget").animate({"display":"none"});
                     $(".widget").css("height", "0");
-                    $('#' + this.value).css("height", "100%");
+                    $('#' + this.value).css("width", "100%");
+                    
                 });
 
                 // toggle between widgets... super hacky rn :( )
-                $(document).on("swipeleft", function(){
-                    $("#widget1").animate({width: 0});
-                    $('#widget2').animate({width: "100%"});
+                $(document).children().on("swipeleft", function(){
+                    $("#widget1").css({width: 0, height:0});
+                    $("#widget2").css({width: "100%", height:"100%"});
                     $('#pg2').select();
+                    console.log('swipe');
                 });
                 // toggle between widgets... super hacky rn :( )
-                $(document).on("swiperight", function(){
-                    $("#widget2").animate({width: 0});
-                    $('#widget1').animate({width: "100%"});
+                $(document).children().on("swiperight", function(){
+                    $("#widget2").css({width: 0, height:0});
+                    $("#widget1").css({width: "100%", height:"100%"});
                     $('#pg1').select();
+                    console.log('swipe');
                 });
                 state="mobile";
                 // $("#widget-navigator").removeClass("hide");
@@ -155,20 +160,21 @@
         $(document).ready(function(){
             $("#widget-container").css("height","100%");
             toggleViewMode();
-        });
-
-        window.onresize = function() {
+            window.onresize = function() {
             clearTimeout(window.resizedFinished);
             window.resizedFinished = setTimeout(function(){
                 toggleViewMode();
             }, 250);
         };
-    </script> -->
+        });
+
+
+    </script>
 
   </body>
     <div id="qr"></div>
     <div id="settings"></div>
-
+    
     <script src="js/nav.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/qr.js"></script>

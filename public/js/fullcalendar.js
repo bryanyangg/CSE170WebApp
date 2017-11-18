@@ -9674,7 +9674,7 @@ var Calendar = FC.Calendar = Class.extend(EmitterMixin, ListenerMixin, {
 	zoomTo: function(newDate, viewType) {
 		var spec;
 
-		viewType = viewType || 'day'; // day is default zoom
+		viewType = viewType || 'agendaWeek'; // day is default zoom
 		spec = this.getViewSpec(viewType) || this.getUnitViewSpec(viewType);
 
 		this.currentDate = newDate.clone();
