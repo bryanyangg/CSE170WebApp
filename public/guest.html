@@ -1,359 +1,357 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MyWebApp</title>
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
+  <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
+  <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/blog-home.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <!--  custom styles -->
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/calendar.css" rel="stylesheet">
-    <!-- Date/Time selector CSS-->
-    <link rel="stylesheet" href="css/date_time_default.css">
-    <link rel="stylesheet" href="css/date_default.css">
-    <link rel="stylesheet" href="css/time_default.css">
-    <link rel="stylesheet" href="css/calendar.agenda.css">
+  <title>MyWebApp</title>
 
-    <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
-    <link href='css/fullcalendar.min.css' rel='stylesheet' />
-    <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/blog-home.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <!--  custom styles -->
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/calendar.css" rel="stylesheet">
+  <!-- Date/Time selector CSS-->
+  <link rel="stylesheet" href="css/date_time_default.css">
+  <link rel="stylesheet" href="css/date_default.css">
+  <link rel="stylesheet" href="css/time_default.css">
+  <link rel="stylesheet" href="css/calendar.agenda.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src='lib/moment.min.js'></script>
-    <script src='lib/jquery.min.js'></script>
-    <script src="lib/jquery-ui.min.js"></script>
-    <script src='js/fullcalendar.min.js'></script>
+  <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
+  <link href='css/fullcalendar.min.css' rel='stylesheet' />
+  <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
-    <!-- Calendar Time/Date Picker Lib-->
-    <script src="lib/picker.js"></script>
-    <script src="lib/picker.date.js"></script>
-    <script src="lib/picker.time.js"></script>
-    <script src="lib/legacy.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src='lib/moment.min.js'></script>
+  <script src='lib/jquery.min.js'></script>
+  <script src="lib/jquery-ui.min.js"></script>
+  <script src='js/fullcalendar.min.js'></script>
 
-    <script>
+  <!-- Calendar Time/Date Picker Lib-->
+  <script src="lib/picker.js"></script>
+  <script src="lib/picker.date.js"></script>
+  <script src="lib/picker.time.js"></script>
+  <script src="lib/legacy.js"></script>
 
-        $(document).ready(function() {
+  <script>
+    $(document).ready(function() {
 
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right:'month'
-                    //right: 'month,agendaWeek,agendaDay,listDay'
-                },
-                defaultDate: '2017-11-08',
-                navLinks: true, // can click day/week names to navigate views
-                businessHours: true, // display business hours
-                selectable: true,
-                selectHelper: true,
-                select: function(start, end) {
-                    var title = prompt('Event Title:');
-                    var eventData;
-                    if (title) {
-                        eventData = {
-                            title: title,
-                            start: start,
-                            end: end
-                        };
-                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                    }
-                    $('#calendar').fullCalendar('unselect');
-                },
-                editable: true,
-                events: [
-                    {
-                        title: 'Business Lunch',
-                        start: '2017-11-03T13:00:00',
-                        constraint: 'businessHours'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2017-11-13T11:00:00',
-                        constraint: 'availableForMeeting', // defined below
-                        color: '#257e4a'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2017-11-18',
-                        end: '2017-11-20'
-                    },
-                    {
-                        title: 'Party',
-                        start: '2017-11-29T20:00:00'
-                    },
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month'
+          //right: 'month,agendaWeek,agendaDay,listDay'
+        },
+        defaultDate: '2017-11-08',
+        navLinks: true, // can click day/week names to navigate views
+        businessHours: true, // display business hours
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end) {
+          var title = prompt('Event Title:');
+          var eventData;
+          if (title) {
+            eventData = {
+              title: title,
+              start: start,
+              end: end
+            };
+            $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+          }
+          $('#calendar').fullCalendar('unselect');
+        },
+        editable: true,
+        events: [{
+            title: 'Business Lunch',
+            start: '2017-11-03T13:00:00',
+            constraint: 'businessHours'
+          },
+          {
+            title: 'Meeting',
+            start: '2017-11-13T11:00:00',
+            constraint: 'availableForMeeting', // defined below
+            color: '#257e4a'
+          },
+          {
+            title: 'Conference',
+            start: '2017-11-18',
+            end: '2017-11-20'
+          },
+          {
+            title: 'Party',
+            start: '2017-11-29T20:00:00'
+          },
 
-                    // areas where "Meeting" must be dropped
-                    {
-                        id: 'availableForMeeting',
-                        start: '2017-10-11T10:00:00',
-                        end: '2017-10-11T16:00:00',
-                        rendering: 'background'
-                    },
-                    {
-                        id: 'availableForMeeting',
-                        start: '2017-11-13T10:00:00',
-                        end: '2017-11-13T16:00:00',
-                        rendering: 'background'
-                    },
+          // areas where "Meeting" must be dropped
+          {
+            id: 'availableForMeeting',
+            start: '2017-10-11T10:00:00',
+            end: '2017-10-11T16:00:00',
+            rendering: 'background'
+          },
+          {
+            id: 'availableForMeeting',
+            start: '2017-11-13T10:00:00',
+            end: '2017-11-13T16:00:00',
+            rendering: 'background'
+          },
 
-                    // red areas where no events can be dropped
-                    {
-                        start: '2017-11-24',
-                        end: '2017-11-28',
-                        overlap: false,
-                        rendering: 'background',
-                        color: '#ff9f89'
-                    },
-                    {
-                        start: '2017-11-06',
-                        end: '2017-11-08',
-                        overlap: false,
-                        rendering: 'background',
-                        color: '#ff9f89'
-                    }
-                ]
-            });
-        });
+          // red areas where no events can be dropped
+          {
+            start: '2017-11-24',
+            end: '2017-11-28',
+            overlap: false,
+            rendering: 'background',
+            color: '#ff9f89'
+          },
+          {
+            start: '2017-11-06',
+            end: '2017-11-08',
+            overlap: false,
+            rendering: 'background',
+            color: '#ff9f89'
+          }
+        ]
+      });
+    });
+  </script>
+  <style>
+    .d-flex {
+      display: flex;
+    }
 
-    </script>
-    <style>
+    body {
+      margin: 40px 10px;
+      padding: 0;
+      background-color: #FDF6E3;
+    }
 
-        .d-flex {
-            display: flex;
-        }
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            /*font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;*/
+    #calendar {
+      max-width: 900px;
+      margin: 6% auto;
+      display: block;
+      float: left;
+      font-size: 14px;
+    }
 
-        }
+    #addBtn {
+      display: block;
+      margin: 5% auto;
 
-        #calendar {
-            max-width: 900px;
-            margin: 6% auto;
-            display: block;
-            float: left;
-            font-size: 14px;
-        }
+    }
 
-        #addBtn{
-            display: block;
-            margin: 5% auto;
+    #btnAdd {
+      margin: auto;
+    }
 
-        }
+    #btnClose {
+      margin: auto;
+    }
 
-        #btnAdd{
-            margin: auto;
-        }
-        #btnClose{
-            margin: auto;
-        }
+    #wkView {
+      max-width: 900px;
+      display: block;
+      margin: auto;
+    }
 
-        #wkView {
-            max-width: 900px;
-            display: block;
-            margin: auto;
-        }
+    .calcontainer {
+      width: 100%;
+      padding-right: 6%;
+      padding-left: 6%;
+      margin-right: auto;
+      margin-left: auto;
+    }
 
-        .calcontainer {
-            width: 100%;
-            padding-right: 6%;
-            padding-left: 6%;
-            margin-right: auto;
-            margin-left: auto;
-        }
-        .cal-my-4 {
-            margin-top: 3.5rem !important;
-        }
-    </style>
+    .cal-my-4 {
+      margin-top: 3.5rem !important;
+    }
+  </style>
 
-  </head>
-
+</head>
 
 
-  <body>
-    <!-- Navigation -->
 
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light green fixed-top" style="position:fixed; top:0px; width:100%; z-index:9000">
-            <!-- Navbar brand -->
-            <a class="navbar-brand mr-auto" href="index.html">AppName</a>
+<body>
+  <!-- Navigation -->
 
-            <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark grey fixed-top" style="position:fixed; top:0px; width:100%; z-index:9000">
+    <!-- Navbar brand -->
+    <a class="navbar-brand mr-auto" href="index.html">AppName</a>
 
-            <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- Links -->
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                      <a class="nav-link active" href="index.html">Home</a>
-                  </li>
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-                  <!-- Dropdown -->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View Schedule</a>
-                      <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="calendar.html">User</a>
-                          <a class="dropdown-item" href="guest.html">Guest</a>
-                      </div>
-                  </li>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
 
-                  <li class="nav-item">
-                      <a class="nav-link qr" href="#">QR</a>
-                  </li>
-                </ul>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <!-- <form class="form-inline">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View Schedule</a>
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="calendar.html">User</a>
+            <a class="dropdown-item" href="guest.html">Guest</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link qr" href="#">QR</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <!-- <form class="form-inline">
                       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                   </form> -->
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u>User name</u></a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="UserDropDownLink">
-                        <a class="dropdown-item" href="login.html">Log Out</a>
-                    </div>
-                </li>
-              </ul>
-            </li>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u>User name</u></a>
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="UserDropDownLink">
+            <a class="dropdown-item" href="login.html">Log Out</a>
           </div>
-          <!-- Collapsible content -->
+        </li>
+      </ul>
+      </li>
+    </div>
+    <!-- Collapsible content -->
 
-        </nav>
+  </nav>
 
-    <!-- Page Content -->
-    <div class="calcontainer">
+  <!-- Page Content -->
+  <div class="calcontainer">
 
-        <div class="row">
-            <div class="col-lg-8">
-                <div id='calendar'></div>
+    <div class="row">
+      <div class="col-lg-8">
+        <div id='calendar'></div>
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="card cal-my-4">
+          <h5 class="card-header" style="text-align:center">Week View</h5>
+          <div class="row">
+            <div class="col" style="margin:2% 2%">
+              <div class="container" id="agenda"></div>
             </div>
+          </div>
+        </div>
 
-            <div class="col-md-4">
-
-                <div class="card cal-my-4">
-                    <h5 class="card-header" style="text-align:center">Week View</h5>
-                    <div class="row">
-                        <div class="col" style="margin:2% 2%">
-                            <div class="container" id="agenda"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id='wkView'>
-                    <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+        <div id='wkView'>
+          <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" style="margin:auto;">Add Appointment</h4>
-                                <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="md-form">
-                                        <i class="fa fa-user-o prefix grey-text"></i>
-                                        <input type="text" id="defaultForm-firstName" class="form-control">
-                                        <label for="defaultForm-firstName">First Name</label>
-                                    </div>
-                                    <div class="md-form">
-                                        <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
-                                        <input type="text" id="defaultForm-lastName" class="form-control">
-                                        <label for="defaultForm-lastName">Last Name</label>
-                                    </div>
-
-                                    <div class="md-form">
-                                        <i class="fa fa-envelope prefix grey-text"></i>
-                                        <input type="email" id="defaultForm-email" class="form-control">
-                                        <label for="defaultForm-email">Email</label>
-                                    </div>
-
-                                    <div class="md-form">
-                                        <i class="fa fa-phone prefix grey-text"></i>
-                                        <input type="number" id="defaultForm-number" class="form-control">
-                                        <label for="defaultForm-number">Phone Number</label>
-                                    </div>
-
-                                    <div class="md-form">
-                                        <i class="fa fa-calendar prefix grey-text"></i>
-                                        <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
-                                        <label for="datepicker">Date</label>
-                                    </div>
-
-                                    <div class="md-form">
-                                        <i class="fa fa-clock-o prefix grey-text"></i>
-                                        <input placeholder="Select time" type="text" id="timepicker" class="form-control timepicker">
-                                        <label for="timepicker">Time</label>
-                                    </div>
-
-                                    <div class="md-form">
-                                        <i class="fa fa-commenting-o prefix grey-text"></i>
-                                        <textarea type="text" id="comment" class="md-textarea"></textarea>
-                                        <label for="comment">Comment: </label>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button id= "btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
-                                <button id= "btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- Script for date picker -->
-        <script type="text/javascript">
-            $('.datepicker').pickadate({
-                weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-                showMonthsShort: true
-            });
-        </script>
-        <script type="text/javascript">
-            // Time Picker Initialization
-            $('.timepicker').pickatime({
-                twelvehour: true
-            });
-        </script>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" style="margin:auto;">Add Appointment</h4>
+                <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="md-form">
+                    <i class="fa fa-user-o prefix grey-text"></i>
+                    <input type="text" id="defaultForm-firstName" class="form-control">
+                    <label for="defaultForm-firstName">First Name</label>
+                  </div>
+                  <div class="md-form">
+                    <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
+                    <input type="text" id="defaultForm-lastName" class="form-control">
+                    <label for="defaultForm-lastName">Last Name</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="email" id="defaultForm-email" class="form-control">
+                    <label for="defaultForm-email">Email</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fa fa-phone prefix grey-text"></i>
+                    <input type="number" id="defaultForm-number" class="form-control">
+                    <label for="defaultForm-number">Phone Number</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fa fa-calendar prefix grey-text"></i>
+                    <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
+                    <label for="datepicker">Date</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fa fa-clock-o prefix grey-text"></i>
+                    <input placeholder="Select time" type="text" id="timepicker" class="form-control timepicker">
+                    <label for="timepicker">Time</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fa fa-commenting-o prefix grey-text"></i>
+                    <textarea type="text" id="comment" class="md-textarea"></textarea>
+                    <label for="comment">Comment: </label>
+                  </div>
+                </form>
+              </div>
+
+              <div class="modal-footer">
+                <button id="btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                <button id="btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!--/.Navbar-->
+    <!-- Script for date picker -->
+    <script type="text/javascript">
+      $('.datepicker').pickadate({
+        weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        showMonthsShort: true
+      });
+    </script>
+    <script type="text/javascript">
+      // Time Picker Initialization
+      $('.timepicker').pickatime({
+        twelvehour: true
+      });
+    </script>
 
-    <!-- commented the footer for now -->
-    <!-- Footer
+  </div>
+  <!--/.Navbar-->
+
+  <!-- commented the footer for now -->
+  <!-- Footer
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; MyWebApp 2017</p>
@@ -363,47 +361,48 @@
 
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- calendar "backend" -->
-    <script type="text/javascript" src="js/calagenda.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- calendar "backend" -->
+  <script type="text/javascript" src="js/calagenda.js"></script>
 
-  </body>
-  <div id="qr-dialog" style="display:none; z-index:9002">
-    <form>
-        <div class="md-form text-center">
-            <h3 id="dialog-title"></h3>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="150px">
-            </div>
-            <div class="col text-center">
-                <span><i class="fa fa-user-circle"></i></span>
-                <span>
-                <input type="text" class="text-center" id="qr-username" style="width: auto; border-bottom:0px;" value="UserName" readonly></span>
-            </div>
-            <div class="col text-center">
-                <span><i class="fa fa-phone"></i></span>
-                <span>
-                <input type="text" class="text-center" id="qr-phone" style="width: auto; border-bottom:0px;" value="123-456-7890" readonly></span>
-            </div>
-            <div class="col text-center">
-                <span><i class="fa fa-location-arrow"></i></span>
-                <span>
-                <input type="text" class="text-center" id="qr-loc" style="width: auto; border-bottom:0px;" value="San Diego, CA" readonly></span>
-            </div>
-        </div>
-    </form>
+</body>
+<div id="qr-dialog" style="display:none; z-index:9002">
+  <form>
+    <div class="md-form text-center">
+      <h3 id="dialog-title"></h3>
     </div>
-    <style>
-        .qrPopup .ui-dialog-titlebar {
-            display:none
-        }
-    </style>
-    <script src="js/qr.js"></script>
+    <div class="row">
+      <div class="col text-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" width="150px">
+      </div>
+      <div class="col text-center">
+        <span><i class="fa fa-user-circle"></i></span>
+        <span>
+                <input type="text" class="text-center" id="qr-username" style="width: auto; border-bottom:0px;" value="UserName" readonly></span>
+      </div>
+      <div class="col text-center">
+        <span><i class="fa fa-phone"></i></span>
+        <span>
+                <input type="text" class="text-center" id="qr-phone" style="width: auto; border-bottom:0px;" value="123-456-7890" readonly></span>
+      </div>
+      <div class="col text-center">
+        <span><i class="fa fa-location-arrow"></i></span>
+        <span>
+                <input type="text" class="text-center" id="qr-loc" style="width: auto; border-bottom:0px;" value="San Diego, CA" readonly></span>
+      </div>
+    </div>
+  </form>
+</div>
+<style>
+  .qrPopup .ui-dialog-titlebar {
+    display: none
+  }
+</style>
+<script src="js/qr.js"></script>
+
 </html>
