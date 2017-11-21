@@ -2,41 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-        <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <title>Sign Up</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
+  <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
+  <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <title>Sign Up</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
 </head>
 
 <style>
-
   body {
     background-color: #EEEEEE;
   }
 
-  .card-padding-top {
-    padding-top: 20px;
+  .signup-padding-top {
+    padding-top: 25px;
   }
 
   .btn-default a {
@@ -46,84 +45,84 @@
   .signup-text {
     padding-top: 5px;
   }
-
 </style>
 
 
 <body>
-        <!-- Navigation -->
+  <!-- Navigation -->
 
-    <!-- Start your project here-->
-    <div class="row container-fluid">
-      <div class="col-md-4">
-
-      </div>
-
-      <div class="col-md-4 card-padding-top">
-        <!--Card-->
-        <p class="h1 text-center mb-4">Sign Up</p>
-        <div class="card">
-
-            <!--Card image-->
-            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-
-            <!--Card content-->
-            <div class="card-body">
-              <form>
-                  <div class="md-form">
-                      <i class="fa fa-envelope prefix grey-text"></i>
-                      <input type="email" id="defaultForm-email" class="form-control">
-                      <label for="defaultForm-email">Email</label>
-                  </div>
-
-                  <div class="md-form">
-                      <i class="fa fa-lock prefix grey-text"></i>
-                      <input type="password" id="defaultForm-pass" class="form-control">
-                      <label for="defaultForm-pass">Password</label>
-                  </div>
-                  <div class="md-form">
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="defaultForm-pass2" class="form-control">
-                        <label for="defaultForm-pass2">Verify Password</label>
-                    </div>
-                  <div class="text-center">
-                      <a href="#" class="btn btn-default" id="btnSignup">Sign Up</a>
-                      <!--<text style="color:rgb(51, 116, 236)"> Log in </text>-->
-                      <div class="signup-text">
-                        <a href="login.html">Already have an account?</a>
-                      </div>
-                  </div>
-              </form>
-            </div>
-
-        </div>
-        <!--/.Card-->
-
-      </div>
-
-      <div class="col-md-4"></div>
+  <!-- Start your project here-->
+  <div class="row container-fluid">
+    <div class="col-md-4">
 
     </div>
-    <!-- Form login -->
-    <!-- /Start your project here-->
 
-    <!-- SCRIPTS -->
-    <script>
-      function alertSuccess() {
-          alert("Sign-up Successful! Please Sign-in!");
-      }
-    </script>
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Adding firebase authentication methods -->
-    <!-- <script type="text/javascript" scr="js/auth.js"></script> -->
-    <script type="text/javascript" src="js/signup.js"></script>
+    <div class="col-md-4 signup-padding-top">
+      <!--Card-->
+      <p class="h1 text-center mb-4">Sign Up</p>
+      <div class="card">
+
+        <!--Card image-->
+        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+
+        <!--Card content-->
+        <div class="card-body">
+          <form>
+            <div class="md-form">
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input type="email" id="defaultForm-email" class="form-control">
+              <label for="defaultForm-email">Email</label>
+            </div>
+
+            <div class="md-form">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input type="password" id="defaultForm-pass" class="form-control">
+              <label for="defaultForm-pass">Password</label>
+            </div>
+            <div class="md-form">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input type="password" id="defaultForm-pass2" class="form-control">
+              <label for="defaultForm-pass2">Verify Password</label>
+            </div>
+            <div class="text-center">
+              <a href="#" class="btn btn-default" id="btnSignup">Sign Up</a>
+              <!--<text style="color:rgb(51, 116, 236)"> Log in </text>-->
+              <div class="signup-text">
+                <a href="login.html">Already have an account?</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <!--/.Card-->
+
+    </div>
+
+    <div class="col-md-4"></div>
+
+  </div>
+  <!-- Form login -->
+  <!-- /Start your project here-->
+
+  <!-- SCRIPTS -->
+  <script>
+    function alertSuccess() {
+      alert("Sign-up Successful! Please Sign-in!");
+    }
+  </script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Adding firebase authentication methods -->
+  <!-- <script type="text/javascript" scr="js/auth.js"></script> -->
+  <script type="text/javascript" src="js/signup.js"></script>
 </body>
+
 </html>
