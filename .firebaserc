@@ -1,6 +1,7 @@
 {
   "projects": {
     "staging": "cse170webapp-staging",
-    "default": "cse170proj"
+    "default": "cse170proj",
+    "a7": "cse170-a7"
   }
 }

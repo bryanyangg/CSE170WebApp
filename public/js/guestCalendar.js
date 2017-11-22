@@ -1,4 +1,5 @@
-function eventModal(event){
+function eventInfoModal(event){
+    //element.attr('href', 'javascript:void(0);');
 
     $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
     $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
@@ -6,33 +7,6 @@ function eventModal(event){
     //$("#eventLink").attr('href', event.url);
     $("#eventContentModal").dialog({ modal: true, title: event.title, width:350});
 
-}
-
-function eventRemoveModal(event, element, view){
-    
-    element.attr('href', 'javascript:void(0);');
-    element.click(function() {
-      //set the modal values and open
-      $('#eventTitle').html(event.title);
-  
-      // Rebind the Remove button click handler
-      $("#removeBtn").off('click').on('click', function(e) {
-          $('#weekCalendar').fullCalendar('removeEvents', event._id);
-          $("#eventContentModal").dialog('destroy');
-          //$("#eventContentModal").siblings('.ui-dialog-titlebar').remove();
-          console.log('delete eventon week view');
-          $('#calendar').fullCalendar('removeEvents', event._id);
-          console.log('delete eventon month view, but since there is not backend, it would still show.');
-      });
-      
-      // Rebind the close button click handler
-      $("#close").off('click').on('click', function(e) {
-        $("#eventContentModal").dialog('destroy');
-        console.log(' close the remove modal');
-        });
-
-      $('#modalRemove').modal();
-    });
 }
 
 function addAppointment(){
@@ -78,57 +52,25 @@ function addAppointment(){
 }
 
 $(document).ready(function(){
-
-    $('#addBtn').on('click', function() {
-        $('#weekCalendar').fullCalendar('select');
-    }); 
-
-    $('#weekCalendar').fullCalendar({
+    
+    $('#calendar').fullCalendar({
         header: {
-            left: 'prev,next',
+            left: 'prev,next today',
             center: 'title',
-            right: 'agendaWeek,agendaDay'
+            right: 'month, listMonth'
         },
         buttonText: {
-            agendaWeek: 'Week View',
-            agendaDay: 'Day View'
-        },    
-        defaultView: 'agendaWeek',
+            today: 'Back to Today',
+            month: 'Month View',
+            listMonth: 'Month List View'
+        }, 
         defaultDate: '2017-11-22',
-        contentHeight: 565,
-        timeFormat: 'h:mm A', 
         navLinks: true, // can click day/week names to navigate views
         businessHours: true, // display business hours
         selectable: true,
         selectHelper: true,
         select: function(start, end, allDay) {
-            /*
-            endtime = $.fullCalendar.formatDate(end,'h:mm A');
-            starttime = $.fullCalendar.formatDate(start,'h:mm A');
-            var duration = starttime + ' - ' + endtime;
-            $('#myModal #timepicker').val(start);
-            $('#myModal #endtimepicker').val(end);
-            $('#myModal #apptAllDay').val(allDay);
-            $('#myModal #when').text(duration);
-            */
             $('#myModal').modal('show');
-            /*
-            var title = prompt('Event Title:');
-            var eventData;
-            if (title) {
-                eventData = {
-                    title: title,
-                    start: start,
-                    end: end
-                };
-                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                //hacking to sync both calendars
-                $('#weekCalendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-            }
-            $('#calendar').fullCalendar('unselect');
-            //hacking to sync both calendars
-            $('#weekCalendar').fullCalendar('unselect');
-            */
         },
         editable: true,
         eventLimit: true, // allow "more" link when too many events
@@ -141,20 +83,7 @@ $(document).ready(function(){
             eventInfoModal(event);
         },
         eventRender: function(event, element, view) {
-            
-            if (view.name == 'listDay') {
-                element.find(".fc-list-item-time").append("<div class='ibox-tools'><a style='background-color: transparent; margin-right: 10px' class='pull-left'><i class='fa fa-times delBtn'></i></a></div>");
-            } else {
-                element.find(".fc-content").prepend("<div class='ibox-tools'><a style='background-color: transparent; margin-right: 10px' class='pull-left'><i class='fa fa-times delBtn'></i></a></div>");
-            }
-
-            element.find(".delBtn").on('click', function() {
-                eventRemoveModal(event, element, view);
-                /*
-                $('#calendar').fullCalendar('removeEvents',event._id);
-                console.log('delete event');
-                */
-            });
+           
         },
         events: [
             {
@@ -295,16 +224,6 @@ $(document).ready(function(){
                 color: '#ff9f89'
             }
         ]
-    });
-
-    // Bind the dates to datetimepicker.
-        // You should pass the options you need
-    $("#starts-at, #ends-at").datetimepicker();
-
-    $('#btnAdd').on('click', function(e){
-        // We don't want this to act as a link so cancel the link action
-        e.preventDefault();
-        addAppointment();
     });
 
 });
