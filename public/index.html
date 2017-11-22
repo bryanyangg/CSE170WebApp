@@ -65,6 +65,7 @@
     height: 15px;
     width: 15px;
   }
+
 </style>
 
 <body style="padding:0px 0px 30px 0px;">
@@ -257,15 +258,15 @@
   </form>
 </div>
 <!-- settings -->
-<div id="settings-dialog" class="modal" role="dialog">
-  <div class="text-center">
+<div id="settings-dialog" class="modal" role="dialog" style="height:100%;width:100%;overflow-x: hidden;">
+  <div class="text-center" style="padding-right: 0.3vw;">
     <h3 id="settings-title">Settings</h3>
   </div>
   <!-- profile image -->
-  <div class="row">
+  <div class="row" style="padding-right: 1vw;">
     <div class="col text-center">
       <a href="#" class="profile-pic text-center">
-        <div class="profile-pic" id="settings-profilepic" style="background-image: url('https://aiaa.nmsu.edu/files/2016/09/noprofile.gif');">
+        <div class="profile-pic" id="settings-profilepic" style="background-image: url('https://aiaa.nmsu.edu/files/2016/09/noprofile.gif'); margin: auto;">
           <span><i class="fa fa-camera"></i></span>
           <span>Change Image</span>
         </div>
@@ -273,7 +274,7 @@
     </div>
   </div>
   <!-- contact -->
-  <div class="row">
+  <div class="row" style="padding-right:1vw;">
     <div class="col">
       <form>
         <div style="padding-top: 20px;">
@@ -300,7 +301,7 @@
     </div>
   </div>
   <!-- password -->
-  <div class="row">
+  <div class="row" style="padding-right:1vw;">
     <div class="col">
       <form>
         <div style="padding-top: 20px;">
