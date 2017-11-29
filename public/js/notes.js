@@ -111,21 +111,23 @@ function deleteNote() {
 
 
 $(document).ready(function(){
-    initNotes();
-    populateNotesSummary();
-
-    // todo: think of better way to handle this
-    document.getElementById("notes_content").onchange = function(){
-        console.log(document.getElementById("notes_content").value);
-        document.getElementById("notes_content").disabled = false;
-        saveCurrentNote();
-    }
-
-    document.getElementById("notes_content").onkeyup = function() {
-        if(document.getElementById("notes_content").value.length > 0) {
-            $("option[value=\'" + document.getElementById("notes_identifier").value + "\']")
-                .html( document.getElementById("notes_content").value.substr(0, Math.min(10, document.getElementById("notes_content").value.length)));
+    $('#notes_widget').load('notes2.html', function(){
+        initNotes();
+        populateNotesSummary();
+    
+        // todo: think of better way to handle this
+        document.getElementById("notes_content").onchange = function(){
+            console.log(document.getElementById("notes_content").value);
+            document.getElementById("notes_content").disabled = false;
+            saveCurrentNote();
         }
-        saveCurrentNote();
-    }
+    
+        document.getElementById("notes_content").onkeyup = function() {
+            if(document.getElementById("notes_content").value.length > 0) {
+                $("option[value=\'" + document.getElementById("notes_identifier").value + "\']")
+                    .html( document.getElementById("notes_content").value.substr(0, Math.min(10, document.getElementById("notes_content").value.length)));
+            }
+            saveCurrentNote();
+        }
+    });
 });

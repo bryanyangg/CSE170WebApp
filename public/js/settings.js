@@ -46,9 +46,11 @@ $(document).ready(function(){
         var settingsdialog = $( "#settings-dialog" ).dialog({
             dialogClass: "settingsPopup",
             autoOpen: false,
-            height: 400,
+            // "max-height": "80vh",
+            // height: "100vh",
             width: 350,
             modal: true,
+            "z-index": 9005,
             buttons: {
                 Save:{
                     text: "Save",

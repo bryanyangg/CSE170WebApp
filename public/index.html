@@ -1,52 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109875057-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+        gtag('config', 'UA-109875057-1');
+        </script>
 
-    <script>
-        if(localStorage.getItem('user') == undefined) {
-            window.location.href = "about.html"
-        }
-    </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
+        <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
+        <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+        <!-- initialize the SDK after all desired features are loaded -->
+        <script defer src="/__/firebase/init.js"></script>
 
-    <title>MyWebApp</title>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css" />  
-    <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!--  custom styles -->
-    <link href="css/style.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+        <script>
+            if(localStorage.getItem('user') == undefined) {
+                window.location.href = "about.html"
+            }
+        </script>
 
-  </head>
+        <title>MyWebApp</title>
+        <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css" />   -->
+        
+        <!-- Font Awesome -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/jquery-ui.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <!--  custom styles -->
+        
+        <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+        <link href="css/style.css" rel="stylesheet">
+
+    </head>
 
   <style>
-      html {
-          height: 100%;
-      }
-      body{
-          height:100%;
-          overflow:hidden;
-      }
-      row {
-          height: 100%;
-      }
+    html {
+        height: 100vw;
+    }
+    body{
+        /* height:100v; */
+        overflow:hidden;
+        /* display:table; */
+        height:100vh;
+        width:100vw;
+        /* padding:0px 0px 30px 0px; */
+    }
+    /* .ui-page.ui-page-theme-a.ui-page-active {
+        height:100%;
+    } */
+    /* .widget {
+        display:table-row;
+    } */
+    div+ .widget
+    {
+        height:100%;  
+    }
+
+    
     .d-flex {
       display: flex;
     }
@@ -58,6 +83,7 @@
 
     input[type=radio]:checked + label{
         background: #555555;
+        /* display:inline; */
     }
 
     input[type=radio] ~ label {
@@ -65,32 +91,42 @@
         background: #e5e5e5;
         height: 15px;
         width: 15px;
+        display: inline-block;
+        /* display:inline; */
     }
+
+    .ui-dialog {
+        background: unset;
+    }
+    /* @media all {
+        .container {
+            max-width: 100vw;
+        }
+    } */
   </style>
 
-  <body style="padding:0px 0px 30px 0px;">
+  <body>
     <!-- Navigation -->
     <div id="nav"></div>
-    <div class="container" style="height:100%; padding: 50px 0px 0px 0px;">
-        <div id="widget-container" class="text-center row" style="padding:20px; height:100%; width:100%;">
-            <div id="widget1" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">
-                <object type="text/html" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;" data="agenda.html" ></object>
+    <div class="container" style="padding-top: 150px; height:100%;">
+        <div id="widget-container" class="text-center row" style="padding:20px 0px; width:100%; height:100%">
+            <div id="widget1" class="col text-center widget" style="height:100%; border-radius:6px; width:100%; margin: 0px 10px auto; overflow-y:scroll">
+                <div id="agenda_widget" style="border-radius:6px; width:100%; height:100%; margin: 0 auto;"></div>
             </div>
-            <div id="widget2" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">
-                <object type="text/html" data="notes.html" style="border-radius:6px; width:100%; height:100%; overflow:hidden; margin: 0 auto;"></object>
+            <div id="widget2" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0px 10px auto;">
+                <div id="notes_widget" style="border-radius:6px; width:100%; height:100%; margin: 0 auto;"></div>
             </div>
         </div>
-
     </div>
 
-    <nav id="widget-navigator" class="navbar navbar-fixed-bottom" style="position: fixed; bottom:0; width:100%; height:50px; border:none; box-shadow:none; z-index:100">
+    <!-- <nav id="widget-navigator" class="navbar navbar-fixed-bottom" style="background-color: white;position: fixed; bottom:0; width:100%; height:50px; border:none; box-shadow:none; z-index:100">
         <div class="container text-center " style="display: inline-block">
             <input type="radio" name="widget-pg" id="pg1" value="widget1"/>
             <label for="pg1"></label>
             <input type="radio" name="widget-pg" id="pg2" value="widget2"/>
             <label for="pg2"></label>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Footer-->
     <!-- <footer class="py-5 bg-dark">
@@ -98,15 +134,21 @@
         <p class="m-0 text-center text-white">Copyright &copy; MyWebApp 2017</p>
       </div>
     </footer>  -->
+    <div id="qr"></div>
+    <div id="settings"></div>
 
-    <!-- Bootstrap core JavaScript -->
 
+  </body>
+      <!-- Bootstrap core JavaScript -->
+    <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script> -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
  
-    <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    
     
     <!-- mobile thing not working yet -->
     <script>
@@ -116,40 +158,44 @@
                 $("#widget-container").removeClass("row");
                 $("#widget1").removeClass("col");
                 $("#widget2").removeClass("col");
-                $("#widget-navigator").css("display", "block");
+                // $("#widget-navigator").css("display", "inline");
+                $(".widget").css("display", "block");
+
                 // default is widget1
-                $("#widget2").css("width", "0");
-                $("#widget2").css("height", "0");
-                $('#pg1').click();
+                // $("#widget2").css("width", "0");
+                // $("#widget2").css("height", "0");
+                // $('#pg1').click();
 
                 // toggle between widgets... super hacky rn :( )
-                $('input[type=radio][name=widget-pg]').change(function() {
-                    // $(".widget").animate({"display":"none"});
-                    $(".widget").css("height", "0");
-                    $('#' + this.value).css("width", "100%");
+                // $('input[type=radio][name=widget-pg]').change(function() {
+                //     // $(".widget").animate({"display":"none"});
+                //     $(".widget").css("height", "0");
+                //     $('#' + this.value).css("width", "100%");
+                //     $('#' + this.value).css("height", "100%");
                     
-                });
+                // });
 
                 // toggle between widgets... super hacky rn :( )
-                $(document).children().on("swipeleft", function(){
-                    $("#widget1").css({width: 0, height:0});
-                    $("#widget2").css({width: "100%", height:"100%"});
-                    $('#pg2').select();
-                    console.log('swipe');
-                });
-                // toggle between widgets... super hacky rn :( )
-                $(document).children().on("swiperight", function(){
-                    $("#widget2").css({width: 0, height:0});
-                    $("#widget1").css({width: "100%", height:"100%"});
-                    $('#pg1').select();
-                    console.log('swipe');
-                });
+                // $(document).children().on("swipeleft", function(){
+                //     $("#widget1").css({width: 0, height:0});
+                //     $("#widget2").css({width: "100%", height:"100%"});
+                //     $('#pg2').click();
+                //     console.log('swipe');
+                // });
+                // // toggle between widgets... super hacky rn :( )
+                // $(document).children().on("swiperight", function(){
+                //     $("#widget2").css({width: 0, height:0});
+                //     $("#widget1").css({width: "100%", height:"100%"});
+                //     $('#pg1').click();
+                //     console.log('swipe');
+                // });
                 state="mobile";
                 // $("#widget-navigator").removeClass("hide");
             } else if(screen && screen.width >= 480 && state!="desktop"){
                 $("#widget-container").addClass("row");
                 $("#widget1").addClass("col");
                 $("#widget2").addClass("col");
+                $(".widget").css("display", "table-row");
                 $(".widget").css("height", "100%");
                 $('input[type=radio][name=widget-pg]').change(function() {});
                 $("#widget-navigator").css("display", "none");
@@ -158,24 +204,22 @@
         }
 
         $(document).ready(function(){
-            $("#widget-container").css("height","100%");
+            // $("#widget-container").css("height","auto");
+            
             toggleViewMode();
             window.onresize = function() {
-            clearTimeout(window.resizedFinished);
-            window.resizedFinished = setTimeout(function(){
-                toggleViewMode();
-            }, 250);
-        };
+                clearTimeout(window.resizedFinished);
+                window.resizedFinished = setTimeout(function(){
+                    toggleViewMode();
+                }, 250);
+            };
         });
 
 
     </script>
-
-  </body>
-    <div id="qr"></div>
-    <div id="settings"></div>
-    
     <script src="js/nav.js"></script>
+    <script src="js/agenda.js"></script>
+    <script src="js/notes.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/qr.js"></script>
 </html>
