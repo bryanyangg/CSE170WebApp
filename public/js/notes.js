@@ -111,7 +111,7 @@ function deleteNote() {
 
 
 $(document).ready(function(){
-    $('#notes_widget').load('notes2.html', function(){
+    $('#notes_widget').load('notes.html', function(){
         initNotes();
         populateNotesSummary();
     

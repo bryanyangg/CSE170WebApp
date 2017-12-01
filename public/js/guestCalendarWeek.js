@@ -8,33 +8,6 @@ function eventModal(event){
 
 }
 
-function eventRemoveModal(event, element, view){
-    
-    element.attr('href', 'javascript:void(0);');
-    element.click(function() {
-      //set the modal values and open
-      $('#eventTitle').html(event.title);
-  
-      // Rebind the Remove button click handler
-      $("#removeBtn").off('click').on('click', function(e) {
-          $('#weekCalendar').fullCalendar('removeEvents', event._id);
-          $("#eventContentModal").dialog('destroy');
-          //$("#eventContentModal").siblings('.ui-dialog-titlebar').remove();
-          console.log('delete eventon week view');
-          $('#calendar').fullCalendar('removeEvents', event._id);
-          console.log('delete eventon month view, but since there is not backend, it would still show.');
-      });
-      
-      // Rebind the close button click handler
-      $("#close").off('click').on('click', function(e) {
-        $("#eventContentModal").dialog('destroy');
-        console.log(' close the remove modal');
-        });
-
-      $('#modalRemove').modal();
-    });
-}
-
 function addAppointment(){
     alert("Add Appointment Form Submitted!");
     $("#myModal").modal('hide');
@@ -73,7 +46,6 @@ function addAppointment(){
     true);
 
     $('#calendar').fullCalendar('unselect');
-    $('#weekCalendar').fullCalendar('unselect');
     
 }
 
@@ -141,20 +113,7 @@ $(document).ready(function(){
             eventInfoModal(event);
         },
         eventRender: function(event, element, view) {
-            
-            if (view.name == 'listDay') {
-                element.find(".fc-list-item-time").append("<div class='ibox-tools'><a style='background-color: transparent; margin-right: 10px' class='pull-left'><i class='fa fa-times delBtn'></i></a></div>");
-            } else {
-                element.find(".fc-content").prepend("<div class='ibox-tools'><a style='background-color: transparent; margin-right: 10px' class='pull-left'><i class='fa fa-times delBtn'></i></a></div>");
-            }
 
-            element.find(".delBtn").on('click', function() {
-                eventRemoveModal(event, element, view);
-                /*
-                $('#calendar').fullCalendar('removeEvents',event._id);
-                console.log('delete event');
-                */
-            });
         },
         events: [
             {

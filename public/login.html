@@ -5,11 +5,11 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109875057-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'UA-109875057-1');
+      gtag('config', 'UA-109875057-1');
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,13 +39,12 @@
 </head>
 
 <style>
-
   body {
     background-color: #EEEEEE;
   }
 
   .card-padding-top {
-    padding-top: 20px;
+    padding-top: 0px;
   }
 
   .btn-default a {
@@ -56,71 +55,75 @@
     padding-top: 5px;
   }
 
+  .login-padding-top {
+    padding-top: 25px;
+  }
 </style>
 
 
 <body>
-    <!-- Start your project here-->
-    <div class="row container-fluid" style="padding-top:50px">
-      <div class="col-md-4">
-
-      </div>
-
-      <div class="col-md-4 card-padding-top">
-        <!--Card-->
-        <p class="h1 text-center mb-4">Login</p>
-        <div class="card">
-
-            <!--Card image-->
-            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-
-            <!--Card content-->
-            <div class="card-body">
-              <form>
-                  <div class="md-form">
-                      <i class="fa fa-envelope prefix grey-text"></i>
-                      <input type="email" id="defaultForm-email" class="form-control">
-                      <label for="defaultForm-email">Email</label>
-                  </div>
-
-                  <div class="md-form">
-                      <i class="fa fa-lock prefix grey-text"></i>
-                      <input type="password" id="defaultForm-pass" class="form-control">
-                      <label for="defaultForm-pass">Password</label>
-                  </div>
-
-                  <div class="text-center">
-                    <a href="#" class="btn btn-default" id="btnLogin">Login</a>
-                    <div class="signup-text">
-                      <a href="signup.html">Don't have an account?</a>
-                    </div>
-                  </div>
-              </form>
-            </div>
-
-        </div>
-        <!--/.Card-->
-
-      </div>
-
-      <div class="col-md-4"></div>
+  <!-- Start your project here-->
+  <div class="row container-fluid login-padding-top">
+    <div class="col-md-4">
 
     </div>
-    <!-- Form login -->
-    <!-- /Start your project here-->
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Adding firebase authentication methods -->
-    <!-- <script type="text/javascript" scr="js/auth.js"></script> -->
-    <script type="text/javascript" src="js/signin.js"></script>
+    <div class="col-md-4">
+      <!--Card-->
+      <p class="h1 text-center mb-4">Login</p>
+      <div class="card">
+
+        <!--Card image-->
+        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+
+        <!--Card content-->
+        <div class="card-body">
+          <form>
+            <div class="md-form">
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input type="email" id="defaultForm-email" class="form-control">
+              <label for="defaultForm-email">Email</label>
+            </div>
+
+            <div class="md-form">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input type="password" id="defaultForm-pass" class="form-control">
+              <label for="defaultForm-pass">Password</label>
+            </div>
+
+            <div class="text-center">
+              <a href="#" class="btn btn-default" id="btnLogin">Login</a>
+              <div class="signup-text">
+                <a href="signup.html">Don't have an account?</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <!--/.Card-->
+
+    </div>
+
+    <div class="col-md-4"></div>
+
+  </div>
+  <!-- Form login -->
+  <!-- /Start your project here-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Adding firebase authentication methods -->
+  <!-- <script type="text/javascript" scr="js/auth.js"></script> -->
+  <script type="text/javascript" src="js/signin.js"></script>
 </body>
+
 </html>

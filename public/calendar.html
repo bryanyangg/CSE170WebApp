@@ -1,268 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- This is the header tag -->
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109875057-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <!-- This is the header tag -->
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109875057-1"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      gtag('config', 'UA-109875057-1');
+    </script>
 
-        gtag('config', 'UA-109875057-1');
-        </script>
-        
-        <!-- This is the meta tag (inside header) -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
-        <meta name="description" content="CSE 170">
-        <meta name="author" content="Bryan Yang, Anil Jethani, Anthony Lu">
-        <!-- This is the title tag (inside header) -->
-        <title>Calendar</title>
+    <!-- This is the meta tag (inside header) -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <meta name="description" content="CSE 170">
+    <meta name="author" content="Bryan Yang, Anil Jethani, Anthony Lu">
+    <!-- This is the title tag (inside header) -->
+    <title>My Schedule</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/mdb.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="css/blog-home.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="css/mdb.min.css" rel="stylesheet">
-        <link href="css/jquery-ui.min.css" rel="stylesheet">
-        <!--  custom styles -->
-        <link href="css/jquery-ui.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/calendar.css" rel="stylesheet">
-        <!-- Date/Time selector CSS-->
-        <link rel="stylesheet" href="css/date_time_default.css">
-        <link rel="stylesheet" href="css/date_default.css">
-        <link rel="stylesheet" href="css/time_default.css">
-        <link rel="stylesheet" href="css/calendar.agenda.css">
-        
-        <!-- update the version number as needed -->
-        <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
-        <!-- include only the Firebase features as you need -->
-        <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
-        <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
-        <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
-        <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
-        <!-- initialize the SDK after all desired features are loaded -->
-        <script defer src="/__/firebase/init.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/blog-home.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <!--  custom styles -->
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
 
-        <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
-        <link href='css/fullcalendar.min.css' rel='stylesheet' />
-        <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src='lib/moment.min.js'></script>
-        <script src='lib/jquery.min.js'></script>
-        <script src="lib/jquery-ui.min.js"></script>
-        <script src='js/fullcalendar.min.js'></script>
+    <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
+    <link href='css/fullcalendar.min.css' rel='stylesheet' />
+    <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
-        <!-- Calendar Time/Date Picker Lib-->
-        <script src="lib/picker.js"></script>
-        <script src="lib/picker.date.js"></script>
-        <script src="lib/picker.time.js"></script>
-        <script src="lib/legacy.js"></script>
-
-        <style>
-
-            
-        </style>
-    </head>
-
-    <body>
-
-        <div id="nav"></div>
-
-        <!-- Page Content -->
-        <div class="calcontainer">
-
-            <div class="row">
-
-                <div class="col-lg-8">
-                    <div id='calendar'></div>
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="card cal-my-4">
-                        <h5 class="card-header" style="text-align:center">Week View</h5>
-                        <div class="row">
-                            <!--
-                            <div class="col" style="margin:2% 2%">
-                                <div class="container" id="agenda"></div>
-                            </div>
-                            -->
-                            <div id='weekCalendar'>
-                                <div id="eventContentModal" title="Event Details" style="display:none;">
-                                        Start: <span id="startTime"></span><br>
-                                        End: <span id="endTime"></span><br><br>
-                                        <p id="eventInfo"></p>
-                                        <!--<p><strong><a id="eventLink" href="" target="_blank">Read More</a></strong></p>-->
-                                </div>
-                                <div class="modal fade" id="modalRemove" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4>Are you sure to remove the event?</h4>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-danger" id="removeBtn" data-dismiss="modal">Remove</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div id='wkView'>
-                        <button id='addBtn' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </button>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" style="margin:auto;">Add Appointment</h4>
-                                    <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="md-form">
-                                            <i class="fa fa-user-o prefix grey-text"></i>
-                                            <input type="text" id="defaultForm-firstName" class="form-control">
-                                            <label for="defaultForm-firstName">First Name</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
-                                            <input type="text" id="defaultForm-lastName" class="form-control">
-                                            <label for="defaultForm-lastName">Last Name</label>
-                                        </div>
-
-                                        <div class="md-form">
-                                            <i class="fa fa-envelope prefix grey-text"></i>
-                                            <input type="email" id="defaultForm-email" class="form-control">
-                                            <label for="defaultForm-email">Email</label>
-                                        </div>
-
-                                        <div class="md-form">
-                                            <i class="fa fa-phone prefix grey-text"></i>
-                                            <input type="number" id="defaultForm-number" class="form-control">
-                                            <label for="defaultForm-number">Phone Number</label>
-                                        </div>
-
-                                        <div class="md-form">
-                                            <i class="fa fa-calendar prefix grey-text"></i>
-                                            <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
-                                            <label for="datepicker">Date</label>
-                                        </div>
-
-                                        <div class="md-form">
-                                            <i class="fa fa-clock-o prefix grey-text"></i>
-                                            <input placeholder="Start time" type="text" id="timepicker" class="form-control timepicker">
-                                            <label for="timepicker">Start Time</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-clock-o prefix grey-text" style="display:none"></i>
-                                            <input placeholder="End time" type="text" id="endtimepicker" class="form-control endtimepicker">
-                                            <label for="endtimepicker">End Time</label>
-                                        </div>
-
-                                        <div class="md-form">
-                                            <i class="fa fa-commenting-o prefix grey-text"></i>
-                                            <textarea type="text" id="comment" class="md-textarea"></textarea>
-                                            <label for="comment">Comment: </label>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button id= "btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
-                                    <button id= "btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Script for date picker -->
-            <script type="text/javascript">
-                $('.datepicker').pickadate({
-                    weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-                    showMonthsShort: true
-                });
-            </script>
-            <script type="text/javascript">
-                // Time Picker Initialization
-                $('.timepicker').pickatime({
-                    twelvehour: true
-                });
-            </script>
-            <script type="text/javascript">
-                // Time Picker Initialization
-                $('.endtimepicker').pickatime({
-                    twelvehour: true
-                });
-            </script>
-
-        </div>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- calendar "backend" -->
-        <!--<script type="text/javascript" src="js/calagenda.js"></script>-->
-        <script type="text/javascript" src="js/calendar.js"></script>
-        <script type="text/javascript" src="js/calendarWeek.js"></script>
-    </body>
-
-    <div id="dialog" style="display:none"
-            <form>
-                <div class="md-form text-center">
-                    <h3 id="dialog-title"></h3>
-                </div>
-                <div class="row">
-                    <div class="col text-center">
-                        <i class="fa fa-calendar-o prefix grey-text"></i>
-                        <label for="dialog-date" >Date</label>
-                        <input type="text" class="text-center" id="dialog-date" style="width: auto;border-bottom:0px;" readonly>
-                    </div>
-                    <div class="col text-center">
-                        <span><i class="fa fa-clock-o prefix grey-text"></i></span>
-                        <span><label for="dialog-time" >Time</label>
-                        <input type="text" class="text-center" id="dialog-time" style="width: auto; border-bottom:0px;" readonly></span>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-    <div id="qr"></div>
-    <div id="settings"></div>
-
-    <script src="js/nav.js"></script>
-    <script src="js/qr.js"></script>
-    <script src="js/settings.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='lib/moment.min.js'></script>
+    <script src='lib/jquery.min.js'></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script src='js/fullcalendar.min.js'></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap tooltips -->
     
+    <!-- Calendar Time/Date Picker Lib-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Date/Time selector CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css">
+
+    <style>
+      .body {
+        background-color: #FDF6E3;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="nav"></div>
+
+    <!-- Page Content -->
+    <div class="calcontainer">
+
+      <div class="row">
+
+        <div class="col-lg-8">
+          <div id='calendar'></div>
+          <div id='datepicker'></div>
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="card cal-my-4">
+          <h5 class="card-header" style="text-align:center; font-size:2vw; background-color: #343a40; color:white;">Week View</h5>
+          <div class="row">
+          <div id='weekCalendar'>
+          <div id='datepicker'></div>
+          <div id="eventContentModal" title="Event Details" style="display:none;">
+          Start: <span id="startTime"></span><br> End: <span id="endTime"></span><br><br>
+          <p id="eventInfo">Comment:</p>
+          <!--<p><strong><a id="eventLink" href="" target="_blank">Read More</a></strong></p>-->
+          </div>
+
+          <div class="modal fade" id="modalRemove" role="dialog" aria-hidden="true">
+          <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h4>Are you sure to remove the event?</h4>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" id="removeBtn" data-dismiss="modal">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+
+          </div>
+          </div>
+
+
+          <div id='wkView'>
+          <a href="#" data-toggle="tooltip" title="Click to Add Appointments!">
+          <!--<button id='addBtn' type="button" class="btn" data-toggle="modal" data-target="#myModal">-->
+          <button id='addBtn' type="button" class="btn">  
+          <i class="fa fa-plus" aria-hidden="true" style="font-size: 1.5vw"></i>
+          </button>
+          </a>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" style="margin:auto;">Add Appointment</h4>
+                  <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="md-form">
+                      <i class="fa fa-user-o prefix grey-text"></i>
+                      <input type="text" id="defaultForm-firstName" class="form-control">
+                      <label for="defaultForm-firstName">First Name</label>
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
+                      <input type="text" id="defaultForm-lastName" class="form-control">
+                      <label for="defaultForm-lastName">Last Name</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-envelope prefix grey-text"></i>
+                      <input type="email" id="defaultForm-email" class="form-control">
+                      <label for="defaultForm-email">Email</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-phone prefix grey-text"></i>
+                      <input type="number" id="defaultForm-number" class="form-control">
+                      <label for="defaultForm-number">Phone Number</label>
+                    </div>
+                    <!--
+                      <div class="md-form">
+                        <i class="fa fa-calendar prefix grey-text"></i>
+                        <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
+                        <label for="datepicker">Date</label>
+                      </div>
+                    -->
+                    <div class="md-form">
+                      <i class="fa fa-calendar prefix grey-text"></i>
+
+                      <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="starts-at" class="starts-at">
+                      <label for="starts-at">Start Date/Time</label>
+                    </div>
+                    <div class="md-form">
+
+                      <i class="fa fa-clock-o prefix grey-text"></i>
+                      <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="ends-at" class="form-control">
+                      <label for="ends-at">End Date/Time</label>
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-clock-o prefix grey-text" style="display:none"></i>
+                      <input placeholder="Yes/No" type="text" id="apptAllDay" class="form-control">
+                      <label for="apptAllDay">All Day?</label>
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-commenting-o prefix grey-text"></i>
+                      <textarea type="text" id="comment" class="md-textarea"></textarea>
+                      <label for="comment">Comment: </label>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="modal-footer">
+                  <button id="btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                  <button id="btnClose" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Script for date picker
+      <script type="text/javascript">
+      $('.datepicker').pickadate({
+      weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      showMonthsShort: true
+      });
+      </script>
+      -->
+      <!--
+      <script type="text/javascript">
+      // Time Picker Initialization
+      $('.timepicker').pickatime({
+      twelvehour: true
+      });
+      </script>
+      <script type="text/javascript">
+      // Time Picker Initialization
+      $('.endtimepicker').pickatime({
+      twelvehour: true
+      });
+      </script>
+      -->
+      <script>
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+        });
+      </script>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- calendar "backend" -->
+    <!--<script type="text/javascript" src="js/calagenda.js"></script>-->
+    <script type="text/javascript" src="js/calendar.js"></script>
+    <script type="text/javascript" src="js/calendarWeek.js"></script>
+  </body>
+
+  <div id="dialog" style="display:none">
+    <form>
+      <div class="md-form text-center">
+        <h3 id="dialog-title"></h3>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <i class="fa fa-calendar-o prefix grey-text"></i>
+          <label for="dialog-date" >Date</label>
+          <input type="text" class="text-center" id="dialog-date" style="width: auto;border-bottom:0px;" readonly>
+        </div>
+        <div class="col text-center">
+          <span><i class="fa fa-clock-o prefix grey-text"></i></span>
+          <span><label for="dialog-time" >Time</label>
+          <input type="text" class="text-center" id="dialog-time" style="width: auto; border-bottom:0px;" readonly></span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="qr"></div>
+  <div id="settings"></div>
+
+  <script src="js/nav.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/settings.js"></script>
 </html>

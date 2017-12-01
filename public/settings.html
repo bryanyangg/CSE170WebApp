@@ -1,71 +1,82 @@
-<div id="settings-dialog" style="display:none; z-index:9002; background-color:white; " class="modal" role="dialog">
-        <div class="text-center">
-            <h3 id="settings-title">Settings</h3>
-        </div>
-        <!-- profile image -->
-        <div class="row">
-            <div class="col text-center">
-                <a href="#" class="profile-pic text-center">
-                    <div class="profile-pic" id="settings-profilepic" style="background-image: url('https://aiaa.nmsu.edu/files/2016/09/noprofile.gif');" >
-                        <span><i class="fa fa-camera"></i></span>
-                        <span>Change Image</span>
-                    </div>
-                </a>
+<div id="settings-dialog" style="display:none; z-index:9002;  " class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="text-center modal-header">
+                <h3 id="settings-title">Settings</h3>
+                <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
             </div>
-        </div>
-        <!-- contact -->
-        <div class="row">
-            <div class="col">
-                <form>
-                    <div>
-                        <h5 >Change Personal Information</h5>
+            <div class="modal-body">
+                <!-- profile image -->
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="#" class="profile-pic text-center">
+                            <div class="profile-pic" id="settings-profilepic" style="background-image: url('https://aiaa.nmsu.edu/files/2016/09/noprofile.gif');" >
+                                <span><i class="fa fa-camera"></i></span>
+                                <span>Change Image</span>
+                            </div>
+                        </a>
                     </div>
-                    <div>
-                        <i class="fa fa-user-circle prefix grey-text"></i>
-                        <label for="settings-name">Name</label>
-                        <input type="text" id="settings-name">
+                </div>
+                <!-- contact -->
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <div>
+                                <h5 >Change Personal Information</h5>
+                            </div>
+                            <div>
+                                <i class="fa fa-user-circle prefix grey-text"></i>
+                                <label for="settings-name">Name</label>
+                                <input type="text" id="settings-name">
+                            </div>
+                            <div>
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <label for="settings-email">Email</label>
+                                <input type="email" id="settings-email">
+                            </div>
+                            <div>
+                                <i class="fa fa-phone prefix grey-text"></i>
+                                <label for="settings-phone">Phone Number</label>
+                                <input type="tel" id="settings-phone">
+                            </div>
+                            <div>
+                                <i class="fa fa-location-arrow prefix grey-text"></i>
+                                <label for="settings-loc">Set Location</label>
+                                <input type="text" id="settings-loc">
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <label for="settings-email">Email</label>
-                        <input type="email" id="settings-email">
+                </div>
+                <!-- password -->
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <div>
+                                <h5>Change Password</h5>
+                            </div>
+                            <div >
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <label for="currPass">Current Password</label>
+                                <input type="password" id="currPass">
+                            </div>
+                            <div>
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <label for="newPass">New Password</label>
+                                <input type="password" id="newPass">
+                            </div>
+                            <div>
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <label for="newPass2">Confirm Password</label>
+                                <input type="password" id="newPass2">
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <i class="fa fa-phone prefix grey-text"></i>
-                        <label for="settings-phone">Phone Number</label>
-                        <input type="tel" id="settings-phone">
-                    </div>
-                    <div>
-                        <i class="fa fa-location-arrow prefix grey-text"></i>
-                        <label for="settings-loc">Set Location</label>
-                        <input type="text" id="settings-loc">
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <!-- password -->
-        <div class="row">
-            <div class="col">
-                <form>
-                    <div>
-                        <h5>Change Password</h5>
-                    </div>
-                    <div >
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <label for="currPass">Current Password</label>
-                        <input type="password" id="currPass">
-                    </div>
-                    <div>
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <label for="newPass">New Password</label>
-                        <input type="password" id="newPass">
-                    </div>
-                    <div>
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <label for="newPass2">Confirm Password</label>
-                        <input type="password" id="newPass2">
-                    </div>
-                </form>
+            <div class="modal-footer">
+                <button id="settings-save" type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                <button id="settings-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
+</div>

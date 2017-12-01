@@ -9,6 +9,75 @@ function eventInfoModal(event){
 
 }
 
+function eventRemoveModal(event, element, view){
+    
+    element.attr('href', 'javascript:void(0);');
+    element.click(function() {
+      //set the modal values and open
+      $('#eventTitle').html(event.title);
+  
+      // Rebind the Remove button click handler
+      $("#removeBtn").off('click').on('click', function(e) {
+          $('#weekCalendar').fullCalendar('removeEvents', event._id);
+          $("#eventContentModal").dialog('destroy');
+          //$("#eventContentModal").siblings('.ui-dialog-titlebar').remove();
+          console.log('delete eventon week view');
+          $('#calendar').fullCalendar('removeEvents', event._id);
+          console.log('delete eventon month view, but since there is not backend, it would still show.');
+      });
+
+      // Rebind the close button click handler
+      $("#close").off('click').on('click', function(e) {
+        $("#eventContentModal").dialog('destroy');
+        console.log(' close the remove modal');
+        });
+        
+      $('#modalRemove').modal();
+    });
+}
+
+function addAppointment(){
+    alert("Add Appointment Form Submitted!");
+    $("#myModal").modal('hide');
+
+    //console.log($('#datepicker').val())
+    console.log($('#starts-at').val());
+    console.log($('#ends-at').val());
+
+    $("#calendar").fullCalendar('renderEvent',
+        {
+            title: $('#defaultForm-firstName').val() +', ' + $('#defaultForm-lastName').val() + ', ' + $('#comment').val(),
+            start: new Date($('#starts-at').val()),
+            end: new Date($('#ends-at').val()),
+            allDay: ($('#apptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#comment').val(),
+
+        },
+    true);
+
+    $("#weekCalendar").fullCalendar('renderEvent',
+        {
+            title: $('#defaultForm-firstName').val() + $('#defaultForm-lastName').val() + $('#comment').val(),
+            start: new Date($('#starts-at').val()),
+            end: new Date($('#ends-at').val()),
+            allDay: ($('#apptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#comment').val(),
+        },
+    true);
+
+    $('#calendar').fullCalendar('unselect');
+    $('#weekCalendar').fullCalendar('unselect');
+    
+}
+
 $(document).ready(function(){
     
     $('#calendar').fullCalendar({
@@ -18,30 +87,17 @@ $(document).ready(function(){
             right: 'month, listMonth'
         },
         buttonText: {
+            today: 'Back to Today',
             month: 'Month View',
             listMonth: 'Month List View'
         }, 
-        defaultDate: '2017-11-15',
+        defaultDate: '2017-11-22',
         navLinks: true, // can click day/week names to navigate views
         businessHours: true, // display business hours
         selectable: true,
         selectHelper: true,
-        select: function(start, end) {
-            var title = prompt('Event Title:');
-            var eventData;
-            if (title) {
-                eventData = {
-                    title: title,
-                    start: start,
-                    end: end
-                };
-                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                //hacking to sync both calendars
-                $('#weekCalendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-            }
-            $('#calendar').fullCalendar('unselect');
-            //hacking to sync both calendars
-            $('#weekCalendar').fullCalendar('unselect');
+        select: function(start, end, allDay) {
+            $('#myModal').modal('show');
         },
         editable: true,
         eventLimit: true, // allow "more" link when too many events
@@ -60,11 +116,11 @@ $(document).ready(function(){
                 element.find(".fc-content").prepend("<div class='ibox-tools'><a style='background-color: transparent; margin-right: 10px' class='pull-left'><i class='fa fa-times delBtn'></i></a></div>");
             }
             element.find(".delBtn").on('click', function() {
+                eventRemoveModal(event, element, view);
+                /*
                 $('#calendar').fullCalendar('removeEvents',event._id);
                 console.log('delete event');
-                $('#weekCalendar').fullCalendar('removeEvents',event._id);
-                console.log('delete event on week calendar');
-
+                */
             });
         },
         events: [
@@ -122,7 +178,57 @@ $(document).ready(function(){
                 url: 'http://google.com/',
                 start: '2017-11-28'
             },
-
+            {
+                title: 'All Day Event on the 19th',
+                start: '2017-11-19',
+                description: 'Comment is working'
+            },
+            {
+                title: '3-Day Event',
+                start: '2017-11-20',
+                end: '2017-11-22',
+                description: 'Comment is working'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2017-11-21T16:00:00'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2017-11-25T16:00:00',
+                description: 'Comment is working'
+            },
+            {
+                title: 'Meeting',
+                start: '2017-11-19T10:30:00',
+                end: '2017-11-19T12:30:00'
+            },
+            {
+                title: 'Lunch',
+                start: '2017-11-20T12:00:00'
+            },
+            {
+                title: 'Meeting on the 20th',
+                start: '2017-11-20T14:30:00',
+                description: 'Comment is working'
+            },
+            {
+                title: 'Happy Hour @ Bistro',
+                start: '2017-11-21T17:30:00',
+                description: 'WAIT BISTRO HAS HAPPY HOUR WHAT THE F!?'
+            },
+            {
+                title: 'Late Dinner',
+                start: '2017-11-22T20:00:00',
+                description: 'BECAUSE CS STUDENTS DONT GET TO EAT REGULARLY'
+            },
+            {
+                title: 'Turkeys Birthday Party',
+                start: '2017-11-23T07:00:00',
+                description: 'Obv thats why we eat turkey to celebrate'
+            },
             // areas where "Meeting" must be dropped
             {
                 id: 'availableForMeeting',
@@ -139,8 +245,10 @@ $(document).ready(function(){
 
             // red areas where no events can be dropped
             {
-                start: '2017-11-24',
+                id: 'Thanksgiving Break',
+                start: '2017-11-23',
                 end: '2017-11-28',
+                description: 'Background is red because it is holiday',
                 overlap: false,
                 rendering: 'background',
                 color: '#ff9f89'
@@ -149,10 +257,20 @@ $(document).ready(function(){
                 start: '2017-11-06',
                 end: '2017-11-08',
                 overlap: false,
+                description: 'Background is red because it is holiday',
                 rendering: 'background',
                 color: '#ff9f89'
             }
         ]
     });
 
+    // Bind the dates to datetimepicker.
+    // You should pass the options you need
+    $("#starts-at, #ends-at").datetimepicker();
+    
+    $('#btnAdd').on('click', function(e){
+        // We don't want this to act as a link so cancel the link action
+        e.preventDefault();
+        addAppointment();
+    });
 });

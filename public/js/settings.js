@@ -2,14 +2,14 @@ function getCurrentUser() {
     var users = localStorage.getItem("users");
     var curruser = localStorage.getItem("user");
     // check for undefined users
-    if (users != undefined) 
+    if (users != undefined)
         users = JSON.parse(users);
         return users[curruser];
 }
 function getUsers() {
     var users = localStorage.getItem("users");
     // check for undefined notes
-    if (users != undefined) 
+    if (users != undefined)
         return JSON.parse(users);
 }
 
@@ -35,7 +35,7 @@ function populateSettingsDialog() {
     $('#settings-profilepic').css("background-image", "url('" + curruser["profilepic"] + "')");
 
     $("#settings-profilepic").click(function(){
-        var img_url = prompt("Url of image?"); 
+        var img_url = prompt("Url of image?");
         document.getElementById('settings-profilepic').value = img_url;
         $(this).css("background-image", "url('" + curruser["profilepic"] + "')");
     });
@@ -43,42 +43,25 @@ function populateSettingsDialog() {
 
 $(document).ready(function(){
     $('#settings').load('settings.html', function(){
-        var settingsdialog = $( "#settings-dialog" ).dialog({
-            dialogClass: "settingsPopup",
-            autoOpen: false,
-            // "max-height": "80vh",
-            // height: "100vh",
-            width: 350,
-            modal: true,
-            "z-index": 9005,
-            buttons: {
-                Save:{
-                    text: "Save",
-                    class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
-                    click: function() {
-                        var curruser = getCurrentUser();
-                        curruser['name'] = document.getElementById('settings-name').value;
-                        curruser['phone'] = document.getElementById('settings-phone').value;
-                        curruser['loc'] = document.getElementById('settings-loc').value;
-                        curruser['email'] = document.getElementById('settings-email').value;
-                        curruser['profilepic'] = document.getElementById('settings-profilepic').value;
-                        saveUser(localStorage.getItem("user"), curruser["name"], curruser["profilepic"], curruser["loc"], curruser["phone"])
-                        settingsdialog.dialog( "close" );
-                    }
-                },
-                Cancel:{
-                    text: "Cancel",
-                    class: "btn btn-outline-primary btn-rounded waves-effect waves-light text-center",
-                    click: function() {
-                        settingsdialog.dialog( "close" );
-                    }
-                }
-            }
-        });
 
+        $('#settings-save').click(function() {
+                var curruser = getCurrentUser();
+                curruser['name'] = document.getElementById('settings-name').value;
+                curruser['phone'] = document.getElementById('settings-phone').value;
+                curruser['loc'] = document.getElementById('settings-loc').value;
+                curruser['email'] = document.getElementById('settings-email').value;
+                curruser['profilepic'] = document.getElementById('settings-profilepic').value;
+                saveUser(localStorage.getItem("user"), curruser["name"], curruser["profilepic"], curruser["loc"], curruser["phone"])
+                location.reload(); // update information visually
+            }
+        );
+        $('#settings-cancel').click(function() {
+            populateSettingsDialog(); // retrieve original info
+        });
+        
         $(".settings").click(function(){
             populateSettingsDialog();
-            settingsdialog.dialog( "open" );
+            $( "#settings-dialog" ).modal('show');
         });
     });
 });
