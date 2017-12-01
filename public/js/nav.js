@@ -15,22 +15,21 @@ function getUsers() {
 }
 
 $(document).ready(function(){
-    console.log('document ready in nav');
     $('#nav').load('nav.html', function(){
-        console.log("loaded the nav");
         var curruser = getCurrentUser();
         if (curruser != undefined) { // logged in
             document.getElementById("nav-username").innerHTML = getCurrentUser()["name"];
-            document.getElementById("nav-logout").click = function(){
-                delete localStorage.user;
-                window.location.href = "login.html";
-            }
         } else { // not logged in
-            document.getElementById("nav-username").innerHTML = "Login Sign Up"
+            $("#nav-signup").parent().css("display", "list-item");
+            $("#nav-login").parent().css("display", "list-item");
+            $("#nav-username").parent().css("display", "none");
+            $(".qr").parent().css("display", "none");
+            $("#navbarDropdownMenuLink").parent().css("display", "none");
         }
-        
-        // switch(window.location.href.split("/")[-1]) {
-        //     case "index"
-        // }
+        document.getElementById("nav-logout").onclick = function(){
+            console.log('logout')
+            delete localStorage.user;
+            window.location.href = "login.html";
+        }
     });
 })

@@ -1,8 +1,14 @@
 function initNotes() {
-    if (getNotes() == undefined || getVersion() == undefined) {
+    var notes = getNotes();
+    if (notes == undefined || getVersion() == undefined) {
         localStorage.setItem("notes", JSON.stringify({}));
         localStorage.setItem("version", "1234");
     }
+    console.log(Object.keys(notes).length);
+    if(notes != undefined && Object.keys(notes).length > 0) {
+        document.getElementById("notes_content").disabled = false;
+    } 
+
 }
 
 function addNote(){
@@ -55,28 +61,35 @@ function populateNotesSummary() {
     var notes = getNotes();
     document.getElementById("notes_identifier").innerHTML = "";
 
-    for( note in notes) {
-        var note_option = document.createElement("option");
-        note_option.value = note;
-        note_option.innerHTML = notes[note]["identifier"];
-        document.getElementById("notes_identifier").appendChild(note_option);
-    }
-
-    document.getElementById("notes_identifier").onclick = function(){
-        populateNoteContent(this.value);
+    if(notes != undefined && Object.keys(notes).length > 0) {
+        for( note in notes) {
+            var note_option = document.createElement("option");
+            note_option.value = note;
+            note_option.innerHTML = notes[note]["identifier"];
+            document.getElementById("notes_identifier").appendChild(note_option);
+        }
+        document.getElementById("notes_identifier").onclick = function(){
+            populateNoteContent(this.value);
+        }
+        document.getElementById("notes_identifier").value = Object.keys(notes)[0];
+        populateNoteContent(Object.keys(notes)[0]);
+    }else {
+        document.getElementById("notes_content").value = "";
     }
 }
 
 function populateNoteContent(note) {
     var notes = getNotes();
-    document.getElementById("notes_content").value = notes[note]["content"];
-    document.getElementById("notes_content").focus();
+    if(notes != undefined && Object.keys(notes).length > 0 ) {
+        document.getElementById("notes_content").value = notes[note]["content"];
+        document.getElementById("notes_content").focus();
+    }
 }
 
 function deleteNote() {
     var notes = getNotes();
     var note = document.getElementById("notes_identifier").value;
-    if ((note != undefined) && (note != "") && (note in notes)) {
+    if ((note != undefined) && (Object.keys(notes).length > 0) && (note in notes)) {
         var dialog = $( "#notesdialog" ).dialog({
             dialogClass: "notesPopup",
             autoOpen: false,
@@ -91,8 +104,11 @@ function deleteNote() {
                         delete notes[note];
                         localStorage.setItem("notes", JSON.stringify(notes));
                         populateNotesSummary();
-                        document.getElementById("notes_content").value = "";
+                        
                         dialog.dialog( "close" );
+                        if(notes == undefined || Object.keys(notes).length == 0) {
+                            document.getElementById("notes_content").disabled = true;
+                        } 
                     }
                 },
                 Cancel:{
