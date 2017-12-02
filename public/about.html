@@ -10,7 +10,20 @@
 
     gtag('config', 'UA-109875057-1');
     </script>
-    
+    <!-- Google Analytics Content Experiment code -->
+    <script>function utmx_section(){}function utmx(){}(function(){var
+            k='164793841-2',d=document,l=d.location,c=d.cookie;
+            if(l.search.indexOf('utm_expid='+k)>0)return;
+            function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+            indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+            length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+            '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+            '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+            '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+            valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+            '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+            </script><script>utmx('url','A/B');</script>
+        <!-- End of Google Analytics Content Experiment code -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,7 +62,7 @@
         
         .bgimg-1, .bgimg-2, .bgimg-3 {
           position: relative;
-          opacity: 0.65;
+          /* opacity: 0.65; */
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -58,19 +71,30 @@
         }
         .bgimg-1 {
           background-image: url("img/calendar_bg.jpg");
-          min-height: 75%;
+          opacity: 0.65;
         }
         
-        .bgimg-2 {
+        .bgimg-top {
           background-image: url("img/calendar_bg.jpg");
+          /* background: no-repeat center center fixed;  */
+            -webkit-background-size: 100%;
+            -moz-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
           /* min-height: 400px; */
           min-height: 100%;
+          opacity: .65;
         }
-        
+        .bgimg-2 {
+          /* background-image: url("img/calendar_screenshot.png"); */
+          min-height: 100%;
+          background-color: #fef7e2;
+
+        }        
         .bgimg-3 {
-          background-image: url("img_parallax3.jpg");
+          /* background-image: url("img/calendar_screenshot.png"); */
           /* min-height: 400px; */
-          opacity: 1;
+
           min-height: 100%;
         }
         
@@ -80,7 +104,7 @@
           top: 50%;
           width: 100%;
           text-align: center;
-          color: #000;
+          color: #111;
         }
         
         .caption span.border {
@@ -91,7 +115,8 @@
           letter-spacing: 10px;
         }
         
-        h3 {
+        
+        h2 {
           letter-spacing: 5px;
           text-transform: uppercase;
           font: 20px "Lato", sans-serif;
@@ -108,77 +133,50 @@
 
   <body style="padding:0px 0px 30px 0px;">
     <div id="nav"></div>
-    <div class="bgimg-1">
+    <div class="bgimg-top">
         <div class="caption">
             <span class="border">AppName</span>
             <!-- <span class="border">AppName</span> -->
-            <span ><p style="padding:30px">The ultimate calendar and notes thing.</p></span>
+            <span >
+                <p style="padding:30px">Calendar and Notes Web Application<br/><b style="color:black">Scroll down</b> to learn more!</p>
+                <!-- <p>Scroll down to learn more!</p> -->
+            </span>
+            <!-- <span ><p style="padding:30px">Public and Private Calendar</p></span> -->
         </div>
     </div>
       
-    <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+    <div style="color: #444;background-color:#bbb;text-align:center;padding:50px 80px;text-align: justify;">
         <div class="row text-center">
-            <div class="col"><h3 style="text-align:center;padding:0px 0px 40px 0px;">What This Does</h3></div>
+            <div class="col"><h2 style="text-align:center;padding:0px 0px 40px 0px;color: white;">What This Does</h2></div>
         </div>
         <div class="row text-center">
             <div class="col">
-                Notes and things
-                <p>Short and simple description. Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. </p>
+                <b>Notes</b>
+                <p>Take notes and set reminders for yourself.</p>
             </div>
             <div class="col">
-                Calendar and things
-                <p>Short and simple description. Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. </p>
+                <b>Calendars</b>
+                <p>View, schedule, and delete events on your private calendar. Allow guests to schedule events with you on your public calendar.</p>
             </div>
         </div>
     </div>
       
     <div class="bgimg-2">
-        <div class="caption">
-            <span class="border" style="background-color:transparent;font-size:25px;color: #616161;">Insert Inspiring picture of App</span>
+        <div class="caption" style="top:25%">
+            <span><h2 style="color: #616161; padding: 30px;">Demo:</h2></span>
+            <img src="img/workflow.gif" width="50%"/>
         </div>
     </div>
-      
-    <div style="position:relative;">
-        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-            <p>You can write notes.</p>
-        </div>
-    </div>
-      
-    <div style="position:relative;">
-        <div style="color:#666;text-align:center;padding:50px 80px;text-align: justify;">
-            <p>We designed the note taking portion to do great things like cure cancer. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. </p>
+          
+    <div style="color: #444;background-color:#bbb;text-align:center;padding:50px 80px;text-align: justify;">
+        <div class="row text-center">
+            <div class="col">
+                <a href="signup.html"><button class="btn btn-primary">Get Started</button></a>
+            </div>
         </div>
     </div>
 
-    <div class="bgimg-1">
-        <div class="caption">
-            <span class="border" style="background-color:transparent;font-size:25px;color: #616161;">Insert Clip of Notes in action </span>
-        </div>
-    </div>
-      
-    <div style="position:relative;">
-        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-          <p>You get a calendar.</p>
-        </div>
-    </div>
-    <div style="position:relative;">
-            <div style="color:#666;text-align:center;padding:50px 80px;text-align: justify;">
-                <p>We designed the calendar taking portion to do great things like cure cancer. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. </p>
-            </div>
-        </div>
-    
-        <div class="bgimg-1">
-            <div class="caption">
-                <span class="border" style="background-color:transparent;font-size:25px;color: #616161;">Insert Clip of Calendar in action </span>
-            </div>
-        </div>
-          
-    <div class="bgimg-3">
-        <div class="caption">
-            <a href="signup.html"><button class="btn btn-primary">Get Started</button></a>
-            <!-- <span class="border">Get Started</span> -->
-        </div>
-    </div>
+
     <!-- <div class="container" style="height:100%; padding: 50px 0px 0px 0px;">
         <div id="widget-container" class="text-center row" style="padding:20px; height:100%; width:100%;">
             <div id="widget1" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">

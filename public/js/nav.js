@@ -26,6 +26,27 @@ $(document).ready(function(){
             $(".qr").parent().css("display", "none");
             $("#navbarDropdownMenuLink").parent().css("display", "none");
         }
+        $("#navbarDropdownMenuLink").click(function(){
+            ga('send', 'event', {
+                eventCategory: 'nav',
+                eventAction: 'click',
+                eventLabel: 'ViewSchedule'
+            });
+        });
+        $("#myschedule").click(function(){
+            ga('send', 'event', {
+                eventCategory: 'nav',
+                eventAction: 'click',
+                eventLabel: 'ViewMySchedule'
+            });
+        });
+        $("#publicschedule").click(function(){
+            ga('send', 'event', {
+                eventCategory: 'nav',
+                eventAction: 'click',
+                eventLabel: 'ViewPublicSchedule'
+            });
+        });
         document.getElementById("nav-logout").onclick = function(){
             console.log('logout')
             delete localStorage.user;

@@ -3,50 +3,50 @@
    <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-light grey fixed-top" style="position:fixed; top:0px; width:100%; z-index:9000">
-            <!-- Navbar brand -->
-            <a class="navbar-brand mr-auto" href="index.html">AppName</a>
+        <!-- Navbar brand -->
+        <a class="navbar-brand mr-auto" href="index.html">AppName</a>
 
-            <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-            <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- Links -->
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
 
-                  <!-- Dropdown -->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View Schedule</a>
-                      <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="calendar.html">My Schedule</a>
-                          <a class="dropdown-item" href="guest.html">Public Schedule</a>
-                      </div>
-                  </li>
-
-                  <li class="nav-item">
-                      <a class="nav-link qr" href="#">QR</a>
-                  </li>
-                </ul>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown"> <!-- todo login/sign up vs username -->
-                    <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u id="nav-username">User name</u></a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="UserDropDownLink">
-                        <a class="dropdown-item settings" href="#">Settings</a>
-                        <a class="dropdown-item" href="#" id="nav-logout">Log Out</a>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View Schedule</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="calendar.html" id="myschedule">My Schedule</a>
+                        <a class="dropdown-item" href="guest.html" id="publicschedule">Public Schedule</a>
                     </div>
                 </li>
-                <li class="nav-item" style="display:none"> <!-- todo login/sign up vs username -->
-                    <a class="nav-link" id="nav-login"  href="login.html">Login</a>
-                </li>
-                <li class="nav-item" style="display:none"> <!-- todo login/sign up vs username -->
-                    <a class="nav-link" id="nav-signup" href="signup.html">Sign Up</a>
-                </li>
-              </ul>
-            </li>
-          </div>
 
-        </nav>
+                <li class="nav-item">
+                    <a class="nav-link qr" href="#">QR</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown"> <!-- todo login/sign up vs username -->
+                <a class="nav-link dropdown-toggle" id="UserDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><u id="nav-username">User name</u></a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="UserDropDownLink">
+                    <a class="dropdown-item settings" href="#">Settings</a>
+                    <a class="dropdown-item" href="#" id="nav-logout">Log Out</a>
+                </div>
+            </li>
+            <li class="nav-item" style="display:none"> <!-- todo login/sign up vs username -->
+                <a class="nav-link" id="nav-login"  href="login.html">Login</a>
+            </li>
+            <li class="nav-item" style="display:none"> <!-- todo login/sign up vs username -->
+                <a class="nav-link" id="nav-signup" href="signup.html">Sign Up</a>
+            </li>
+            </ul>
+        </li>
+        </div>
+
+    </nav>
