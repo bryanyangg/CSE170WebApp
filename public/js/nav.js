@@ -26,31 +26,36 @@ $(document).ready(function(){
             $(".qr").parent().css("display", "none");
             $("#navbarDropdownMenuLink").parent().css("display", "none");
         }
+        document.getElementById("nav-logout").onclick = function(){
+            console.log('logout')
+            delete localStorage.user;
+            window.location.href = "login.html";
+        }
         $("#navbarDropdownMenuLink").click(function(){
+            console.log('click')
             ga('send', 'event', {
                 eventCategory: 'nav',
                 eventAction: 'click',
-                eventLabel: 'ViewSchedule'
+                eventLabel: 'ViewSchedule',
+                transport: 'beacon'
             });
+            
         });
         $("#myschedule").click(function(){
             ga('send', 'event', {
                 eventCategory: 'nav',
                 eventAction: 'click',
-                eventLabel: 'ViewMySchedule'
+                eventLabel: 'ViewMySchedule',
+                transport: 'beacon'
             });
         });
         $("#publicschedule").click(function(){
             ga('send', 'event', {
                 eventCategory: 'nav',
                 eventAction: 'click',
-                eventLabel: 'ViewPublicSchedule'
+                eventLabel: 'ViewPublicSchedule',
+                transport: 'beacon'
             });
         });
-        document.getElementById("nav-logout").onclick = function(){
-            console.log('logout')
-            delete localStorage.user;
-            window.location.href = "login.html";
-        }
     });
 })

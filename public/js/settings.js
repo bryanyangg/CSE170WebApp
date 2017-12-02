@@ -13,13 +13,16 @@ function getUsers() {
         return JSON.parse(users);
 }
 
-function saveUser(user, name, profilepic, loc, phone, profilepic) {
+function saveUser(user, name, profilepic, loc, phone, profilepic, pass0, pass1, pass2) {
     var users = getUsers();
     users[user]['name'] = name;
     users[user]['profilepic'] = profilepic;
     users[user]['loc'] = loc;
     users[user]['phone'] = phone;
     users[user]['profilepic'] = profilepic;
+    if(users[user]['pass'] == pass0 && pass1 == pass2) {
+        users[user]['pass'] = pass1;
+    }
     localStorage.setItem("users", JSON.stringify(users));
 }
 
@@ -51,14 +54,16 @@ $(document).ready(function(){
                 curruser['loc'] = document.getElementById('settings-loc').value;
                 curruser['email'] = document.getElementById('settings-email').value;
                 curruser['profilepic'] = document.getElementById('settings-profilepic').value;
-                saveUser(localStorage.getItem("user"), curruser["name"], curruser["profilepic"], curruser["loc"], curruser["phone"])
+                curruser['pass0'] = document.getElementById('currPass').value;
+                curruser['pass1'] = document.getElementById('newPass').value;
+                curruser['pass2'] = document.getElementById('newPass2').value;
+                saveUser(localStorage.getItem("user"), curruser["name"], curruser["profilepic"], curruser["loc"], curruser["phone"], curruser['profilepic'], curruser['pass0'], curruser['pass1'], curruser['pass2']);
                 location.reload(); // update information visually
             }
         );
         $('#settings-cancel').click(function() {
             populateSettingsDialog(); // retrieve original info
         });
-        
         $(".settings").click(function(){
             populateSettingsDialog();
             $( "#settings-dialog" ).modal('show');
