@@ -26,6 +26,15 @@ $(document).ready(function(){
             $(".qr").parent().css("display", "none");
             $("#navbarDropdownMenuLink").parent().css("display", "none");
         }
+        if(window.location.href.includes("index") || window.location.href.includes("about") || !window.location.href.includes(".html")) {
+            $("#home").css("font-weight", "bold");
+        } else if (window.location.href.includes("calendar")) {
+            $("#navbarDropdownMenuLink").css("font-weight", "bold");
+            $("#myschedule").css("font-weight", "bold");
+        } else if (window.location.href.includes("guest")) {
+            $("#navbarDropdownMenuLink").css("font-weight", "bold");
+            $("#publicschedule").css("font-weight", "bold");
+        }
         document.getElementById("nav-logout").onclick = function(){
             console.log('logout')
             delete localStorage.user;
@@ -63,5 +72,7 @@ $(document).ready(function(){
                 }
             });
         });
+
+
     });
 })
