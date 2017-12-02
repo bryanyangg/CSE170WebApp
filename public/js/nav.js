@@ -46,7 +46,10 @@ $(document).ready(function(){
                 eventCategory: 'nav',
                 eventAction: 'click',
                 eventLabel: 'ViewMySchedule',
-                transport: 'beacon'
+                transport: 'beacon',
+                hitCallback: function() {
+                    window.location.href = "calendar.html";
+                }
             });
         });
         $("#publicschedule").click(function(){
@@ -54,7 +57,10 @@ $(document).ready(function(){
                 eventCategory: 'nav',
                 eventAction: 'click',
                 eventLabel: 'ViewPublicSchedule',
-                transport: 'beacon'
+                transport: 'beacon',
+                hitCallback: function() {
+                    window.location.href = "guest.html";
+                }
             });
         });
     });
