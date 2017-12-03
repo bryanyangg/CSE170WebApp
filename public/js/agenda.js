@@ -121,6 +121,7 @@ function populateAgenda() {
                         class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                         click: function() {
                             dialog.dialog( "close" );
+
                         }
                     }
                 }

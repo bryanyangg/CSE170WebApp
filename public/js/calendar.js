@@ -34,6 +34,12 @@ function eventRemoveModal(event, element, view){
         
       $('#modalRemove').modal();
     });
+
+    $("#weekCalendar").fullCalendar( 'refetchEvents' );
+    $("#calendar").fullCalendar( 'refetchEvents' );
+
+    $('#calendar').fullCalendar('unselect');
+    $('#weekCalendar').fullCalendar('unselect');
 }
 
 function addAppointment(){
@@ -72,6 +78,9 @@ function addAppointment(){
                         'Comment: ' + $('#comment').val(),
         },
     true);
+
+    $("#weekCalendar").fullCalendar( 'refetchEvents' );
+    $("#calendar").fullCalendar( 'refetchEvents' );
 
     $('#calendar').fullCalendar('unselect');
     $('#weekCalendar').fullCalendar('unselect');

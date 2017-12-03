@@ -36,7 +36,7 @@ function eventRemoveModal(event, element, view){
 }
 
 function addAppointment(){
-    alert("Add Appointment Form Submitted!");
+    //alert("Add Appointment Form Submitted!");
     $("#myModal").modal('hide');
 
     //console.log($('#datepicker').val())
@@ -80,7 +80,8 @@ function addAppointment(){
 $(document).ready(function(){
 
     $('#addBtn').on('click', function() {
-        $('#weekCalendar').fullCalendar('select');
+        //$('#weekCalendar').fullCalendar('select');
+        $('#myModal').modal('show');
     }); 
 
     $('#weekCalendar').fullCalendar({
