@@ -75,10 +75,9 @@
   }
 
   body {
-    overflow:hidden;
+    overflow:scroll;
     width:100vw;
     height: 100%;
-    overflow: hidden;
     background-color: #FDF6E3 !important;
   }
   div+ .widget
@@ -102,12 +101,12 @@
   <div id="nav"></div>
 
   <div class="container" style="height:100%; margin:0px; padding: 50px 0px 0px 0px;">
-    <div id="widget-container" class="text-center row" style="padding:20px; height:100%; width:100vw; margin:0px;">
-      <div id="widget1" class="col text-center widget" style="height:100%; border-radius:6px; width:100%; margin: 0px 10px auto; overflow-y:scroll">
-        <div id="agenda_widget" style="border-radius:6px; width:100%; height:100%; margin: 0 auto;"></div>
+    <div id="widget-container" class="text-center row" style="height:100%; width:100vw; margin:0px;">
+      <div id="widget1" class="col text-center widget" style="padding:20px; height:100%; border-radius:6px; margin: 0px 10px auto; overflow-y:scroll">
+        <div id="agenda_widget" style="border-radius:6px; height:100%; margin: 0 auto;"></div>
       </div>
-      <div id="widget2" class="col-7 text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0px 10px auto;">
-          <div id="notes_widget" style="border-radius:6px; width:100%; height:100%; margin: 0 auto;"></div>
+      <div id="widget2" class="col-7 text-center widget" style="padding:20px; border-radius:6px; height:100%; overflow:hidden; margin: 0px 10px auto;">
+          <div id="notes_widget" style="border-radius:6px;  height:100%; margin: 0 auto;"></div>
       </div>
     </div>
 
@@ -151,48 +150,14 @@
       if (screen && screen.width < 480 && state != "mobile") {
         $("#widget-container").removeClass("row");
         $("#widget1").removeClass("col");
-        $("#widget2").removeClass("col");
-        $("#widget-navigator").css("display", "block");
+        $("#widget2").removeClass("col-7");
         // default is widget1
-        $("#widget2").css("height", "0");
-        $('#pg1').click();
-
-        // toggle between widgets... super hacky rn :( )
-        $('input[type=radio][name=widget-pg]').change(function() {
-          // $(".widget").animate({"display":"none"});
-          $(".widget").css("height", "0");
-          $('#' + this.value).css("height", "100%");
-        });
-
-        // toggle between widgets... super hacky rn :( )
-        $(document).on("swipeleft", function() {
-          $("#widget1").animate({
-            width: 0
-          });
-          $('#widget2').animate({
-            width: "100%"
-          });
-          $('#pg2').select();
-        });
-        // toggle between widgets... super hacky rn :( )
-        $(document).on("swiperight", function() {
-          $("#widget2").animate({
-            width: 0
-          });
-          $('#widget1').animate({
-            width: "100%"
-          });
-          $('#pg1').select();
-        });
         state = "mobile";
         // $("#widget-navigator").removeClass("hide");
       } else if (screen && screen.width >= 480 && state != "desktop") {
         $("#widget-container").addClass("row");
         $("#widget1").addClass("col");
-        $("#widget2").addClass("col");
-        $(".widget").css("height", "100%");
-        $('input[type=radio][name=widget-pg]').change(function() {});
-        $("#widget-navigator").css("display", "none");
+        $("#widget2").addClass("col-7");
         state = "desktop";
       }
     }
