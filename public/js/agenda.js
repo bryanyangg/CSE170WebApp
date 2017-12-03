@@ -113,6 +113,9 @@ function populateAgenda() {
                         text: "Delete",
                         class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                         click: function() {
+                            delete agenda[event];
+                            localStorage.setItem("agenda", JSON.stringify(events));
+                            populateAgenda();
                             dialog.dialog( "close" );
                         }
                     },
