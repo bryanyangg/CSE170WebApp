@@ -1,23 +1,27 @@
 var events = [
     {
-        title: 'Business Lunch',
-        start: '2017-11-03T13:00:00',
+        title: 'Appointment with Jeff',
+        start: '2017-12-03T13:00:00',
         constraint: 'businessHours'
     },
     {
-        title: 'Meeting',
-        start: '2017-11-13T11:00:00',
+        title: 'Meeting with Team',
+        start: '2017-12-13T11:00:00',
         constraint: 'availableForMeeting', // defined below
         color: '#257e4a'
     },
     {
-        title: 'Conference',
-        start: '2017-11-18',
+        title: 'Conference @ La Jolla',
+        start: '2017-12-18',
         end: '2017-11-20'
     },
     {
-        title: 'Party',
-        start: '2017-11-29T20:00:00'
+        title: 'Christmas Vacation',
+        start: '2017-12-25T00:00:00'
+    },
+    {
+        title: 'New Years',
+        start: '2017-12-31T23:59:00'
     },
 
     // areas where "Meeting" must be dropped
