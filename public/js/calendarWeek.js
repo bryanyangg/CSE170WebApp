@@ -94,7 +94,7 @@ $(document).ready(function(){
             agendaDay: 'Day View'
         },    
         defaultView: 'agendaWeek',
-        defaultDate: '2017-11-22',
+        defaultDate: '2017-12-03',
         contentHeight: 565,
         timeFormat: 'h:mm A', 
         navLinks: true, // can click day/week names to navigate views

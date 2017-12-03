@@ -91,7 +91,7 @@ $(document).ready(function(){
             month: 'Month View',
             listMonth: 'Month List View'
         }, 
-        defaultDate: '2017-11-22',
+        defaultDate: '2017-12-03',
         navLinks: true, // can click day/week names to navigate views
         businessHours: true, // display business hours
         selectable: true,
