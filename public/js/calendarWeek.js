@@ -36,7 +36,7 @@ function eventRemoveModal(event, element, view){
 }
 
 function addAppointment(){
-    debugger;
+
     console.trace("add appointment trace");
     alert("Add Appointment Form Submitted!");
     $("#myModal").modal('hide');
