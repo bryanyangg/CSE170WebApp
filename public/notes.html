@@ -13,7 +13,7 @@
 
 
 <!-- Start your project here-->
-<div class=" justify-content-md-center" style="background-color: white">
+<div class=" justify-content-md-center" style="background-color: white; height:100%">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top" style="position: sticky; top:0; width:100%; z-index:50;  border-radius:6px 6px 0px 0px;">
         <div class="container">
             <a class="navbar-brand" href="#">Notes</a>
@@ -38,9 +38,9 @@
             </div>
         </div>
     </div>
-    <div class="row container" style="width: 100%; top:100px; padding:15px 10px 50px 10px; position:sticky; z-index:50; ">
+    <div class="row container" style="width: 100%; height:100%; top:100px; padding:15px 10px 50px 10px; position:sticky; z-index:50; ">
         <div class="col-4 col-md-4">
-            <div id="notes_identifier" size="25" style="width:100%; height:100%; border-width:0;"></div> <!-- todo placeholder size for now -->
+            <div id="notes_identifier" size="25" style="width:100%; height:100%; padding-bottom: 56px; border-width:0; overflow-y:scroll"></div> <!-- todo placeholder size for now -->
         </div>
         <div class="col">
             <textarea id="notes_content" style="width:100%; height:100%; border-width:0;" disabled></textarea>
