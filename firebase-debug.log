@@ -1,0 +1,28 @@
+[debug] [2017-12-04T03:38:51.400Z] ----------------------------------------------------------------------
+[debug] [2017-12-04T03:38:51.402Z] Command:       c:\Program Files\nodejs\node.exe c:\Program Files\nodejs\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-12-04T03:38:51.403Z] CLI Version:   3.15.3
+[debug] [2017-12-04T03:38:51.403Z] Platform:      win32
+[debug] [2017-12-04T03:38:51.403Z] Node Version:  v7.4.0
+[debug] [2017-12-04T03:38:51.403Z] Time:          Sun Dec 03 2017 19:38:51 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-04T03:38:51.403Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-04T03:38:51.416Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-04T03:38:51.416Z] > authorizing via signed-in user
+[debug] [2017-12-04T03:38:51.418Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cse170-a7  
+ Sun Dec 03 2017 19:38:51 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-04T03:38:51.760Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-04T03:38:51.761Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cse170-a7/tokens  
+ Sun Dec 03 2017 19:38:51 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-04T03:38:52.125Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'cse170-a7'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2017-12-04T03:38:52.569Z] >>> HTTP REQUEST PUT https://cse170-a7.firebaseio.com/.settings/rules.json?dryRun=true {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+ Sun Dec 03 2017 19:38:52 GMT-0800 (Pacific Standard Time)
