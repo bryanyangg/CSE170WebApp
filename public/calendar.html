@@ -116,6 +116,79 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
         <div class="col-lg-8">
           <div id='calendar'></div>
+            <!-- Modal -->
+            <div class="modal fade" id="myCalModal" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" style="margin:auto;">Add Appointment</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="md-form">
+                        <i class="fa fa-user-o prefix grey-text"></i>
+                        <input type="text" id="caldefaultForm-firstName" class="form-control">
+                        <label for="defaultForm-firstName">First Name</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
+                        <input type="text" id="caldefaultForm-lastName" class="form-control">
+                        <label for="defaultForm-lastName">Last Name</label>
+                      </div>
+
+                      <div class="md-form">
+                        <i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="email" id="caldefaultForm-email" class="form-control">
+                        <label for="defaultForm-email">Email</label>
+                      </div>
+
+                      <div class="md-form">
+                        <i class="fa fa-phone prefix grey-text"></i>
+                        <input type="number" id="caldefaultForm-number" class="form-control">
+                        <label for="defaultForm-number">Phone Number</label>
+                      </div>
+                      <!--
+                        <div class="md-form">
+                          <i class="fa fa-calendar prefix grey-text"></i>
+                          <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
+                          <label for="datepicker">Date</label>
+                        </div>
+                      -->
+                      <div class="md-form">
+                        <i class="fa fa-calendar prefix grey-text"></i>
+
+                        <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="calstarts-at" class="starts-at">
+                        <label for="starts-at">Start Date/Time</label>
+                      </div>
+                      <div class="md-form">
+
+                        <i class="fa fa-clock-o prefix grey-text"></i>
+                        <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="calends-at" class="form-control">
+                        <label for="ends-at">End Date/Time</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-clock-o prefix grey-text" style="display:none"></i>
+                        <input placeholder="Yes/No" type="text" id="calapptAllDay" class="form-control">
+                        <label for="apptAllDay">All Day?</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-commenting-o prefix grey-text"></i>
+                        <textarea type="text" id="calcomment" class="md-textarea"></textarea>
+                        <label for="comment">Comment: </label>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button id="calSumbit" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                    <button id="calbtnClose" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           <div id='datepicker'></div>
         </div>
 

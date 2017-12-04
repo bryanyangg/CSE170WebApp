@@ -36,9 +36,12 @@ function eventRemoveModal(event, element, view){
 }
 
 function addAppointment(){
-    //alert("Add Appointment Form Submitted!");
+    debugger;
+    console.trace("add appointment trace");
+    alert("Add Appointment Form Submitted!");
     $("#myModal").modal('hide');
 
+    console.log("In the add appointment function");
     //console.log($('#datepicker').val())
     console.log($('#starts-at').val());
     console.log($('#ends-at').val());
@@ -302,9 +305,10 @@ $(document).ready(function(){
         // You should pass the options you need
     $("#starts-at, #ends-at").datetimepicker();
 
-    $('#btnAdd').on('click', function(e){
+    $('#btnAdd').on('click', function(){
+        console.log("button clicked once");
         // We don't want this to act as a link so cancel the link action
-        e.preventDefault();
+        //e.preventDefault();
         addAppointment();
     });
 

@@ -9,51 +9,51 @@ function eventInfoModal(event){
 
 }
 
-function addAppointment(){
+function addgCalAppointment(){
     alert("Add Appointment Form Submitted!");
-    $("#myModal").modal('hide');
+    $("#mygCalModal").modal('hide');
 
     //console.log($('#datepicker').val())
-    console.log($('#starts-at').val());
-    console.log($('#ends-at').val());
+    console.log($('#gcalstarts-at').val());
+    console.log($('#gcalends-at').val());
 
-    $("#calendar").fullCalendar('renderEvent',
+    $("#gcalendar").fullCalendar('renderEvent',
         {
-            title: $('#defaultForm-firstName').val() +', ' + $('#defaultForm-lastName').val() + ', ' + $('#comment').val(),
-            start: new Date($('#starts-at').val()),
-            end: new Date($('#ends-at').val()),
-            allDay: ($('#apptAllDay').val() == "Yes"),
-            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
-                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
-                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
-                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
-                        'Comment: ' + $('#comment').val(),
+            title: $('#gcaldefaultForm-firstName').val() +', ' + $('#gcaldefaultForm-lastName').val() + ', ' + $('#gcalcomment').val(),
+            start: new Date($('#gcalstarts-at').val()),
+            end: new Date($('#gcalends-at').val()),
+            allDay: ($('#gcalapptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#gcaldefaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#gcaldefaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#gcaldefaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#gcaldefaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#gcalcomment').val(),
 
         },
     true);
 
-    $("#weekCalendar").fullCalendar('renderEvent',
+    $("#gweekCalendar").fullCalendar('renderEvent',
         {
-            title: $('#defaultForm-firstName').val() + $('#defaultForm-lastName').val() + $('#comment').val(),
-            start: new Date($('#starts-at').val()),
-            end: new Date($('#ends-at').val()),
-            allDay: ($('#apptAllDay').val() == "Yes"),
-            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
-                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
-                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
-                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
-                        'Comment: ' + $('#comment').val(),
+            title: $('#caldefaultForm-firstName').val() +', ' + $('#gcaldefaultForm-lastName').val() + ', ' + $('#gcalcomment').val(),
+            start: new Date($('#gcalstarts-at').val()),
+            end: new Date($('#gcalends-at').val()),
+            allDay: ($('#gcalapptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#gcaldefaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#gcaldefaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#gcaldefaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#gcaldefaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#gcalcomment').val(),
         },
     true);
 
-    $('#calendar').fullCalendar('unselect');
-    $('#weekCalendar').fullCalendar('unselect');
+    $('#gcalendar').fullCalendar('unselect');
+    $('#gweekCalendar').fullCalendar('unselect');
     
 }
 
 $(document).ready(function(){
     
-    $('#calendar').fullCalendar({
+    $('#gcalendar').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -70,7 +70,7 @@ $(document).ready(function(){
         selectable: true,
         selectHelper: true,
         select: function(start, end, allDay) {
-            $('#myModal').modal('show');
+            $('#mygCalModal').modal('show');
         },
         editable: true,
         eventLimit: true, // allow "more" link when too many events
@@ -226,4 +226,13 @@ $(document).ready(function(){
         ]
     });
 
+    // Bind the dates to datetimepicker.
+    // You should pass the options you need
+    $("#gcalstarts-at, #gcalends-at").datetimepicker();
+    
+    $('#gcalSumbit').on('click', function(e){
+        // We don't want this to act as a link so cancel the link action
+        e.preventDefault();
+        addgCalAppointment();
+    });
 });
