@@ -58,9 +58,13 @@ var events = {
 
 var selected_agenda = undefined;
 function initAgenda() {
-    if (getAgenda() == undefined) {
+    if (getAgenda() == undefined || getVersion() != "123") {
         localStorage.setItem("agenda", JSON.stringify(events));
+        localStorage.setItem("version_a", "123");
     }
+}
+function getVersion() {
+    return localStorage.getItem("version_a");
 }
 
 function getAgenda() {

@@ -1,8 +1,8 @@
 function initNotes() {
     var notes = getNotes();
-    if (notes == undefined || getVersion() == undefined) {
+    if (notes == undefined || getVersion() != "123") {
         localStorage.setItem("notes", JSON.stringify({}));
-        localStorage.setItem("version", "1234");
+        localStorage.setItem("version_n", "123");
     }
     
     if(notes != undefined && Object.keys(notes).length > 0) {
@@ -29,7 +29,7 @@ function addNote(){
 }
 
 function getVersion() {
-    return localStorage.getItem("version");
+    return localStorage.getItem("version_n");
 }
 
 function saveNote(note, content) {
@@ -74,7 +74,7 @@ function populateNotesSummary() {
         for( note in notes) {
             var note_option = document.createElement("div");
             $(note_option).css("padding", "0px 20px");
-            
+
             var note_radio = document.createElement("input");
             note_radio.type = "radio"
             note_radio.value = note;
