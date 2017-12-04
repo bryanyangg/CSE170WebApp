@@ -34,7 +34,7 @@ function addgCalAppointment(){
 
     $("#gweekCalendar").fullCalendar('renderEvent',
         {
-            title: $('#caldefaultForm-firstName').val() +', ' + $('#gcaldefaultForm-lastName').val() + ', ' + $('#gcalcomment').val(),
+            title: $('#gcaldefaultForm-firstName').val() +', ' + $('#gcaldefaultForm-lastName').val() + ', ' + $('#gcalcomment').val(),
             start: new Date($('#gcalstarts-at').val()),
             end: new Date($('#gcalends-at').val()),
             allDay: ($('#gcalapptAllDay').val() == "Yes"),

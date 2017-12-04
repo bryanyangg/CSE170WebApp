@@ -55,23 +55,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
     <!-- This is the title tag (inside header) -->
     <title>My Schedule</title>
 
-    <!-- Bootstrap core CSS -->
-    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/blog-home.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <!--  custom styles -->
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/calendar.css" rel="stylesheet">
-
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -82,26 +65,40 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
+    <!-- Bootstrap core CSS -->
+    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/blog-home.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Date/Time selector CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!--  custom styles -->
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+
     <!-- Credit to open source calendar https://fullcalendar.io/ for their design-->
     <link href='css/fullcalendar.min.css' rel='stylesheet' />
     <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src='lib/moment.min.js'></script>
+    <!--<script src='lib/moment.min.js'></script>-->
     <script src='lib/jquery.min.js'></script>
     <script src="lib/jquery-ui.min.js"></script>
-    <script src='js/fullcalendar.min.js'></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    
-    <!-- Calendar Time/Date Picker Lib-->
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js'></script>
+    <script src='js/fullcalendar.js'></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Calendar Time/Date Picker Lib-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js"></script>
-
-    <!-- Date/Time selector CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css">
-
+     
     <style>
       .body {
         background-color: #FDF6E3;
@@ -156,13 +153,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
                         <input type="number" id="caldefaultForm-number" class="form-control">
                         <label for="defaultForm-number">Phone Number</label>
                       </div>
-                      <!--
-                        <div class="md-form">
-                          <i class="fa fa-calendar prefix grey-text"></i>
-                          <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
-                          <label for="datepicker">Date</label>
-                        </div>
-                      -->
+
                       <div class="md-form">
                         <i class="fa fa-calendar prefix grey-text"></i>
 
@@ -201,36 +192,35 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
         <div class="col-md-4">
 
           <div class="card cal-my-4">
-          <h5 class="card-header" style="text-align:center; font-size:2vw; background-color: #343a40; color:white;">Week View</h5>
+            <h5 class="card-header" style="text-align:center; font-size:2vw; background-color: #343a40; color:white;">Week View</h5>
           <div class="row">
-          <div id='weekCalendar'>
-          <div id='datepicker'></div>
-          <div id="eventContentModal" title="Event Details" style="display:none;">
-          Start: <span id="startTime"></span><br> End: <span id="endTime"></span><br><br>
-          <p id="eventInfo">Comment:</p>
-          <!--<p><strong><a id="eventLink" href="" target="_blank">Read More</a></strong></p>-->
-          </div>
+            <div id='weekCalendar'>
+              <div id='datepicker'></div>
+              <div id="eventContentModal" title="Event Details" style="display:none;">
+                Start: <span id="startTime"></span><br> End: <span id="endTime"></span><br><br>
+                <p id="eventInfo">Comment:</p>
+              </div>
 
-          <div class="modal fade" id="modalRemove" role="dialog" aria-hidden="true">
-          <div class="vertical-alignment-helper">
-            <div class="modal-dialog vertical-align-center">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <h4>Are you sure to remove the event?</h4>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-danger" id="removeBtn" data-dismiss="modal">Remove</button>
+            <div class="modal fade" id="modalRemove" role="dialog" aria-hidden="true">
+            <div class="vertical-alignment-helper">
+              <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h4>Are you sure to remove the event?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="removeBtn" data-dismiss="modal">Remove</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
+            </div>
           </div>
 
           </div>
@@ -280,13 +270,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
                       <input type="number" id="defaultForm-number" class="form-control">
                       <label for="defaultForm-number">Phone Number</label>
                     </div>
-                    <!--
-                      <div class="md-form">
-                        <i class="fa fa-calendar prefix grey-text"></i>
-                        <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
-                        <label for="datepicker">Date</label>
-                      </div>
-                    -->
+
                     <div class="md-form">
                       <i class="fa fa-calendar prefix grey-text"></i>
 
@@ -322,28 +306,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
         </div>
       </div>
 
-      <!-- Script for date picker
-      <script type="text/javascript">
-      $('.datepicker').pickadate({
-      weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-      showMonthsShort: true
-      });
-      </script>
-      -->
-      <!--
-      <script type="text/javascript">
-      // Time Picker Initialization
-      $('.timepicker').pickatime({
-      twelvehour: true
-      });
-      </script>
-      <script type="text/javascript">
-      // Time Picker Initialization
-      $('.endtimepicker').pickatime({
-      twelvehour: true
-      });
-      </script>
-      -->
       <script>
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();   
@@ -354,11 +316,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
     <!-- Bootstrap core JavaScript -->
     <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script src="js/mdb.min.js"></script>
     <!-- calendar "backend" -->
-    <!--<script type="text/javascript" src="js/calagenda.js"></script>-->
-    <script type="text/javascript" src="js/calendar.js"></script>
-    <script type="text/javascript" src="js/calendarWeek.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/calendarWeek.js"></script>
   </body>
 
   <div id="dialog" style="display:none">
