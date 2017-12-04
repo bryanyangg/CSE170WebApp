@@ -4,8 +4,9 @@ function initNotes() {
         localStorage.setItem("notes", JSON.stringify({}));
         localStorage.setItem("version", "1234");
     }
-    console.log(Object.keys(notes).length);
+    
     if(notes != undefined && Object.keys(notes).length > 0) {
+        console.log(Object.keys(notes).length);
         document.getElementById("notes_content").disabled = false;
     } 
 
@@ -17,7 +18,12 @@ function addNote(){
     saveNote(timestamp, "");
     populateNotesSummary();
     populateNoteContent(timestamp);
-    document.getElementById("notes_identifier").value = timestamp;
+    // document.getElementById("notes_identifier").value = timestamp;
+
+    console.log($('input[name=notes_identifier][value=' + timestamp + ']'));
+    $('input[name=notes_identifier][value=' + timestamp + ']')[0].checked = true;
+    $("label").css("font-weight", "300");
+    $('input[name=notes_identifier]:checked').parent().find('label').css("font-weight", "bold");
     document.getElementById("notes_content").focus();
 
 }
@@ -33,13 +39,16 @@ function saveNote(note, content) {
         notes[note]["identifier"] = "New Note";
     }
     notes[note]["content"] = content;
-    if($("option[value=\'" + note + "\']").html() != undefined)
-        notes[note]["identifier"] = $("option[value=\'" + note + "\']").html();
+    console.log("save note " + notes[note]["identifier"]);
+    if($('input[name=notes_identifier][value=' + note + ']').parent().find('label').html() != undefined) {
+        notes[note]["identifier"] = $('input[name=notes_identifier][value=' + note + ']').parent().find('label').html();
+    }
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function saveCurrentNote() {
-    var note = document.getElementById("notes_identifier").value;
+    console.log($('input[name=notes_identifier]:checked').parent().find('label')[0].value);
+    var note = $('input[name=notes_identifier]:checked').parent().find('label')[0].value;
     var content = document.getElementById("notes_content").value;
     saveNote(note, content);
 }
@@ -63,18 +72,37 @@ function populateNotesSummary() {
 
     if(notes != undefined && Object.keys(notes).length > 0) {
         for( note in notes) {
-            var note_option = document.createElement("option");
-            note_option.value = note;
-            note_option.innerHTML = notes[note]["identifier"];
+            var note_option = document.createElement("div");
+            $(note_option).css("padding", "0px 20px");
+            
+            var note_radio = document.createElement("input");
+            note_radio.type = "radio"
+            note_radio.value = note;
+            note_radio.id = note;
+            note_radio.name = "notes_identifier";
+            $(note_radio).css("display", "none");
+            note_option.appendChild(note_radio);
+
+            var note_label = document.createElement("label");
+            note_label.htmlFor = note;
+            note_label.value = note;
+            note_label.name = "notes_identifier";
+            note_label.innerHTML = notes[note]["identifier"];
+
+            note_option.appendChild(note_label);
+            note_option.className = "text-left";
+            note_option.onclick = function(){
+                console.log("note option clicked " + this.childNodes[0].value);
+                $("label").css("font-weight", "300");
+                $(this.childNodes[1]).css("font-weight", "bold");
+                populateNoteContent(this.childNodes[0].value);
+            }
             document.getElementById("notes_identifier").appendChild(note_option);
         }
-        document.getElementById("notes_identifier").onclick = function(){
-            populateNoteContent(this.value);
-        }
-        document.getElementById("notes_identifier").value = Object.keys(notes)[0];
-        populateNoteContent(Object.keys(notes)[0]);
-    }else {
-        document.getElementById("notes_content").value = "";
+
+        $('input[name=notes_identifier]')[0].checked = true;
+        $($('input[name=notes_identifier]')[0].parentNode.childNodes[1]).css("font-weight", "bold");
+        populateNoteContent($('input[name=notes_identifier]')[0].value);
     }
 }
 
@@ -88,7 +116,7 @@ function populateNoteContent(note) {
 
 function deleteNote() {
     var notes = getNotes();
-    var note = document.getElementById("notes_identifier").value;
+    var note = $('input[name=notes_identifier]:checked')[0].value;
     if ((note != undefined) && (Object.keys(notes).length > 0) && (note in notes)) {
         var dialog = $( "#notesdialog" ).dialog({
             dialogClass: "notesPopup",
@@ -99,7 +127,7 @@ function deleteNote() {
             buttons: {
                 Ok:{
                     text: "Delete",
-                    class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                    class: "btn btn-danger btn-rounded waves-effect waves-light text-center",
                     click: function() {
                         delete notes[note];
                         localStorage.setItem("notes", JSON.stringify(notes));
@@ -107,13 +135,14 @@ function deleteNote() {
                         
                         dialog.dialog( "close" );
                         if(notes == undefined || Object.keys(notes).length == 0) {
+                            document.getElementById("notes_content").value = ""
                             document.getElementById("notes_content").disabled = true;
                         } 
                     }
                 },
                 Cancel:{
                     text: "Not Now",
-                    class: "btn btn-outline-primary btn-rounded waves-effect waves-light text-center",
+                    class: "btn btn-outline-danger btn-rounded waves-effect waves-light text-center",
                     click: function() {
                         dialog.dialog( "close" );
                     }
@@ -132,18 +161,27 @@ $(document).ready(function(){
         populateNotesSummary();
     
         // todo: think of better way to handle this
-        document.getElementById("notes_content").onchange = function(){
-            console.log(document.getElementById("notes_content").value);
-            document.getElementById("notes_content").disabled = false;
-            saveCurrentNote();
-        }
+        // document.getElementById("notes_content").onchange = function(){
+        //     console.log(document.getElementById("notes_content").value);
+        //     document.getElementById("notes_content").disabled = false;
+        //     saveCurrentNote();
+        // }
     
         document.getElementById("notes_content").onkeyup = function() {
             if(document.getElementById("notes_content").value.length > 0) {
-                $("option[value=\'" + document.getElementById("notes_identifier").value + "\']")
+                $('input[name=notes_identifier]:checked').parent().find('label')
                     .html( document.getElementById("notes_content").value.substr(0, Math.min(10, document.getElementById("notes_content").value.length)));
+                
+                //$("input[value=\'" + document.getElementById("notes_identifier").value + "\']")
+                //    .html( document.getElementById("notes_content").value.substr(0, Math.min(10, document.getElementById("notes_content").value.length)));
             }
             saveCurrentNote();
         }
+
+        $('input[type=radio][name=notes_identifier]').change(function() {
+            console.log("populating " + this.value);
+            populateNoteContent(this.value);
+        });
+
     });
 });

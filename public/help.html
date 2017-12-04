@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109875057-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109875057-1');
+    </script>
+    <!-- Google Analytics Content Experiment code -->
+    <!-- Google Analytics Content Experiment code -->
+    <script>function utmx_section(){}function utmx(){}(function(){var
+    k='164793841-2',d=document,l=d.location,c=d.cookie;
+    if(l.search.indexOf('utm_expid='+k)>0)return;
+    function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+    indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+    length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+    '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+    '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+    '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+    valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+    '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    </script><script>utmx('url','A/B');</script>
+    <!-- End of Google Analytics Content Experiment code -->
+
+          <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                
+                ga('create', 'UA-109875057-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+            
+        <!-- End of Google Analytics Content Experiment code -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        if(localStorage.getItem('user') == undefined) {
+            window.location.href = "about.html"
+        }
+    </script>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <title>MyWebApp</title>
+
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!--  custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+
+  </head>
+  <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font: 400 15px/1.8 "Lato", sans-serif;
+          color: #777;
+        }
+        
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+          position: relative;
+          /* opacity: 0.65; */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        
+        }
+        .bgimg-1 {
+          background-image: url("img/calendar_bg.jpg");
+          opacity: 0.65;
+        }
+        
+        .bgimg-top {
+          background-image: url("img/calendar_bg.jpg");
+          /* background: no-repeat center center fixed;  */
+            -webkit-background-size: 100%;
+            -moz-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
+          /* min-height: 400px; */
+          min-height: 100%;
+          opacity: .65;
+        }
+        .bgimg-2 {
+          /* background-image: url("img/calendar_screenshot.png"); */
+          min-height: 100%;
+          background-color: #fef7e2;
+
+        }        
+        .bgimg-3 {
+          /* background-image: url("img/calendar_screenshot.png"); */
+          /* min-height: 400px; */
+
+          min-height: 100%;
+        }
+        
+        .caption {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 100%;
+          text-align: center;
+          color: #111;
+        }
+        
+        .caption span.border {
+          background-color: #111;
+          color: #fff;
+          padding: 18px;
+          font-size: 25px;
+          letter-spacing: 10px;
+        }
+        
+        
+        h2 {
+          letter-spacing: 5px;
+          text-transform: uppercase;
+          font: 20px "Lato", sans-serif;
+          color: #111;
+        }
+        
+        /* Turn off parallax scrolling for tablets and phones */
+        @media only screen and (max-device-width: 1024px) {
+            .bgimg-1, .bgimg-2, .bgimg-3 {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+
+  <body style="padding:0px 0px 30px 0px;">
+    <div id="nav"></div>
+
+      
+
+      
+    <div class="bgimg-2">
+        <div class="caption" style="top:15%">
+            <span><h2 style="color: #616161; padding: 30px;">Tutorial</h2></span>
+            <img src="img/workflow.gif" width="50%"/>
+        </div>
+    </div>
+          
+    <div style="color: #444;background-color:#bbb;text-align:center;padding:50px 80px;text-align: justify;">
+            <div class="row text-center">
+                <div class="col"><h2 style="text-align:center;padding:0px 0px 40px 0px;color: white;">What This Does</h2></div>
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <b>Notes</b>
+                    <p>Take notes and set reminders for yourself.</p>
+                </div>
+                <div class="col">
+                    <b>Calendars</b>
+                    <p>View, schedule, and delete events on your private calendar. Allow guests to schedule events with you on your public calendar.</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- <div class="container" style="height:100%; padding: 50px 0px 0px 0px;">
+        <div id="widget-container" class="text-center row" style="padding:20px; height:100%; width:100%;">
+            <div id="widget1" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">
+                <object type="text/html" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;" data="agenda.html" ></object>
+            </div>
+            <div id="widget2" class="col text-center widget" style="border-radius:6px; width:100%;height:100%; overflow:hidden; margin: 0 auto;">
+                <object type="text/html" data="notes.html" style="border-radius:6px; width:100%; height:100%; overflow:hidden; margin: 0 auto;"></object>
+            </div>
+        </div>
+
+    </div>
+    <nav id="widget-navigator" class="navbar navbar-fixed-bottom" style="position: fixed; bottom:0; width:100%; height:50px; border:none; box-shadow:none; z-index:100">
+        <div class="container text-center " style="display: inline-block">
+            <input type="radio" name="widget-pg" id="pg1" value="widget1"/>
+            <label for="pg1"></label>
+            <input type="radio" name="widget-pg" id="pg2" value="widget2"/>
+            <label for="pg2"></label>
+        </div>
+    </nav> -->
+    <!-- <img src="img/workflow.gif" width="100%"/> -->
+    
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />    -->
+    <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+    </body>
+    <!-- <div id="qr"></div> -->
+    <!-- <div id="settings"></div> -->
+
+    <script src="js/nav.js"></script>
+    <!-- <script src="js/qr.js"></script> -->
+    <!-- <script src="js/settings.js"></script> -->
+    
+
+</html>
