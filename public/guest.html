@@ -40,7 +40,11 @@
               ga('create', 'UA-109875057-1', 'auto');
               ga('send', 'pageview');
           </script>
-    
+        <script>
+            if(localStorage.getItem('user') == undefined) {
+                window.location.href = "about.html"
+            }
+        </script>
       <!-- End of Google Analytics Content Experiment code -->
   <!-- This is the meta tag (inside header) -->
   <meta charset="utf-8">
