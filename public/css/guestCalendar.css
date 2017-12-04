@@ -8,7 +8,11 @@ h5{
     margin: 5px;
 }
 
-#myModal {
+#mygCalModal {
+    z-index: 9001;
+}
+
+#mygwModal {
     z-index: 9001;
 }
 
@@ -20,7 +24,7 @@ body {
 
 }
 
-#calendar {
+#gcalendar {
     max-width: 900px;
     margin: 0% auto 6% auto;
     padding: 1vw;
@@ -33,7 +37,7 @@ body {
     box-shadow: 0 0.15vw 0.15vw #92929296;
 }
 
-#weekCalendar{
+#gweekCalendar{
     width: 90%;
     height: 100%;
     display: block;
@@ -47,7 +51,7 @@ body {
 }
 */
 
-#weekCalendar #eventContentModal .close{
+#gweekCalendar #eventContentModal .close{
     color: rgb(0, 0, 0);
     opacity: 1;
 }
@@ -74,7 +78,7 @@ body {
     pointer-events: all;
 }
 
-#addBtn{
+#gaddBtn{
     display: block;
     background-color: red;
     height: 75px;
@@ -85,10 +89,10 @@ body {
     padding: 0rem;
 }
 
-#btnAdd{
+#gbtnAdd{
     margin: auto;
 }
-#btnClose{
+#gbtnClose{
     margin: auto;
 }
 

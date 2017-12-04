@@ -35,52 +35,46 @@ function eventRemoveModal(event, element, view){
       $('#modalRemove').modal();
     });
 
-    $("#weekCalendar").fullCalendar( 'refetchEvents' );
-    $("#calendar").fullCalendar( 'refetchEvents' );
-
     $('#calendar').fullCalendar('unselect');
     $('#weekCalendar').fullCalendar('unselect');
 }
 
-function addAppointment(){
+function addCalAppointment(){
     alert("Add Appointment Form Submitted!");
-    $("#myModal").modal('hide');
+    $("#myCalModal").modal('hide');
 
     //console.log($('#datepicker').val())
-    console.log($('#starts-at').val());
-    console.log($('#ends-at').val());
+    console.log($('#calstarts-at').val());
+    console.log($('#calends-at').val());
 
     $("#calendar").fullCalendar('renderEvent',
         {
-            title: $('#defaultForm-firstName').val() +', ' + $('#defaultForm-lastName').val() + ', ' + $('#comment').val(),
-            start: new Date($('#starts-at').val()),
-            end: new Date($('#ends-at').val()),
-            allDay: ($('#apptAllDay').val() == "Yes"),
-            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
-                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
-                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
-                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
-                        'Comment: ' + $('#comment').val(),
+            title: $('#caldefaultForm-firstName').val() +', ' + $('#caldefaultForm-lastName').val() + ', ' + $('#calcomment').val(),
+            start: new Date($('#calstarts-at').val()),
+            end: new Date($('#calends-at').val()),
+            allDay: ($('#calapptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#caldefaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#caldefaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#caldefaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#caldefaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#calcomment').val(),
 
         },
     true);
 
     $("#weekCalendar").fullCalendar('renderEvent',
         {
-            title: $('#defaultForm-firstName').val() + $('#defaultForm-lastName').val() + $('#comment').val(),
-            start: new Date($('#starts-at').val()),
-            end: new Date($('#ends-at').val()),
-            allDay: ($('#apptAllDay').val() == "Yes"),
-            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
-                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
-                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
-                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
-                        'Comment: ' + $('#comment').val(),
+            title: $('#caldefaultForm-firstName').val() + $('#caldefaultForm-lastName').val() + $('#calcomment').val(),
+            start: new Date($('#calstarts-at').val()),
+            end: new Date($('#calends-at').val()),
+            allDay: ($('#calapptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#caldefaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#caldefaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#caldefaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#caldefaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#calcomment').val(),
         },
     true);
-
-    $("#weekCalendar").fullCalendar( 'refetchEvents' );
-    $("#calendar").fullCalendar( 'refetchEvents' );
 
     $('#calendar').fullCalendar('unselect');
     $('#weekCalendar').fullCalendar('unselect');
@@ -106,7 +100,7 @@ $(document).ready(function(){
         selectable: true,
         selectHelper: true,
         select: function(start, end, allDay) {
-            $('#myModal').modal('show');
+            $('#myCalModal').modal('show');
         },
         editable: true,
         eventLimit: true, // allow "more" link when too many events
@@ -275,11 +269,11 @@ $(document).ready(function(){
 
     // Bind the dates to datetimepicker.
     // You should pass the options you need
-    $("#starts-at, #ends-at").datetimepicker();
+    $("#calstarts-at, #calends-at").datetimepicker();
     
-    $('#btnAdd').on('click', function(e){
+    $('#calSumbit').on('click', function(e){
         // We don't want this to act as a link so cancel the link action
         e.preventDefault();
-        addAppointment();
+        addCalAppointment();
     });
 });

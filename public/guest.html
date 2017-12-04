@@ -126,16 +126,90 @@
     <div class="row">
 
       <div class="col-lg-8">
-        <div id='calendar'></div>
+        <div id='gcalendar'></div>
+          <!-- Modal -->
+          <div class="modal fade" id="mygCalModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" style="margin:auto;">Add Appointment</h4>
+                  <button type="button" class="close" data-dismiss="modal" style="margin:0;">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="md-form">
+                      <i class="fa fa-user-o prefix grey-text"></i>
+                      <input type="text" id="gcaldefaultForm-firstName" class="form-control">
+                      <label for="defaultForm-firstName">First Name</label>
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
+                      <input type="text" id="gcaldefaultForm-lastName" class="form-control">
+                      <label for="defaultForm-lastName">Last Name</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-envelope prefix grey-text"></i>
+                      <input type="email" id="gcaldefaultForm-email" class="form-control">
+                      <label for="defaultForm-email">Email</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-phone prefix grey-text"></i>
+                      <input type="number" id="gcaldefaultForm-number" class="form-control">
+                      <label for="defaultForm-number">Phone Number</label>
+                    </div>
+                    <!--
+                      <div class="md-form">
+                        <i class="fa fa-calendar prefix grey-text"></i>
+                        <input placeholder="Select date" type="text" id="datepicker" class="datepicker">
+                        <label for="datepicker">Date</label>
+                      </div>
+                    -->
+                    <div class="md-form">
+                      <i class="fa fa-calendar prefix grey-text"></i>
+
+                      <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="gcalstarts-at" class="starts-at">
+                      <label for="starts-at">Start Date/Time</label>
+                    </div>
+                    <div class="md-form">
+
+                      <i class="fa fa-clock-o prefix grey-text"></i>
+                      <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="gcalends-at" class="form-control">
+                      <label for="ends-at">End Date/Time</label>
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-clock-o prefix grey-text" style="display:none"></i>
+                      <input placeholder="Yes/No" type="text" id="gcalapptAllDay" class="form-control">
+                      <label for="apptAllDay">All Day?</label>
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-commenting-o prefix grey-text"></i>
+                      <textarea type="text" id="gcalcomment" class="md-textarea"></textarea>
+                      <label for="comment">Comment: </label>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="modal-footer">
+                  <button id="gcalSumbit" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                  <button id="gcalbtnClose" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <div id='datepicker'></div>
       </div>
+
 
       <div class="col-md-4">
 
         <div class="card cal-my-4">
           <h5 class="card-header" style="text-align:center; font-size:2vw; background-color: #343a40; color:white;">Week View</h5>
           <div class="row">
-            <div id='weekCalendar'>
+            <div id='gweekCalendar'>
               <div id='datepicker'></div>
               <div id="eventContentModal" title="Event Details" style="display:none;">
                 Start: <span id="startTime"></span><br> End: <span id="endTime"></span><br><br>
@@ -148,14 +222,14 @@
 
         <div id='wkView'>
           <a href="#" data-toggle="tooltip" title="Click to Add Appointments!">
-            <button id='addBtn' type="button" class="btn">  
+            <button id='gaddBtn' type="button" class="btn">  
                 <i class="fa fa-plus" aria-hidden="true" style="font-size: 1.5vw"></i>
             </button>
           </a>
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="mygwModal" role="dialog">
           <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -168,55 +242,55 @@
                 <form>
                   <div class="md-form">
                     <i class="fa fa-user-o prefix grey-text"></i>
-                    <input type="text" id="defaultForm-firstName" class="form-control">
+                    <input type="text" id="gdefaultForm-firstName" class="form-control">
                     <label for="defaultForm-firstName">First Name</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-user-o prefix grey-text" style="display:none"></i>
-                    <input type="text" id="defaultForm-lastName" class="form-control">
+                    <input type="text" id="gdefaultForm-lastName" class="form-control">
                     <label for="defaultForm-lastName">Last Name</label>
                   </div>
 
                   <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="email" id="defaultForm-email" class="form-control">
+                    <input type="email" id="gdefaultForm-email" class="form-control">
                     <label for="defaultForm-email">Email</label>
                   </div>
 
                   <div class="md-form">
                     <i class="fa fa-phone prefix grey-text"></i>
-                    <input type="number" id="defaultForm-number" class="form-control">
+                    <input type="number" id="gdefaultForm-number" class="form-control">
                     <label for="defaultForm-number">Phone Number</label>
                   </div>
                 
                   <div class="md-form">
                     <i class="fa fa-calendar prefix grey-text"></i>
 
-                    <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="starts-at" class="starts-at">
+                    <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="gstarts-at" class="starts-at">
                     <label for="starts-at">Start Date/Time</label>
                   </div>
                   <div class="md-form">
 
                     <i class="fa fa-clock-o prefix grey-text"></i>
-                    <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="ends-at" class="form-control">
+                    <input placeholder="MM/DD/YYYY H:MM TT" type="text" id="gends-at" class="form-control">
                     <label for="ends-at">End Date/Time</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-clock-o prefix grey-text" style="display:none"></i>
-                    <input placeholder="Yes/No" type="text" id="apptAllDay" class="form-control">
+                    <input placeholder="Yes/No" type="text" id="gapptAllDay" class="form-control">
                     <label for="apptAllDay">All Day?</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-commenting-o prefix grey-text"></i>
-                    <textarea type="text" id="comment" class="md-textarea"></textarea>
+                    <textarea type="text" id="gcomment" class="md-textarea"></textarea>
                     <label for="comment">Comment: </label>
                   </div>
                 </form>
               </div>
 
               <div class="modal-footer">
-                <button id="btnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
-                <button id="btnClose" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="gbtnAdd" type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                <button id="gbtnClose" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           </div>

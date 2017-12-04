@@ -8,54 +8,55 @@ function eventModal(event){
 
 }
 
-function addAppointment(){
+function gaddAppointment(){
     alert("Add Appointment Form Submitted!");
-    $("#myModal").modal('hide');
+    $("#mygwModal").modal('hide');
 
     //console.log($('#datepicker').val())
-    console.log($('#starts-at').val());
-    console.log($('#ends-at').val());
+    console.log($('#gstarts-at').val());
+    console.log($('#gends-at').val());
 
-    $("#calendar").fullCalendar('renderEvent',
+    $("#gcalendar").fullCalendar('renderEvent',
         {
-            title: $('#defaultForm-firstName').val() +', ' + $('#defaultForm-lastName').val() + ', ' + $('#comment').val(),
-            start: new Date($('#starts-at').val()),
-            end: new Date($('#ends-at').val()),
-            allDay: ($('#apptAllDay').val() == "Yes"),
-            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
-                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
-                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
-                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
-                        'Comment: ' + $('#comment').val(),
+            title: $('#gdefaultForm-firstName').val() +', ' + $('#gdefaultForm-lastName').val() + ', ' + $('#gcomment').val(),
+            start: new Date($('#gstarts-at').val()),
+            end: new Date($('#gends-at').val()),
+            allDay: ($('#gapptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#gdefaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#gdefaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#gdefaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#gdefaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#gcomment').val(),
 
         },
     true);
 
-    $("#weekCalendar").fullCalendar('renderEvent',
+    $("#gweekCalendar").fullCalendar('renderEvent',
         {
-            title: $('#defaultForm-firstName').val() + $('#defaultForm-lastName').val() + $('#comment').val(),
-            start: new Date($('#starts-at').val()),
-            end: new Date($('#ends-at').val()),
-            allDay: ($('#apptAllDay').val() == "Yes"),
-            description: 'First Name: ' + $('#defaultForm-firstName').val() + '<br />' +
-                        'Last Name: ' + $('#defaultForm-lastName').val() + '<br />' +
-                        'Email: ' + $('#defaultForm-email').val() + '<br />' +
-                        'Phone Number: ' + $('#defaultForm-number').val() + '<br />' +
-                        'Comment: ' + $('#comment').val(),
+            title: $('#gdefaultForm-firstName').val() +', ' + $('#gdefaultForm-lastName').val() + ', ' + $('#gcomment').val(),
+            start: new Date($('#gstarts-at').val()),
+            end: new Date($('#gends-at').val()),
+            allDay: ($('#gapptAllDay').val() == "Yes"),
+            description: 'First Name: ' + $('#gdefaultForm-firstName').val() + '<br />' +
+                        'Last Name: ' + $('#gdefaultForm-lastName').val() + '<br />' +
+                        'Email: ' + $('#gdefaultForm-email').val() + '<br />' +
+                        'Phone Number: ' + $('#gdefaultForm-number').val() + '<br />' +
+                        'Comment: ' + $('#gcomment').val(),
         },
     true);
 
-    $('#calendar').fullCalendar('unselect');
+    $('#gcalendar').fullCalendar('unselect');
+    $('#gweekCalendar').fullCalendar('unselect');
     
 }
 
 $(document).ready(function(){
 
-    $('#addBtn').on('click', function() {
-        $('#weekCalendar').fullCalendar('select');
+    $('#gaddBtn').on('click', function() {
+        $('#gweekCalendar').fullCalendar('select');
     }); 
 
-    $('#weekCalendar').fullCalendar({
+    $('#gweekCalendar').fullCalendar({
         header: {
             left: 'prev,next',
             center: 'title',
@@ -83,7 +84,7 @@ $(document).ready(function(){
             $('#myModal #apptAllDay').val(allDay);
             $('#myModal #when').text(duration);
             */
-            $('#myModal').modal('show');
+            $('#mygwModal').modal('show');
             /*
             var title = prompt('Event Title:');
             var eventData;
@@ -258,12 +259,12 @@ $(document).ready(function(){
 
     // Bind the dates to datetimepicker.
         // You should pass the options you need
-    $("#starts-at, #ends-at").datetimepicker();
+    $("#gstarts-at, #gends-at").datetimepicker();
 
-    $('#btnAdd').on('click', function(e){
+    $('#gbtnAdd').on('click', function(e){
         // We don't want this to act as a link so cancel the link action
         e.preventDefault();
-        addAppointment();
+        gaddAppointment();
     });
 
 });
