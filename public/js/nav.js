@@ -24,15 +24,18 @@ $(document).ready(function(){
             $("#nav-login").parent().css("display", "list-item");
             $("#nav-username").parent().css("display", "none");
             $(".qr").parent().css("display", "none");
-            $("#navbarDropdownMenuLink").parent().css("display", "none");
-        }
-        if(window.location.href.includes("index") || window.location.href.includes("about") || !window.location.href.includes(".html")) {
+            $("#publicschedule").parent().css("display", "none");
+            $("#myschedule").parent().css("display", "none");
+            $("#about").parent().css("display", "none");
             $("#home").css("font-weight", "bold");
+        }
+        if(window.location.href.includes("index") ||  !window.location.href.includes(".html")) {
+            $("#home").css("font-weight", "bold");
+        } if(window.location.href.includes("help")){
+            $("#about").css("font-weight", "bold");
         } else if (window.location.href.includes("calendar")) {
-            $("#navbarDropdownMenuLink").css("font-weight", "bold");
             $("#myschedule").css("font-weight", "bold");
         } else if (window.location.href.includes("guest")) {
-            $("#navbarDropdownMenuLink").css("font-weight", "bold");
             $("#publicschedule").css("font-weight", "bold");
         }
         document.getElementById("nav-logout").onclick = function(){
