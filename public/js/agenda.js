@@ -118,7 +118,7 @@ function populateAgenda() {
                 buttons: {
                     Delete:{
                         text: "Delete",
-                        class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                        class: "btn btn-danger btn-rounded waves-effect waves-light text-center",
                         click: function() {
 
                             console.log(agenda[selected_agenda]);
@@ -130,8 +130,8 @@ function populateAgenda() {
                         }
                     },
                     Ok:{
-                        text: "Ok",
-                        class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
+                        text: "Not Now",
+                        class: "btn btn-outline-danger btn-rounded waves-effect waves-light text-center",
                         click: function() {
                             dialog.dialog( "close" );
                             selected_agenda = undefined;
