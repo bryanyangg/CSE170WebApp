@@ -1,60 +1,62 @@
-var events = [
-    {
-        title: 'Appointment with Jeff',
-        start: '2017-12-03T13:00:00',
-        constraint: 'businessHours'
-    },
-    {
-        title: 'Meeting with Team',
-        start: '2017-12-13T11:00:00',
-        constraint: 'availableForMeeting', // defined below
-        color: '#257e4a'
-    },
-    {
-        title: 'Conference @ La Jolla',
-        start: '2017-12-18',
-        end: '2017-11-20'
-    },
-    {
-        title: 'Christmas Vacation',
-        start: '2017-12-25T00:00:00'
-    },
-    {
-        title: 'New Years',
-        start: '2017-12-31T23:59:00'
-    },
+var events = {
+        1: {
+            title: 'Appointment with Jeff',
+            start: '2017-12-03T13:00:00',
+            constraint: 'businessHours'
+        },
+        2: {
+            title: 'Meeting with Team',
+            start: '2017-12-13T11:00:00',
+            constraint: 'availableForMeeting', // defined below
+            color: '#257e4a'
+        },
+        3: {
+            title: 'Conference @ La Jolla',
+            start: '2017-12-18',
+            end: '2017-11-20'
+        },
+        4: {
+            title: 'Christmas Vacation',
+            start: '2017-12-25T00:00:00'
+        },
+        5: {
+            title: 'New Years',
+            start: '2017-12-31T23:59:00'
+        }
+    }
 
     // areas where "Meeting" must be dropped
-    {
-        id: 'availableForMeeting',
-        start: '2017-10-11T10:00:00',
-        end: '2017-10-11T16:00:00',
-        rendering: 'background'
-    },
-    {
-        id: 'availableForMeeting',
-        start: '2017-11-13T10:00:00',
-        end: '2017-11-13T16:00:00',
-        rendering: 'background'
-    },
+    // {
+    //     id: 'availableForMeeting',
+    //     start: '2017-10-11T10:00:00',
+    //     end: '2017-10-11T16:00:00',
+    //     rendering: 'background'
+    // },
+    // {
+    //     id: 'availableForMeeting',
+    //     start: '2017-11-13T10:00:00',
+    //     end: '2017-11-13T16:00:00',
+    //     rendering: 'background'
+    // },
 
-    // red areas where no events can be dropped
-    {
-        start: '2017-11-24',
-        end: '2017-11-28',
-        overlap: false,
-        rendering: 'background',
-        color: '#ff9f89'
-    },
-    {
-        start: '2017-11-06',
-        end: '2017-11-08',
-        overlap: false,
-        rendering: 'background',
-        color: '#ff9f89'
-    }
-]
+    // // red areas where no events can be dropped
+    // {
+    //     start: '2017-11-24',
+    //     end: '2017-11-28',
+    //     overlap: false,
+    //     rendering: 'background',
+    //     color: '#ff9f89'
+    // },
+    // {
+    //     start: '2017-11-06',
+    //     end: '2017-11-08',
+    //     overlap: false,
+    //     rendering: 'background',
+    //     color: '#ff9f89'
+    // }
 
+
+var selected_agenda = undefined;
 function initAgenda() {
     if (getAgenda() == undefined) {
         localStorage.setItem("agenda", JSON.stringify(events));
@@ -73,21 +75,22 @@ function populateAgenda() {
     document.getElementById("agenda").innerHTML = "";
 
 
-    for( event in agenda) {
+    for( ev in agenda) {
+        console.log(agenda[ev]);
         // only add events with titles to today's agenda.
         // todo: find a better way to handle
-        if (agenda[event]["title"] != undefined) {
+        if (agenda[ev]["title"] != undefined) {
             var div = document.createElement("div");
             div.className = "event";
-            div.value = event;
+            div.value = ev;
 
             // title of the event
             var title = document.createElement("div");
             title.className = 'agenda-title';
-            title.innerHTML = agenda[event]["title"];
+            title.innerHTML = agenda[ev]["title"];
             div.appendChild(title);
 
-            var date = new Date(agenda[event]["start"]);
+            var date = new Date(agenda[ev]["start"]);
 
             // date
             var cal_date = document.createElement("div");
@@ -113,10 +116,13 @@ function populateAgenda() {
                         text: "Delete",
                         class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                         click: function() {
-                            delete agenda[event];
-                            localStorage.setItem("agenda", JSON.stringify(events));
-                            populateAgenda();
+
+                            console.log(agenda[selected_agenda]);
+                            delete agenda[selected_agenda];
+                            localStorage.setItem("agenda", JSON.stringify(agenda));
                             dialog.dialog( "close" );
+                            selected_agenda = undefined;
+                            populateAgenda();
                         }
                     },
                     Ok:{
@@ -124,6 +130,7 @@ function populateAgenda() {
                         class: "btn btn-primary btn-rounded waves-effect waves-light text-center",
                         click: function() {
                             dialog.dialog( "close" );
+                            selected_agenda = undefined;
 
                         }
                     }
@@ -133,7 +140,9 @@ function populateAgenda() {
                 document.getElementById('dialog-title').innerHTML = this.getElementsByClassName('agenda-title')[0].innerHTML;
                 document.getElementById('dialog-date').value = this.getElementsByClassName('agenda-date')[0].innerHTML;
                 document.getElementById('dialog-time').value = this.getElementsByClassName('agenda-time')[0].innerHTML;
+                selected_agenda = this.value;
                 dialog.dialog( "open" );
+                
             };
             document.getElementById("agenda").appendChild(div);
         }
